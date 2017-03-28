@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { CreateEventPage } from '../create-event/create-event';
+import { EventDetailPage } from '../event-detail/event-detail';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { CreateEventPage } from '../create-event/create-event';
 })
 export class EventsPage {
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController) {
 
   }
 
@@ -17,5 +18,10 @@ export class EventsPage {
     let eventModal = this.modalCtrl.create(CreateEventPage)
     eventModal.present()
   }
+
+  opendetails(){
+    this.navCtrl.push(EventDetailPage)
+  }
+
 
 }

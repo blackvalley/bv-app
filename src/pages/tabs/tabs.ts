@@ -15,9 +15,9 @@ export class TabsPage {
   // should be each tab's root Page
   tab1Root: any = HomePage;
   tab2Root: any = OpportunitiesPage;
-  tab3Root: any = MultiChatPage;
+  tab3Root: any = ProfilePage;
   tab4Root: any = EventsPage;
-  tab5Root: any = ProfilePage;
+  tab5Root: any = MultiChatPage;
 
   constructor() {
 

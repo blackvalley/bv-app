@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-  <ion-buttons end id="add-opp" (click)="addOpp()">
+  <ion-buttons end (click)="addOpp()">
     <button ion-button icon-only clear >
       <ion-icon name="create"></ion-icon>
       </button>
@@ -15,8 +15,10 @@
 <ion-content padding>
 
 
-      <ion-card id="opp-card">
+      <ion-card id="opp-card" (click)="oppdetails()">
         <img src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png"/>
+        <ion-card-content>
+
         <ion-item id="card-header">
           <div id="event-date" item-left>
           <h3>Feb</h3>
@@ -28,13 +30,34 @@
         </div>
         </ion-item>
 
-        <ion-card-content>
           <p>Micrsoft is looking for interns interested in AR. Must know Python and Java. Message me if interested</p>
         </ion-card-content>
 
+        <ion-row no-padding>
+          <ion-col text-left>
+            <button ion-button clear small icon-left>
+              <ion-icon name='thumbs-up'></ion-icon>
+              Like
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small icon-left>
+              <ion-icon name='text'></ion-icon>
+              Comments
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small icon-left>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+
+
+
 
       </ion-card>
-
 
 
 

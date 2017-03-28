@@ -14,9 +14,9 @@ export class CreateEventPage {
 
 
   //uses Event provider to create an event
-  createEvent(eventName: string, eventDate: string, eventPrice: number,
+  createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
     eventCost: number): void {
-      this.eventData.createEvent(eventName, eventDate, eventPrice, eventCost)
+      this.eventData.createEvent(eventName, eventDate, eventLocation, eventPrice, eventCost)
       .then( () => {
           this.navCtrl.pop();
           });

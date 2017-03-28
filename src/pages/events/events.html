@@ -1,85 +1,64 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Events</ion-title>
-  <ion-buttons end id="add-event">
-    <button ion-button icon-only clear (click)="addEvent()">
-      <ion-icon name="create"></ion-icon>
+    <ion-title center>Events</ion-title>
+    <ion-buttons end id="add-event">
+      <button ion-button icon-only clear (click)="addEvent()">
+        <ion-icon name="create"></ion-icon>
       </button>
-  </ion-buttons>
+    </ion-buttons>
     <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bv-logo.png?alt=media&token=edcd44fd-6479-4764-89ff-3df661724f92" width="80" height="40"/>
-    </ion-navbar>
+  </ion-navbar>
 </ion-header>
+
+
 
 <ion-content class="has-header" id="feed">
 
+<ion-list>
 
-  <ion-list can-swipe="true" >
-    <ion-card id="card-sxsw">
-      <img (click)="sxswschedule()" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Screen%20Shot%202016-11-13%20at%2012.30.43%20AM.png?alt=media&token=8847f4cc-0c66-48fa-b497-d2e1cdb894f5"/>
-      <ion-card-content id="header-sxsw">
-        <ion-item>
-          <div id="event-sxsw" item-left>
-          <h3>Mar.</h3>
-          <h4>10-12</h4>
+
+    <ion-card id="event-card" (click)="opendetails()">
+      <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Screen%20Shot%202016-11-13%20at%2012.30.43%20AM.png?alt=media&token=8847f4cc-0c66-48fa-b497-d2e1cdb894f5"/>
+      <ion-card-content>
+        <ion-item id="card-header">
+          <div id="event-date" item-left>
+              <h3>Feb</h3>
+              <h4>14</h4>
+          </div>
+          <div item-right>
+          <ion-card-title id="card-title">AR Internship</ion-card-title>
+          <p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this opportunity with you</p>
         </div>
-        <ion-card-title id="title-sxsw">
-          <h2>HBCU@SXSW</h2>
-          <h2>2017 Experience</h2>
-          </ion-card-title>
         </ion-item>
+
         <p>
           Our thesis is simple: Diversify SXSW and we will diversify the innovation, entrepreneurship and investment ecosystem for all.
         </p>
-      </ion-card-content>
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="call"></ion-icon>
-            <div>Contact Us</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="clipboard"></ion-icon>
-            <div>Feeback</div>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+        </ion-card-content>
 
-    <ion-card id="event-card">
-      <ion-item id="events-header">
-        <ion-card-title id="events-card-title">Share Event</ion-card-title>
-      </ion-item>
-      <ion-item id="card-header">
-        <div id="event-date" item-left>
-        <h3>TBD</h3>
-      </div>
-        <div item-right>
-          <p id="opp-referral">Silicon Valley, Dallas, Tx, or Atlanta, Ga</p>
-          <p id="opp-referral">Got a tech event you want to search? Submit Event! </p>
-      </div>
-    </ion-item>
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>Attending</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="thumbs-down"></ion-icon>
-            <div>Not Attending</div>
-          </button>
-        </ion-col>
-        <ion-col center text-center>
-          <ion-note>
-            11h ago
-          </ion-note>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+        <ion-row no-padding>
+          <ion-col text-left>
+            <button ion-button clear small icon-left>
+              <ion-icon name='thumbs-up'></ion-icon>
+              Like
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small icon-left>
+              <ion-icon name='text'></ion-icon>
+              Comments
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small icon-left>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-card>
 
   </ion-list>
 
