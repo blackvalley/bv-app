@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user.provider'
 /*
   Generated class for the CreateChat page.
@@ -13,7 +13,9 @@ import { UserProvider } from '../../providers/user.provider'
 })
 export class CreateChatPage {
   private users : any[]
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userPro:UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private userPro:UserProvider , private viewCtrl: ViewController
+  ) {
     this.users=[]
   }
 
@@ -29,6 +31,10 @@ export class CreateChatPage {
           err =>{
              console.error("Unable to add user - ", err)
           })
+    }
+    closeChat(){
+      this.viewCtrl.dismiss();
+
     }
 
 }

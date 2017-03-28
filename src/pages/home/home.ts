@@ -32,7 +32,7 @@ export class HomePage {
           err =>{
              console.error("Unable to add user - ", err)
           })
-}
+        }
 
 
 }

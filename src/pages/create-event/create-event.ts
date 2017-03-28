@@ -9,17 +9,18 @@ import { EventData } from '../../providers/event.provider'
 })
 export class CreateEventPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private eventData: EventData, private viewCtrl: ViewController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private eventData: EventData,
+    private viewCtrl: ViewController) {}
 
 
-  // //uses Event provider to create an event
-  // createEvent(eventName: string, eventDate: string, eventPrice: number,
-  //   eventCost: number): void {
-  //     this.eventData.createEvent(eventName, eventDate, eventPrice, eventCost)
-  //     .then( () => {
-  //         this.navCtrl.pop();
-  //         });
-  //     }
+  //uses Event provider to create an event
+  createEvent(eventName: string, eventDate: string, eventPrice: number,
+    eventCost: number): void {
+      this.eventData.createEvent(eventName, eventDate, eventPrice, eventCost)
+      .then( () => {
+          this.navCtrl.pop();
+          });
+      }
 
   closeEvent(){
     this.viewCtrl.dismiss();

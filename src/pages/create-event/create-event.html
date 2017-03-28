@@ -26,8 +26,8 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Event Date</ion-label>
-    <ion-datetime displayFormat="D MMM, YY" pickerFormat="DD MMM YYYY" [(ngModel)]="eventDate"></ion-datetime>
+    <ion-label stacked>Date</ion-label>
+    <ion-input [(ngModel)]="eventDate" type="text" placeholder="When is the event?"></ion-input>
   </ion-item>
 
   <button ion-button block (click)="createEvent(eventName, eventDate, eventPrice, eventCost)">
