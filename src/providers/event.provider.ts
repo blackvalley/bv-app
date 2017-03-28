@@ -19,10 +19,11 @@ export class EventData {
     this.myEvents = this.currentUser.child('/eventList')
     this.eventList = this.fire.getDatabase().ref('/events')
             }
-   createEvent(eventName: string, eventDate: string, eventPrice: number,
+   createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
       eventCost: number): firebase.Promise<any> {
       return this.myEvents.push({
         name: eventName,
+        location: eventLocation,
         date: eventDate,
         price: eventPrice * 1,
         cost: eventCost * 1,
@@ -32,6 +33,7 @@ export class EventData {
         this.eventList
                   .push({name: eventName,
                   date: eventDate,
+                  location: eventLocation,
                   price: eventPrice * 1,
                   cost: eventCost * 1,
                   revenue: eventCost * -1})

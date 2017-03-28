@@ -1,26 +1,15 @@
 page-events {
 
 
-  ion-title{
-    margin-left: 50px;
-  }
-
-
   #event-card{
     box-shadow: 0 0 3px 2px #000;
-    background-color: lightgray;
+    background-color: #000000;
   }
 
-  #events-card-title{
+  #event-card-title{
     color: #C6E947;
     text-decoration: underline;
 
-
-  }
-
-  #events-header {
-    background-color: black;
-    margin: -15px 0px -20px 0px;
   }
 
 
@@ -46,74 +35,10 @@ page-events {
     text-decoration: underline;
   }
 
-  #opp-referral {
+  #event-referral {
     margin: -5px 10px 0px 10px;
   }
-  #card-sxsw {
-    box-shadow: 0 0 3px 2px #000;
-    border: 2px solid black;
-
-  }
-
-  #event-sxsw{
-    box-shadow: 0 0 3px 1px white;
-    border: 1px solid #515151;
-    border-radius: 15px;
-    padding: 10px 15px;
-    color: #C6E947;
-    margin: -10px 5px -10px -5px;
-    text-align: center;
-    background-color: none;
-
-  }
-  #header-sxsw {
-    background-color: black;
-    margin: -10px -25px -10px -20px;
-  }
-  #header-sxsw ion-item {
-    background-color: black;
-    margin: -5px 0px -10px;
-
-  }
-  #header-sxsw p {
-    margin: 5px;
-    background-color: black;
-    color: white;
-    font-size: 13px;
-  }
-
-  #card-sxsw {
-    background-color: black;
-
-
-  }
-  #card-sxsw ion-col {
-    border-radius: 2px;
-    background-color: black;
-    padding: 0px;
-    margin: 5px;
-  }
-  #card-sxsw ion-row {
-    text-align: center;
-  }
-
-  #card-sxsw button {
-    padding: 15px 60px;
-    color: #C6E947;
-    text-align: center;
-    box-shadow: 0 0 3px 1px white;
-    border: 1px solid #515151;
-    width: 100px;
-
-
-  }
-
-  #title-sxsw {
-    color: #C6E947;
-    margin: 5px 0px 0px 10px;
-    text-decoration: underline;
-  }
 
 
 
-  }
+}

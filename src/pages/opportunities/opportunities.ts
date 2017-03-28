@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { CreateOppPage } from '../create-opp/create-opp'
+import { OppDetailPage } from '../opp-detail/opp-detail'
 
 /*
   Generated class for the Opportunities page.
@@ -20,6 +21,10 @@ export class OpportunitiesPage {
   addOpp(){
     let oppModal = this.modalCtrl.create(CreateOppPage)
     oppModal.present()
+  }
+  
+  oppdetails(){
+    this.navCtrl.push(OppDetailPage)
   }
 
 

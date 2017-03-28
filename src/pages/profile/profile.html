@@ -10,18 +10,36 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-  <div id="profile-card">
-  <ion-item id="profile-back">
+  <ion-item id="profile-header">
+    <img id="profile-bg-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/default%20BG.jpg?alt=media&token=890ddab2-35a4-4edd-9e1c-9abd040d20d5">
+    <div id="profile-header-content">
     <img id="profile-img" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7" alt="avatar">
-    <img id="back-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/default%20BG.jpg?alt=media&token=890ddab2-35a4-4edd-9e1c-9abd040d20d5">
     <h2 id="profile-name" *ngIf="userProfile?.firstName || userProfile?.lastName">
       <b>{{userProfile?.firstName}} {{userProfile?.lastName}}</b></h2>
-      <p>{{userProfile?.college}}  {{userProfile?.location}}</p>
-      <ion-buttons><button (click)="editProfile()"><ion-icon name="paper"></ion-icon></button>
+      <p>{{userProfile?.college}} - {{userProfile?.location}}</p>
+    </div>
+      <ion-buttons id="settings"><button ion-button  clear icon-only color="secondary" (click)="editProfile()"><ion-icon name="settings" ></ion-icon></button>
       </ion-buttons>
   </ion-item>
-  </div>
 
+<div id="profile-info">
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name='person'></ion-icon>
+      Bio
+    </ion-list-header>
   </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name='pulse'></ion-icon>
+      Interest
+    </ion-list-header>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name='link'></ion-icon>
+      Connections
+    </ion-list-header>
+  </ion-list>
+</div>
 </ion-content>
