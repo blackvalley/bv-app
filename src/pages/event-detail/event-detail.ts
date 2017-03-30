@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { EventData } from '../../providers/event.provider'
 /*
   Generated class for the EventDetail page.
 
@@ -12,11 +12,20 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'event-detail.html'
 })
 export class EventDetailPage {
+  private event
+  // private guestName: String =""
+  // private guestPicture :any =null
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+      private eventData:EventData) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventDetailPage');
+    this.eventData.getEventDetail(this.navParams.get('eventId'))
+    .on('value', snapshot => {
+    this.event = snapshot.val();
+    });
+    console.log(this.event)
   }
+
 
 }

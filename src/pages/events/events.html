@@ -17,22 +17,22 @@
 <ion-list>
 
 
-    <ion-card id="event-card" (click)="opendetails()">
+    <ion-card id="event-card" *ngFor="let event of events"(click)="goToEventDetail(event.id)">
       <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Screen%20Shot%202016-11-13%20at%2012.30.43%20AM.png?alt=media&token=8847f4cc-0c66-48fa-b497-d2e1cdb894f5"/>
       <ion-card-content>
         <ion-item id="card-header">
           <div id="event-date" item-left>
               <h3>Feb</h3>
-              <h4>14</h4>
+              <h4>{{event?.date}}</h4>
           </div>
           <div item-right>
-          <ion-card-title id="card-title">AR Internship</ion-card-title>
+          <ion-card-title id="card-title">{{event?.name}}</ion-card-title>
           <p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this opportunity with you</p>
         </div>
         </ion-item>
 
         <p>
-          Our thesis is simple: Diversify SXSW and we will diversify the innovation, entrepreneurship and investment ecosystem for all.
+          {{event?.location}}
         </p>
         </ion-card-content>
 
