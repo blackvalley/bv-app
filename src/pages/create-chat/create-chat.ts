@@ -17,6 +17,7 @@ export class CreateChatPage {
     private userPro:UserProvider , private viewCtrl: ViewController
   ) {
     this.users=[]
+    this.getAddedUsers()
   }
 
   ionViewDidLoad() {

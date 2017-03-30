@@ -27,6 +27,7 @@ import { EventDetailPage } from '../pages/event-detail/event-detail'
 import { ArticleProvider } from '../providers/article-provider'
 import { CreateChatPage } from '../pages/create-chat/create-chat'
 import { OpportunityData } from '../providers/opportunity.provider'
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { OpportunityData } from '../providers/opportunity.provider'
       UserProvider, ProfileData,
       AuthProvider, EventData,
       DummyData, ArticleProvider,
-      OpportunityData]
+      OpportunityData, Camera]
 
 })
 export class AppModule {}

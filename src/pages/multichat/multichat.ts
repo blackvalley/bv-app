@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { UserProvider } from '../../providers/user.provider'
+import { ProfileData } from '../../providers/profile.data'
 import { CreateChatPage } from '../create-chat/create-chat';
 @Component({
   selector: 'page-multichat',
   templateUrl: 'multichat.html'
 })
 export class MultiChatPage {
-  private users: any[]
-  constructor(public navCtrl:NavController, private userPro:UserProvider, private modalCtrl: ModalController) {
-    this.users=[]
-    this.getAddedUsers()
+  private connections: any[]
+  private myConnects:firebase.database.Reference
+  constructor(public navCtrl:NavController, private profile:ProfileData,
+    private modalCtrl: ModalController) {
+    this.connections=[]
+    this.myConnects=this.profile.getUserProfile().child('/connections')
+
   }
 
   ionViewDidLoad() {
@@ -20,14 +23,5 @@ export class MultiChatPage {
       let eventModal = this.modalCtrl.create(CreateChatPage)
       eventModal.present()
   }
-  getAddedUsers(){
-    this.userPro.getAddedUsers()
-          .subscribe(user=> {
-            console.log(user)
-            this.users.push(user)
-          },
-          err =>{
-             console.error("Unable to add user - ", err)
-          })
-    }
+
   }

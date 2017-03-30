@@ -11,6 +11,7 @@ export class EventData {
   private myEvents : firebase.database.Reference;
   private eventList : firebase.database.Reference;
   private currentUser;
+  private eventPicRef : firebase.storage.Reference
 
   constructor(public http: Http, private fire: FirebaseConfigService,
               private profile :ProfileData) {
@@ -18,10 +19,12 @@ export class EventData {
     this.currentUser = this.profile.getUserProfile()
     this.myEvents = this.currentUser.child('/eventList')
     this.eventList = this.fire.getDatabase().ref('/events')
+    this.eventPicRef = this.fire.getStorage().ref('/eventPics')
             }
 
    createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
-      eventCost: number): firebase.Promise<any> {
+      eventCost: number, eventPic=null): firebase.Promise<any> {
+
       return this.myEvents.push({
         name: eventName,
         location: eventLocation,
@@ -38,7 +41,22 @@ export class EventData {
               cost: eventCost * 1,
               creator: this.currentUser.uid
             })
+          if (eventPic != null) {
+            this.eventPicRef.child(newEvent.key).child('eventPicture.png')
+            .putString(eventPic, 'base64', {contentType: 'image/png'})
+            .then((savedPicture) => {
+            this.eventList.child(newEvent.key)
+            .child('eventPicture')
+            .set(savedPicture.downloadURL);
+            this.myEvents.child(newEvent.key)
+            .child('eventPicture')
+            .set(savedPicture.downloadURL)
+            });
+              
+          }
+
       });
+
     }
     getEventList(): firebase.database.Reference {
       return this.eventList;
