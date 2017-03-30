@@ -19,14 +19,13 @@ export class EventsPage {
     this.eventData.getEventList().on('value', snapshot => {
       let rawList = [];
       snapshot.forEach( snap => {
-        rawList.push(rawList.push({
+      rawList.push({
         id: snap.key,
         name: snap.val().name,
         price: snap.val().price,
         date: snap.val().date,
         location: snap.val().location
       })
-    );
       return false
       });
       this.events = rawList;
@@ -39,7 +38,7 @@ export class EventsPage {
 
   goToEventDetail(eventId):void{
     this.navCtrl.push(EventDetailPage, {
-      eventId:eventId,
+      eventId:eventId
     })
   }
 

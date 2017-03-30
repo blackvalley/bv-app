@@ -27,8 +27,7 @@ export class EventData {
         location: eventLocation,
         date: eventDate,
         price: eventPrice * 1,
-        cost: eventCost * 1,
-        revenue: eventCost * -1
+        cost: eventCost * 1
       })
       .then((newEvent) => {
           this.eventList.child(newEvent.key).
@@ -37,11 +36,9 @@ export class EventData {
               location: eventLocation,
               price: eventPrice * 1,
               cost: eventCost * 1,
-              revenue: eventCost * -1})
+              creator: this.currentUser.uid
+            })
       });
-    }
-    getAllEvents(){
-
     }
     getEventList(): firebase.database.Reference {
       return this.eventList;

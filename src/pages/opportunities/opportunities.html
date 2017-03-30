@@ -13,9 +13,7 @@
 
 
 <ion-content padding>
-
-
-      <ion-card id="opp-card" (click)="oppdetails()">
+      <ion-card id="opp-card" *ngFor="let opp of opportunities"(click)="goToOppDetail(opp.id)">
         <img src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png"/>
         <ion-card-content>
 
@@ -25,7 +23,7 @@
           <h4>14</h4>
         </div>
           <div item-right>
-          <ion-card-title id="card-title">AR Internship</ion-card-title>
+          <ion-card-title id="card-title">{{opp?.name}}</ion-card-title>
           <p id="opp-referral"><a href="">Keisha Ebbesen</a> Shared this opportunity with you</p>
         </div>
         </ion-item>
@@ -54,12 +52,6 @@
           </ion-col>
         </ion-row>
 
-
-
-
       </ion-card>
-
-
-
 
 </ion-content>

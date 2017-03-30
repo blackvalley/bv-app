@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { OpportunityData } from '../../providers/opportunity.provider'
 
 @Component({
   selector: 'page-create-opp',
@@ -8,17 +8,19 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class CreateOppPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+      private oppData:OpportunityData, private viewCtrl: ViewController) {}
 
 
-  // //uses Event provider to create an event
-  // createEvent(eventName: string, eventDate: string, eventPrice: number,
-  //   eventCost: number): void {
-  //     this.eventData.createEvent(eventName, eventDate, eventPrice, eventCost)
-  //     .then( () => {
-  //         this.navCtrl.pop();
-  //         });
-  //     }
+  //uses opportunity provider to create an opportunity
+  createOpportunity(oppName: string, oppDeadline: string,
+     oppLocation: string, oppDescription: string): void {
+      this.oppData.createOpportunity(oppName, oppDeadline,
+        oppLocation, oppDescription)
+      .then( () => {
+          this.navCtrl.pop();
+          });
+      }
 
   closeOpp(){
     this.viewCtrl.dismiss();

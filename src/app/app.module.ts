@@ -26,6 +26,7 @@ import { EventData } from '../providers/event.provider'
 import { EventDetailPage } from '../pages/event-detail/event-detail'
 import { ArticleProvider } from '../providers/article-provider'
 import { CreateChatPage } from '../pages/create-chat/create-chat'
+import { OpportunityData } from '../providers/opportunity.provider'
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { CreateChatPage } from '../pages/create-chat/create-chat'
       FirebaseConfigService,
       UserProvider, ProfileData,
       AuthProvider, EventData,
-      DummyData, ArticleProvider]
+      DummyData, ArticleProvider,
+      OpportunityData]
 
 })
 export class AppModule {}
