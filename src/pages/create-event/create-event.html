@@ -36,10 +36,10 @@
       <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
     </ion-item>
 
-    <button ion-item>
-      <ion-label>Repeat</ion-label>
-      <ion-note item-right>Never</ion-note>
-    </button>
+    <ion-item>
+      <ion-label stacked>Cost</ion-label>
+      <ion-input [(ngModel)]="eventPrice" type="number" placeholder="How much is the event?"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label stacked>Cost</ion-label>
       <ion-input [(ngModel)]="eventCost" type="number" placeholder="How much are you spending?"></ion-input>
@@ -62,7 +62,8 @@
 
 
 
-  <button ion-button block (click)="createEvent(eventName, eventDate, eventPrice, eventCost)">
+  <button ion-button block (click)="createEvent(eventName, eventDate, eventLocation,
+  eventPrice, eventCost)">
     Share Event
   </button>
 

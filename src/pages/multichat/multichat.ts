@@ -30,6 +30,4 @@ export class MultiChatPage {
              console.error("Unable to add user - ", err)
           })
     }
-
-
-}
+  }

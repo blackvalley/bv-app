@@ -30,20 +30,26 @@ export class EventData {
         revenue: eventCost * -1
       })
       .then((newEvent) => {
-        this.eventList
-                  .push({name: eventName,
-                  date: eventDate,
-                  location: eventLocation,
-                  price: eventPrice * 1,
-                  cost: eventCost * 1,
-                  revenue: eventCost * -1})
+          this.eventList.child(newEvent.key).
+              set({name: eventName,
+              date: eventDate,
+              location: eventLocation,
+              price: eventPrice * 1,
+              cost: eventCost * 1,
+              revenue: eventCost * -1})
       });
     }
     getEventList(): firebase.database.Reference {
       return this.eventList;
     }
+    getMyEvents():firebase.database.Reference {
+      return this.myEvents;
+    }
     getEventDetail(eventId): firebase.database.Reference {
     return this.eventList.child(eventId);
+    }
+    getMyEventDetail(eventId): firebase.database.Reference{
+      return this.myEvents.child(eventId);
     }
 
 }
