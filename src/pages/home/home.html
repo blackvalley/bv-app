@@ -8,15 +8,15 @@
 
 <ion-content padding="true" class="has-header">
 
-  <ion-card id="card">
-    <ion-item (click) ="article()">
-      <h2>The Impact Black Diversity Recruiters Have on HBCU Students
-      </h2>
+<ion-list>
+  <ion-card id="card" *ngFor="let article of articles" (click) ="goToArticle(articleId)">
+    <ion-item>
+      <h2> {{article?.title}} </h2>
     </ion-item>
-    <img (click) ="article()" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
-    <h4> By: Jasmine Edwards </h4>
+    <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
+    <h4> {{article?.author}} </h4>
     <ion-card-content>
-      <p>If you're reading this you probably already know that there is a unreasonably large gap between black talent and recruitment within the technology industry. If you are a black student in the field of Engineering ask yourself, have you been approached by or seen many black diversity recruiters within the tech industry?</p>
+      <p> {{article?.intro}}</p>
     </ion-card-content>
     <ion-row no-padding>
       <ion-col text-left>
@@ -40,41 +40,8 @@
     </ion-row>
 
   </ion-card>
+</ion-list>
 
-  <ion-card id="card">
-
-    <ion-item>
-      <h2>Black Valley First Meet Up</h2>
-
-    </ion-item>
-
-    <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-33.jpg?alt=media&token=8e3db19e-ba31-486b-bb35-0f450fd2ac2a">
-
-    <ion-card-content>
-      <p>Paul, Lusenii and Dakari put together their first event in San Francisco, Cali. This event brought together Interns, Engineers, and Entrepreneurs to help push for innovation diversity in the tech industry. </p>
-    </ion-card-content>
-
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
 
   <button ion-button block >
     Submit Article

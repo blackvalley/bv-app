@@ -31,6 +31,9 @@ export class ArticleProvider {
   getArticles():firebase.database.Reference{
     return this.articledb
   }
+  getArticleDetail(articleId): firebase.database.Reference {
+  return this.articledb.child(articleId);
+  }
 
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ArticleProvider } from '../../providers/article-provider'
 
 /*
   Generated class for the Article page.
@@ -12,11 +13,18 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'article.html'
 })
 export class ArticlePage {
+  private article
+  constructor(public navCtrl: NavController, public navParams: NavParams, private articledb: ArticleProvider) {
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ArticlePage');
+    this.articledb.getArticleDetail(this.navParams.get('articleId'))
+    .on('value', snapshot => {
+    this.article = snapshot.val();
+      console.log(this.article)
+    });
+
   }
 
 }
