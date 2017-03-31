@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController,
+    AlertController, LoadingController} from 'ionic-angular';
 import { UserProvider } from '../../providers/user.provider'
 /*
   Generated class for the CreateChat page.
@@ -13,8 +14,10 @@ import { UserProvider } from '../../providers/user.provider'
 })
 export class CreateChatPage {
   private users : any[]
+  private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private userPro:UserProvider , private viewCtrl: ViewController
+    private userPro:UserProvider , private viewCtrl: ViewController,
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController
   ) {
     this.users=[]
     this.getAddedUsers()
@@ -24,6 +27,7 @@ export class CreateChatPage {
     console.log('ionViewDidLoad CreateChatPage');
   }
   getAddedUsers(){
+    this.showLoading()
     this.userPro.getAddedUsers()
           .subscribe(user=> {
             console.log(user)
@@ -32,10 +36,19 @@ export class CreateChatPage {
           err =>{
              console.error("Unable to add user - ", err)
           })
+    this.loader.dismiss()
     }
     closeChat(){
       this.viewCtrl.dismiss();
 
     }
+
+    showLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loader.present();
+    }
+
 
 }

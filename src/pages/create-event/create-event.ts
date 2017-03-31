@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController,
+  AlertController, LoadingController } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
 import { Camera } from '@ionic-native/camera';
 
@@ -8,9 +9,11 @@ import { Camera } from '@ionic-native/camera';
   templateUrl: 'create-event.html'
 })
 export class CreateEventPage {
-  private eventPicture
+  private eventPicture = null
+  private loader
   constructor(public navCtrl: NavController, public navParams: NavParams, private eventData: EventData,
-    private viewCtrl: ViewController, private cameraPlugin:Camera) {}
+    private viewCtrl: ViewController, private cameraPlugin:Camera,
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController) {}
 
 
   //uses Event provider to create an event
@@ -21,7 +24,10 @@ export class CreateEventPage {
       .then( () => {
           this.eventPicture = null
           this.navCtrl.pop();
-          });
+        }).catch((error)=>{
+          this.showError(error)
+          this.loader.dismiss()
+        });
       }
 
   closeEvent(){
@@ -49,4 +55,26 @@ export class CreateEventPage {
     console.log("ERROR -> " + JSON.stringify(error));
   });
 }
+
+    showLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loader.present();
+    }
+
+    showError(text) {
+      setTimeout(() => {
+        this.loader.dismiss();
+      });
+
+      let prompt = this.alertCtrl.create({
+        title: 'Fail',
+        subTitle: text,
+        buttons: ['OK']
+      });
+      prompt.present();
+
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController,
+      AlertController, LoadingController } from 'ionic-angular';
 import { CreateOppPage } from '../create-opp/create-opp'
 import { OppDetailPage } from '../opp-detail/opp-detail'
 import { OpportunityData } from '../../providers/opportunity.provider'
@@ -16,9 +17,11 @@ import { OpportunityData } from '../../providers/opportunity.provider'
 })
 export class OpportunitiesPage {
   calendar: any = "event"
+  private loader
   private opportunities : any[]
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public modalCtrl: ModalController, private oppData:OpportunityData) {
+    public modalCtrl: ModalController, private oppData:OpportunityData,
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
       this.opportunities=[]
     }
 
@@ -34,6 +37,7 @@ export class OpportunitiesPage {
 
   ionViewDidEnter(){
     this.oppData.getOpportunityList().on('value', snapshot => {
+      this.showLoading()
       let rawList = [];
       snapshot.forEach( snap => {
         rawList.push({
@@ -47,6 +51,7 @@ export class OpportunitiesPage {
       return false
       });
       this.opportunities = rawList;
+      this.loader.dismiss()
       });
     }
     addEvent(){
@@ -59,5 +64,27 @@ export class OpportunitiesPage {
         eventId:oppId
       })
     }
+
+    showLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loader.present();
+    }
+
+    showError(text) {
+      setTimeout(() => {
+        this.loader.dismiss();
+      });
+
+      let prompt = this.alertCtrl.create({
+        title: 'Fail',
+        subTitle: text,
+        buttons: ['OK']
+      });
+      prompt.present();
+
+  }
+
 
 }

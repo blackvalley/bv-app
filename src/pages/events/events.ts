@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, AlertController,
+  LoadingController } from 'ionic-angular';
 import { CreateEventPage } from '../create-event/create-event';
 import { EventDetailPage } from '../event-detail/event-detail';
 import { EventData } from '../../providers/event.provider'
@@ -10,12 +11,14 @@ import { EventData } from '../../providers/event.provider'
 })
 export class EventsPage {
   private events : any[]
-
+  private loader
   constructor(private navCtrl: NavController, private eventData : EventData,
-    private modalCtrl: ModalController) {
+    private modalCtrl: ModalController,  private loadingCtrl:LoadingController,
+    private alertCtrl:AlertController) {
     this.events = [];
   }
   ionViewDidEnter(){
+    this.showLoading()
     this.eventData.getEventList().on('value', snapshot => {
       let rawList = [];
       snapshot.forEach( snap => {
@@ -29,7 +32,9 @@ export class EventsPage {
       return false
       });
       this.events = rawList;
+      this.loader.dismiss()
     });
+
   }
   addEvent(){
     let eventModal = this.modalCtrl.create(CreateEventPage)
@@ -41,6 +46,27 @@ export class EventsPage {
       eventId:eventId
     })
   }
+
+  showLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loader.present();
+  }
+
+  showError(text) {
+    setTimeout(() => {
+      this.loader.dismiss();
+    });
+
+    let prompt = this.alertCtrl.create({
+      title: 'Fail',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    prompt.present();
+
+}
 
 
 }
