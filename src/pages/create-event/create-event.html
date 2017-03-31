@@ -9,17 +9,21 @@
 </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content id="content">
   <ion-list>
+    <ion-item (click)="takePicture()">
+      <img id="event-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
+    </ion-item>
     <ion-item>
       <ion-input placeholder="Title" [(ngModel)]="eventName" type="text" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-input placeholder="Location" [(ngModel)]="eventLocation" type="text"></ion-input>
     </ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-input placeholder="Details" [(ngModel)]="eventLocation" type="text"></ion-input>
+    </ion-item>
 
-  <ion-list>
     <ion-item>
       <ion-label>Start Date</ion-label>
       <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="eventDate"></ion-datetime>
@@ -43,11 +47,6 @@
     <ion-item>
       <ion-label stacked>Cost</ion-label>
       <ion-input [(ngModel)]="eventCost" type="number" placeholder="How much are you spending?"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Date</ion-label>
-      <ion-input [(ngModel)]="eventDate" type="text" placeholder="When is the event?"></ion-input>
     </ion-item>
 
   </ion-list>
