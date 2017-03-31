@@ -10,18 +10,17 @@ import { FirebaseConfigService } from '../core/service/service'
 })
 export class MyApp {
   zone : NgZone
-  rootPage:any = TabsPage;
+  rootPage:any;
 
-  constructor(platform: Platform, fire:FirebaseConfigService) {
+  constructor(private platform: Platform, private fire:FirebaseConfigService) {
     this.zone = new NgZone({});
-    const unsubscribe = fire.getAuth().onAuthStateChanged((user) => {
+    const unsubscribe = this.fire.getAuth().onAuthStateChanged((user) => {
         this.zone.run( () => {
             if (!user) {
               this.rootPage = LoginPage;
               unsubscribe()
             } else {
               this.rootPage = TabsPage;
-              unsubscribe()
             }
           });
         });
