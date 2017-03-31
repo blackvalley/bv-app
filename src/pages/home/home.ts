@@ -18,8 +18,11 @@ export class HomePage {
      this.articles = []
      this.getAddedArticles()
   }
-  article(){
-    this.navCtrl.push(ArticlePage);
+
+  goToArticle(articleId): void {
+    this.navCtrl.push(ArticlePage, {
+      articleId : articleId
+    } )
   }
 
   comments(){

@@ -41,19 +41,19 @@ export class EventData {
               cost: eventCost * 1,
               creator: this.currentUser.uid
             })
-          if (eventPic != null) {
-            this.eventPicRef.child(newEvent.key).child('eventPicture.png')
-            .putString(eventPic, 'base64', {contentType: 'image/png'})
-            .then((savedPicture) => {
-            this.eventList.child(newEvent.key)
-            .child('eventPicture')
-            .set(savedPicture.downloadURL);
-            this.myEvents.child(newEvent.key)
-            .child('eventPicture')
-            .set(savedPicture.downloadURL)
-            });
-              
-          }
+          // if (eventPic != null) {
+          //   this.eventPicRef.child(newEvent.key).child('eventPicture.png')
+          //   .putString(eventPic, 'base64', {contentType: 'image/png'})
+          //   .then((savedPicture) => {
+          //   this.eventList.child(newEvent.key)
+          //   .child('eventPicture')
+          //   .set(savedPicture.downloadURL);
+          //   this.myEvents.child(newEvent.key)
+          //   .child('eventPicture')
+          //   .set(savedPicture.downloadURL)
+          //   });
+          //
+          // }
 
       });
 
