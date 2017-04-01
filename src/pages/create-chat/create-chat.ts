@@ -20,34 +20,33 @@ export class CreateChatPage {
     private loadingCtrl:LoadingController, private alertCtrl:AlertController
   ) {
     this.users=[]
-    this.getAddedUsers()
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateChatPage');
-  }
-  getAddedUsers(){
+  ionViewDidEnter(){
     this.showLoading()
-    this.userPro.getAddedUsers()
-          .subscribe(user=> {
-            console.log(user)
-            this.users.push(user)
-          },
-          err =>{
-             console.error("Unable to add user - ", err)
-          })
-    this.loader.dismiss()
-    }
-    closeChat(){
-      this.viewCtrl.dismiss();
+    this.userPro.getUsers().on('value', snapshot => {
+      let rawList = [];
+      snapshot.forEach( snap => {
+      rawList.push({
+        id: snap.key,
+        firstname: snap.val().fname,
+        })
+      return false
+      });
+      this.users = rawList;
+      this.loader.dismiss()
+    });
 
-    }
+  }
 
     showLoading() {
       this.loader = this.loadingCtrl.create({
-        content: 'Please wait...'
+        content: 'You\'re Great!...'
       });
       this.loader.present();
+    }
+    closeChat(){
+      this.viewCtrl.dismiss();
     }
 
 

@@ -14,7 +14,8 @@ import { ArticleProvider } from '../../providers/article-provider'
 })
 export class ArticlePage {
   private article
-  constructor(public navCtrl: NavController, public navParams: NavParams, private articledb: ArticleProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private articledb: ArticleProvider) {
   }
 
 

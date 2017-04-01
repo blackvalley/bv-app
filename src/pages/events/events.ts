@@ -32,6 +32,7 @@ export class EventsPage {
       return false
       });
       this.events = rawList;
+      console.log(this.events)
       this.loader.dismiss()
     });
 

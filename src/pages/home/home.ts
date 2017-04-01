@@ -16,7 +16,7 @@ export class HomePage {
     private articledb: ArticleProvider,private loadingCtrl:LoadingController,
     private alertCtrl:AlertController) {
      this.articles = []
-     this.getAddedArticles()
+     this.getArticles()
   }
 
   goToArticle(articleId): void {
@@ -29,24 +29,35 @@ export class HomePage {
     let commentsModal = this.modalCtrl.create(CommentsPage);
     commentsModal.present();
   }
-  getAddedArticles(){
+  getArticles(){
     this.showLoading()
-    this.articledb.getAddedArticles()
-          .subscribe(article=> {
-            console.log(article)
-            this.articles.push(article)
-          },
-          err =>{
-             console.error("Unable to add user - ", err)
-          })
-    this.loader.dismiss()
+    this.articledb.getArticles().on('value',snapshot =>{
+        let rawData = [];
+      snapshot.forEach(snap =>{
+        rawData.push({
+          id:snap.key,
+          author:snap.val().author,
+          date:snap.val().dateposted,
+          intro:snap.val().intro,
+          pg1:snap.val().parg1,
+          pg2:snap.val().parg2,
+          pg3:snap.val().parg3,
+          qoute:snap.val().qoute,
+          madeqoute:snap.val().madeqoute,
+          title:snap.val().title
+        })
+        return false
+      })
+      this.articles=rawData
+      this.loader.dismiss()
 
+    })
   }
 
 
   showLoading() {
     this.loader = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'You\'re The Best!...'
     });
     this.loader.present();
   }

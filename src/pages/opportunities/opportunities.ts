@@ -18,11 +18,11 @@ import { OpportunityData } from '../../providers/opportunity.provider'
 export class OpportunitiesPage {
   calendar: any = "event"
   private loader
-  private opportunities : any[]
+  private opps : any[]
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modalCtrl: ModalController, private oppData:OpportunityData,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
-      this.opportunities=[]
+      this.opps=[]
     }
 
   addOpp(){
@@ -50,7 +50,7 @@ export class OpportunitiesPage {
       console.log(rawList)
       return false
       });
-      this.opportunities = rawList;
+      this.opps = rawList;
       this.loader.dismiss()
       });
     }
@@ -59,9 +59,9 @@ export class OpportunitiesPage {
       eventModal.present()
     }
 
-    goToEventDetail(oppId):void{
+    goToOppDetail(oppId):void{
       this.navCtrl.push(OppDetailPage, {
-        eventId:oppId
+        oppId:oppId
       })
     }
 
