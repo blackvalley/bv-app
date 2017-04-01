@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, AlertController } from 'ionic-angular';
+import { NavController, ModalController,
+AlertController, LoadingController } from 'ionic-angular';
 import { ArticleProvider } from '../../providers/article-provider'
 import { ArticlePage } from '../article/article';
 import { CommentsPage } from '../comments/comments';
@@ -10,10 +11,12 @@ import { CommentsPage } from '../comments/comments';
 })
 export class HomePage {
   private articles:any[]
+  private loader
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-   alert:AlertController, private articledb: ArticleProvider) {
+    private articledb: ArticleProvider,private loadingCtrl:LoadingController,
+    private alertCtrl:AlertController) {
      this.articles = []
-     this.getAddedArticles()
+     this.getArticles()
   }
 
   goToArticle(articleId): void {
@@ -26,16 +29,39 @@ export class HomePage {
     let commentsModal = this.modalCtrl.create(CommentsPage);
     commentsModal.present();
   }
-  getAddedArticles(){
-    this.articledb.getAddedArticles()
-          .subscribe(article=> {
-            console.log(article)
-            this.articles.push(article)
-          },
-          err =>{
-             console.error("Unable to add user - ", err)
-          })
-        }
+  getArticles(){
+    this.showLoading()
+    this.articledb.getArticles().on('value',snapshot =>{
+        let rawData = [];
+      snapshot.forEach(snap =>{
+        rawData.push({
+          id:snap.key,
+          author:snap.val().author,
+          date:snap.val().dateposted,
+          intro:snap.val().intro,
+          pg1:snap.val().parg1,
+          pg2:snap.val().parg2,
+          pg3:snap.val().parg3,
+          qoute:snap.val().qoute,
+          madeqoute:snap.val().madeqoute,
+          title:snap.val().title
+        })
+        return false
+      })
+      this.articles=rawData
+      this.loader.dismiss()
+
+    })
+  }
+
+
+  showLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: 'You\'re The Best!...'
+    });
+    this.loader.present();
+  }
+
 
 
 }
