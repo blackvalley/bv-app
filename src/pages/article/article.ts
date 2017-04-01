@@ -22,9 +22,9 @@ export class ArticlePage {
     this.articledb.getArticleDetail(this.navParams.get('articleId'))
     .on('value', snapshot => {
     this.article = snapshot.val();
-      console.log(this.article)
     });
-
+    console.log(this.article)
   }
+
 
 }

@@ -16,11 +16,12 @@ export class HomePage {
      this.getAddedArticles()
   }
 
-  goToArticle(articleId): void {
+  goToArticle(articleId):void{
     this.navCtrl.push(ArticlePage, {
-      articleId : articleId
-    } )
+      articleId:articleId
+    })
   }
+
 
   comments(){
     let commentsModal = this.modalCtrl.create(CommentsPage);
