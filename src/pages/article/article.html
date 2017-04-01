@@ -27,15 +27,12 @@
   <div id="article">
 
 
-    <h4>By: Jasmine Edwards</h4>
+    <h4>By: {{article?.author}}</h4>
 
-    <p>Posted: Jan 4, 2017</p>
+    <p>Posted: {{article?.dateposted}}</p>
 
 
-  <div id="article-content"> If you're reading this you probably already know that there is a unreasonably large gap between black talent and recruitment within the technology industry. If you are a black student in the field of Engineering ask yourself, have you been approached by or seen many black diversity recruiters within the tech industry? If you have, why don't we often see their efforts being broadcasted? Take into consideration how much work goes into closing a gap where blacks only make up between 1 and 5 percent of the population at majority of tech companies. Now Imagine being apart of that small percentage AND trying to change it. What kind of support would you give to the students that aspire to be apart of that small percentage?
-
-    Keisha Ebbesen is a Diversity Recruiter at Microsoft.
-She received her Bachelors degree in Communications and Media Studies from St.Johns University and her Masters in Business Administration and Management from Nova Southern University. After finishing college and working a few jobs, Keisha realized that she had a passion for working with students. She eventually took her passion to Microsoft and became a Diversity Recruiter.
+  <div id="article-content">{{article?.intro}}
 <div id="quote" style="float: left" >“We must recruit a new generation of science and technology leaders by investing in diversity.”
 <div id="quoter">-Barack Obama</div>
 </div>

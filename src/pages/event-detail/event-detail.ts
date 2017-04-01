@@ -21,7 +21,6 @@ export class EventDetailPage {
       private eventData:EventData,private loadingCtrl: LoadingController) {}
 
   ionViewDidLoad() {
-    this.showLoading()
     this.eventData.getEventDetail(this.navParams.get('eventId'))
     .on('value', snapshot => {
     this.event = snapshot.val();

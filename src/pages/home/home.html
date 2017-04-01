@@ -9,7 +9,7 @@
 <ion-content padding="true" class="has-header">
 
 <ion-list>
-  <ion-card id="card" *ngFor="let article of articles" (click) ="goToArticle(articleId)">
+  <ion-card id="card" *ngFor="let article of articles" (click) ="goToArticle(article.id)">
     <ion-item>
       <h2> {{article?.title}} </h2>
     </ion-item>
