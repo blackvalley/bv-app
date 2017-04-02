@@ -2,41 +2,33 @@ page-login {
 
   #login-page{
     background-color: black;
-    margin-top: 40px;
   }
 
-
-
-  #login-form ion-item {
-    background-color: #515151;
-    color: #C6E947;
-    opacity: 0.7;
-  }
-
-  #emailField {
-    border-radius: 15px 15px 0px 0px;
-  }
-
-  #pwField {
-    border-radius: 0px 0px 15px 15px;
-  }
-
-  #login-form button{
-    display: block;
-    background-color: transparent;
-    border-radius: 15px;
-    border: 2px solid #C6E947;
-    color: #C6E947;
-    margin: 10px auto;
-  }
-
-  #login-form ion-input{
-    color: #000000;
-  }
   #login-card {
+    margin-top: 50px;
     background-color: #000000;
     color: #C6E947;
   }
+
+  #login-form {
+    margin-top: 60px;
+    border-radius: 15px 15px 15px 15px;
+    background-color: transparent;
+
+
+  }
+
+  #login-card ion-item {
+    background-color: transparent;
+    color: #FFFFFF;
+
+  }
+
+
+  #login-form ion-input{
+    border-bottom: 1px solid #C6E947;
+  }
+
 
   #login-field {
     border-radius: 15px;
@@ -44,6 +36,7 @@ page-login {
 
   #buttons {
     font-weight: bold;
+    color: lightgray;
 
   }
 

@@ -15,6 +15,7 @@ import { CommentsPage } from '../pages/comments/comments';
 import { OpportunitiesPage } from '../pages/opportunities/opportunities';
 import { LoginPage } from '../pages/login/login'
 import { SignupPage } from '../pages/signup/signup'
+import { Signup2Page } from '../pages/signup2/signup2'
 import { PwresetPage } from '../pages/pwreset/pwreset'
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -44,6 +45,7 @@ import { Camera } from '@ionic-native/camera';
     ProfilePage,
     PwresetPage,
     SignupPage,
+    Signup2Page,
     TabsPage,
     CreateEventPage,
     CreateOppPage,
@@ -69,6 +71,7 @@ import { Camera } from '@ionic-native/camera';
     ProfilePage,
     PwresetPage,
     SignupPage,
+    Signup2Page,
     TabsPage,
     CreateEventPage,
     CreateOppPage,

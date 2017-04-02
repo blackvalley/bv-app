@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController,
+      AlertController, LoadingController } from 'ionic-angular';
 import { CreateOppPage } from '../create-opp/create-opp'
 import { OppDetailPage } from '../opp-detail/opp-detail'
 import { OpportunityData } from '../../providers/opportunity.provider'
@@ -16,10 +17,12 @@ import { OpportunityData } from '../../providers/opportunity.provider'
 })
 export class OpportunitiesPage {
   calendar: any = "event"
-  private opportunities : any[]
+  private loader
+  private opps : any[]
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public modalCtrl: ModalController, private oppData:OpportunityData) {
-      this.opportunities=[]
+    public modalCtrl: ModalController, private oppData:OpportunityData,
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
+      this.opps=[]
     }
 
   addOpp(){
@@ -34,6 +37,7 @@ export class OpportunitiesPage {
 
   ionViewDidEnter(){
     this.oppData.getOpportunityList().on('value', snapshot => {
+      this.showLoading()
       let rawList = [];
       snapshot.forEach( snap => {
         rawList.push({
@@ -46,7 +50,8 @@ export class OpportunitiesPage {
       console.log(rawList)
       return false
       });
-      this.opportunities = rawList;
+      this.opps = rawList;
+      this.loader.dismiss()
       });
     }
     addEvent(){
@@ -54,10 +59,32 @@ export class OpportunitiesPage {
       eventModal.present()
     }
 
-    goToEventDetail(oppId):void{
+    goToOppDetail(oppId):void{
       this.navCtrl.push(OppDetailPage, {
-        eventId:oppId
+        oppId:oppId
       })
     }
+
+    showLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loader.present();
+    }
+
+    showError(text) {
+      setTimeout(() => {
+        this.loader.dismiss();
+      });
+
+      let prompt = this.alertCtrl.create({
+        title: 'Fail',
+        subTitle: text,
+        buttons: ['OK']
+      });
+      prompt.present();
+
+  }
+
 
 }

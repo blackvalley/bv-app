@@ -9,28 +9,32 @@
 </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
-    <ion-label stacked>Opportunity Name</ion-label>
-    <ion-input [(ngModel)]="oppName" type="text" placeholder="Name of Opportunity?"></ion-input>
-  </ion-item>
+<ion-content id="content">
+  <ion-list>
+
+    <ion-item (click)="takePicture()">
+      <img id="opp-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
+    </ion-item>
 
   <ion-item>
-    <ion-label stacked>Deadline</ion-label>
-    <ion-input [(ngModel)]="oppDeadline" type="text" placeholder="When is the deadline for this?"></ion-input>
+    <ion-input [(ngModel)]="oppName" type="text" placeholder="Opportunity Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="oppLocation" type="text" placeholder="Location"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="oppDescription" type="text" placeholder="Opportunity Details"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Deadline</ion-label>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="oppDeadline"></ion-datetime>
   </ion-item>
 
-  <ion-item>
-    <ion-label stacked>Location</ion-label>
-    <ion-input [(ngModel)]="oppLocation" type="text" placeholder="Where is it located?"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label stacked>Description</ion-label>
-    <ion-input [(ngModel)]="oppDescription" type="text" placeholder="Describe the opporutnity?"></ion-input>
-  </ion-item>
+
+</ion-list>
 
 
   <button ion-button block (click)="createOpportunity(oppName, oppDeadline, oppLocation, oppDescription)">
-    Create Event
+    Create Opportunity
   </button>
 </ion-content>

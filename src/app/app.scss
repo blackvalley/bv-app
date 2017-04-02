@@ -14,3 +14,12 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+#connect-btn {
+  display: block;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 2px solid #C6E947;
+  color: #C6E947;
+  margin: 10px auto;
+}

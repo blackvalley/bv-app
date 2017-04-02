@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth.provider';
 import { TabsPage } from '../tabs/tabs'
+import { Signup2Page } from '../signup2/signup2'
 
 /*
   Generated class for the Signup page.
@@ -82,6 +83,9 @@ export class SignupPage {
        content: 'Please wait...'
      });
      this.loader.present();
+   }
+   moreInfo(){
+     this.nav.push(Signup2Page)
    }
 
 

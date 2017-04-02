@@ -1,27 +1,33 @@
 page-signup {
 
-  #signup-card{
+  #signup-logo {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  #content {
     background-color: #000000;
+  }
+
+  #signup-card{
+    background-color: transparent;
+  }
+
+  #signup-card ion-card-title {
+    color: #FFFFFF;
   }
 
   #signup-card ion-item{
     background-color: transparent;
-    color: #C6E947;
+    color: #FFFFFF;
   }
   #signup-form ion-input{
-    background-color: #000000;
+    border-bottom: 1px solid #C6E947;
   }
 
   #signup-card ion-datetime{
   }
 
-  #connect-btn {
-    display: block;
-    background-color: transparent;
-    border-radius: 15px;
-    border: 2px solid #000000;
-    color: #000000;
-    margin: 10px auto;
-  }
 
 }
