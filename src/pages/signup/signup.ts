@@ -30,6 +30,7 @@ export class SignupPage {
 
    this.signupForm = formBuilder.group({
      fname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+     lname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
      email: ['', Validators.compose([Validators.required, Validators.required])],
      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
    })
@@ -42,7 +43,7 @@ export class SignupPage {
   if (!this.signupForm.valid){
     console.log(this.signupForm.value);
   } else {
-    this.authProvider.signupUser(this.signupForm.value.fname,
+    this.authProvider.signupUser(this.signupForm.value.fname, this.signupForm.value.lname,
       this.signupForm.value.email, this.signupForm.value.password)
     .then(() => {
       this.loader.dismiss().then( () => {

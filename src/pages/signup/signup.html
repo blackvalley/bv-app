@@ -1,66 +1,74 @@
 <ion-header>
   <ion-navbar>
-    <img id="signup-logo" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bvlogo.PNG?alt=media&token=abb56fee-2602-4f66-9f1d-31d30f7227c0" width="120" height="65"/>
-
+    <img id="blackvalley-header-logo" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bvlogo.PNG?alt=media&token=abb56fee-2602-4f66-9f1d-31d30f7227c0"/>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content id="content">
   <ion-card id="signup-card">
-
-
-
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate id="signup-form">
 
-    <img src="http://placehold.it/300x100">
 
-    <ion-card-title icon-left>
+    <ion-list-header>
       <ion-icon name="person"></ion-icon>
       Basic Info
-    </ion-card-title>
+    </ion-list-header>
+    <ion-list>
+
+      <img src="http://placehold.it/300x100">
 
 
-    <ion-item>
-      <ion-label stacked>First Name</ion-label>
-      <ion-input #fname formControlName="fname" type="fname" placeholder="Your first name"
-        [class.invalid]="!signupForm.controls.fname.valid && signupForm.controls.fname.dirty">
-        </ion-input>
-    </ion-item>
-    <ion-item class="error-message"
-      *ngIf="!signupForm.controls.fname.valid  && signupForm.controls.fname.dirty">
-      <p>First name must be at least two characters.</p>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input #fname formControlName="fname" type="fname" placeholder="First name"
+          [class.invalid]="!signupForm.controls.fname.valid && signupForm.controls.fname.dirty">
+          </ion-input>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!signupForm.controls.fname.valid  && signupForm.controls.fname.dirty">
+        <p>First name must be at least two characters.</p>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" placeholder="Your email address"
-        [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty">
-        </ion-input>
-    </ion-item>
-    <ion-item class="error-message"
-      *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
-      <p>Please enter a valid email.</p>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input #fname formControlName="lname" type="lname" placeholder="Last name"
+          [class.invalid]="!signupForm.controls.lname.valid && signupForm.controls.lname.dirty">
+          </ion-input>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!signupForm.controls.lname.valid  && signupForm.controls.lname.dirty">
+        <p>Last name must be at least two characters.</p>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input #password formControlName="password" type="password" placeholder="Your password"
-        [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
-        </ion-input>
-    </ion-item>
-    <ion-item class="error-message"
-      *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
-      <p>Your password needs more than 6 characters.</p>
-    </ion-item>
-    <button ion-button icon-right type="submit" id="connect-btn" (click)="moreInfo()">
-        Next<ion-icon name="arrow-forward"></ion-icon>
-    </button>
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input #email formControlName="email" type="email" placeholder="Email address"
+          [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty">
+          </ion-input>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input #password formControlName="password" type="password" placeholder="Your password"
+          [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
+          </ion-input>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
+        <p>Your password needs more than 6 characters.</p>
+      </ion-item>
+      <button ion-button icon-right type="submit" id="connect-btn" (click)="moreInfo()">
+          Next<ion-icon name="arrow-forward"></ion-icon>
+      </button>
+
+  </ion-list>
   </form>
 
 </ion-card>
-
-
-
 
 </ion-content>

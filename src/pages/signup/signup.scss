@@ -1,14 +1,14 @@
 page-signup {
 
-  #signup-logo {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-  }
 
   #content {
     background-color: #000000;
   }
+
+  #content ion-list-header {
+    color: #FFFFFF;
+    font-size: 13px;
+    }
 
   #signup-card{
     background-color: transparent;

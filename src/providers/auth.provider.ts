@@ -20,10 +20,10 @@ export class AuthProvider {
     return this.fireAuth.currentUser.uid
   }
   //signs up user
-  signupUser(fname: string, email: string, password: string): firebase.Promise<any> {
+  signupUser(fname: string, lname: string, email: string, password: string): firebase.Promise<any> {
   return this.fireAuth.createUserWithEmailAndPassword(email, password)
     .then((newUser) => {
-      this.userdb.child(newUser.uid).set({email: email, fname:fname});
+      this.userdb.child(newUser.uid).set({email: email, fname:fname, lname:lname});
     });
   }
 

@@ -1,31 +1,49 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Reset your Password
+      <img id="blackvalley-header-logo" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bvlogo.PNG?alt=media&token=abb56fee-2602-4f66-9f1d-31d30f7227c0"/>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <img src="http://placehold.it/300x100">
+<ion-content padding id="content">
+
+  <ion-list-header>
+    <ion-icon name="repeat"></ion-icon>
+    Reset Your Password
+  </ion-list-header>
+  <ion-list>
+
+
+  <ion-card id="pwreset-card">
   <form [formGroup]="resetPasswordForm" (submit)="resetPassword()" novalidate>
 
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" placeholder="Your email address"
-        [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty">
-        </ion-input>
-    </ion-item>
-    <ion-item class="error-message"
-      *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">
-      <p>Please enter a valid email.</p>
-    </ion-item>
 
-    <button ion-button block type="submit">
-      Reset your Password
-    </button>
+
+
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input #email formControlName="email" type="email" placeholder="Your email address"
+          [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty">
+        </ion-input>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+
+      <button ion-button icon-right type="submit" id="connect-btn">
+          Reset
+      </button>
+
+
 
   </form>
+
+</ion-card>
+
+</ion-list>
+
 
 </ion-content>
