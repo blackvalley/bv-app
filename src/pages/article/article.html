@@ -7,38 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Article</ion-title>
+    <ion-title>
+    <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bv-logo.png?alt=media&token=edcd44fd-6479-4764-89ff-3df661724f92" width="80" height="40"/>
+  </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding id="article-page" >
+<ion-content id="article-page">
+  <ion-list>
+    <div id="article-img-container">
+      <img id="article-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
+    </div>
+      <ion-item id=article-title>
+        <h2> {{article?.title}} </h2>
+        <h4>By: {{article?.author}} </h4> <p>Posted: {{article?.dateposted}}</p>
+      </ion-item>
 
-  <h2 id=article-title> {{article?.title}} </h2>
-
-
-  <ion-item id="article-img">
-    <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
-  </ion-item>
-
-  <div id="article">
-
-
-    <h4>By: {{article?.author}} </h4>
-
-    <p>Posted: {{article?.dateposted}}</p>
-
-
-  <div id="article-content">{{article?.intro}}
-<div id="quote" style="float: left" >{{article?.quote}}
-<div id="quoter">{{article?.auth}}</div>
-</div>
-{{article?.parg1}}{{article?.parg2}}{{article?.parg3}}
-
-
-</div>
-
-</div>
-
+      <ion-list padding id="article">
+      {{article?.intro}}
+      <div id="quote" style="float: left" >{{article?.quote}}<br>
+        {{article?.auth}}
+      </div>
+      <p>
+      {{article?.parg1}}<br>
+      {{article?.parg2}}<br>
+      {{article?.parg3}}
+      </p>
+    </ion-list>
+  </ion-list>
 </ion-content>

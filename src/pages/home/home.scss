@@ -8,10 +8,16 @@ page-home {
   right: 0;
    }
 
+
 #card {
   box-shadow: 0 0 3px 2px #000;
   background-color: black;
 
+  }
+  #card h2 {
+    white-space: normal;
+    text-align: center;
+    font-weight: 500;
   }
 #card p {
   color: white;
@@ -38,6 +44,11 @@ page-home {
 
 #card ion-note {
   color: #000000;
+}
+
+#card ion-avatar{
+  border: 1px solid #FFFFFF;
+  border-radius: 100%;
 }
 
 

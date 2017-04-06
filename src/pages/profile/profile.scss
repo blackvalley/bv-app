@@ -29,14 +29,26 @@ page-profile {
 
 #profile-img {
   border: 3px solid #FFFFFF;
-  border-radius: 80px;
+  border-radius: 100%;
   margin-top: 15px;
-  max-width: 150px;
-  max-height: 150px;
-  height: 100%;
-  width: 100%;
+  width: 130px;
+  height: 130px;
   z-index: 1;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+
 }
+
+
+
+#user-img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height:auto;
+}
+
 #profile-bg-img {
   position: absolute;
   top: 0px;

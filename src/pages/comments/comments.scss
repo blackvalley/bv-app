@@ -1,3 +1,80 @@
 page-comments {
 
+  #content {
+    background: #000000;
+  }
+
+  #article-title{
+    background: linear-gradient(#515151, #666666, #515151);
+  }
+
+  #article-title h2{
+    white-space: normal;
+    padding: 5px;
+    color: #C6E947;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  #article-title h4 {
+    font-weight: 600;
+  }
+
+
+  #article-title p {
+    color: #FFFFFF;
+  }
+
+  #input-comments {
+    position: fixed;
+    bottom: 0px;
+    background: #000000;
+    color: #C6E947;
+    border-top: 1px solid #C6E947;
+  }
+
+  #posted-comment {
+    background: #000000;
+  }
+
+  #posted-comment h2 {
+    color: #FFFFFF;
+  }
+
+  #posted-comment h3 {
+    color: #515151;
+  }
+
+
+
+  #posted-comment p {
+    color: #C6E947;
+  }
+
+
+
+  #posted-comment ion-avatar{
+    border: 1px solid #FFFFFF;
+    border-radius: 100%;
+    height: auto;
+    weight: auto;
+  }
+
+  #posted-comment ion-item {
+    padding: 0px;
+    background: #000000;
+  }
+
+  #posted-comment p {
+    margin-left: 30px;
+  }
+
+
+
+
+
+
+
+
+
 }
