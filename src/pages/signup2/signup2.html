@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <img id="blackvalley-header-logo" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bvlogo.PNG?alt=media&token=abb56fee-2602-4f66-9f1d-31d30f7227c0"/>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding id="content">
+
+  <form>
+    <ion-list-header>
+      <ion-icon name='list'></ion-icon>
+      Classify
+    </ion-list-header>
+<ion-list>
+  <ion-item id="classify">
+    <ion-label>Classify</ion-label>
+    <ion-select multiple="true" cancelText="Cancel" okText="Confirm">
+      <ion-option>Student</ion-option>
+      <ion-option>Intern</ion-option>
+      <ion-option>Entrepreneur</ion-option>
+      <ion-option>Employee</ion-option>
+      <ion-option>Investor</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
+<ion-list-header>
+  <ion-icon name='pulse'></ion-icon>
+  Interest
+</ion-list-header>
+    <ion-list>
+      <ion-row center>
+        <ion-col><div>Augmented Reality</div></ion-col>
+        <ion-col><div> App Development</div></ion-col>
+        <ion-col><div> Web Development</div></ion-col>
+      </ion-row>
+    </ion-list>
+
+      <button ion-button icon-right type="submit" id="connect-btn">
+        Connect
+      </button>
+
+  </form>
+
+</ion-content>

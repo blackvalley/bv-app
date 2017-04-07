@@ -7,42 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Article</ion-title>
+    <ion-title>
+    <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bv-logo.png?alt=media&token=edcd44fd-6479-4764-89ff-3df661724f92" width="80" height="40"/>
+  </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding id="article-page" >
+<ion-content id="article-page">
+  <ion-list>
+    <div id="article-img-container">
+      <img id="article-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
+    </div>
+      <ion-item id=article-title>
+        <h2> {{article?.title}} </h2>
+        <h4>By: {{article?.author}} </h4> <p>Posted: {{article?.dateposted}}</p>
+      </ion-item>
 
-  <h2 id=article-title>The Impact Black Diversity
-    Recruiters Have on HBCU Students
-</h2>
-
-
-  <ion-item id="article-img">
-    <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
-  </ion-item>
-
-  <div id="article">
-
-
-    <h4>By: {{article?.author}}</h4>
-
-    <p>Posted: {{article?.dateposted}}</p>
-
-
-  <div id="article-content">{{article?.intro}}
-<div id="quote" style="float: left" >“We must recruit a new generation of science and technology leaders by investing in diversity.”
-<div id="quoter">-Barack Obama</div>
-</div>
-Keisha specifically focuses on recruitment at HBCU’s and has gone beyond campus visits and tech talks to make sure students have the support they need to tackle a field where they are largely under represented. Keisha has shown the upmost support and has given mentorship to several students throughout her career including Black Valley. She has helped several Black Valley members get interviews with Microsoft. She has even recently had the pleasure of extending a job offer to a Black Valley member, creating a pipeline that will continue to grow. Her passion to provide support didn't stop there, In fact the picture above with Paul Hammond and Dakari Franklin was taken the day she connected Black Valley and Microsoft by sponsoring three Black Valley members to attend the famous South by Southwest (SXSW) Conference ( Jordyn Smith,Whitney Griffith, and Sebrenia Coleman). When asked, what gets Keisha up everyday to work at Microsoft, she responded, “Helping people fulfill their educational and career goals”.
-
-
-    Being a black Diversity Recruiter significantly impacts HBCU students. At times, being underrepresented in a field can really discourage students from going after what they truly want in their careers. Engineering students of color, seeing another person of color in the same career field gives students the support system they need. Black Diversity Recruiters at HBCUs serve as leaders and mentors. They show and lead by example, and give students the confidence needed to bridge the gap between talent and recruitment within the tech industry.
-
-</div>
-
-</div>
-
+      <ion-list padding id="article">
+      {{article?.intro}}
+      <div id="quote" style="float: left" >{{article?.quote}}<br>
+        {{article?.auth}}
+      </div>
+      <p>
+      {{article?.parg1}}<br>
+      {{article?.parg2}}<br>
+      {{article?.parg3}}
+      </p>
+    </ion-list>
+  </ion-list>
 </ion-content>

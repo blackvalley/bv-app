@@ -1,27 +1,52 @@
 page-signup {
 
-  #signup-card{
+
+  #content {
     background-color: #000000;
+  }
+
+  #content ion-list-header {
+    color: #FFFFFF;
+    font-size: 13px;
+    }
+
+  #signup-card{
+    background-color: transparent;
+  }
+
+
+  #profile-img {
+    border: 3px solid #FFFFFF;
+    border-radius: 100%;
+    margin-top: 15px;
+    width: 150px;
+    height: 150px;
+    margin-left: 90px;
+    background: #515151;
+    }
+
+
+  #user-img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height:auto;
+  }
+
+  #signup-card ion-card-title {
+    color: #FFFFFF;
   }
 
   #signup-card ion-item{
     background-color: transparent;
-    color: #C6E947;
+    color: #FFFFFF;
   }
   #signup-form ion-input{
-    background-color: #000000;
+    border-bottom: 1px solid #C6E947;
   }
 
   #signup-card ion-datetime{
   }
 
-  #connect-btn {
-    display: block;
-    background-color: transparent;
-    border-radius: 15px;
-    border: 2px solid #000000;
-    color: #000000;
-    margin: 10px auto;
-  }
 
 }

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth.provider';
 import { TabsPage } from '../tabs/tabs'
+import { Signup2Page } from '../signup2/signup2'
 
 /*
   Generated class for the Signup page.
@@ -29,6 +30,7 @@ export class SignupPage {
 
    this.signupForm = formBuilder.group({
      fname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+     lname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
      email: ['', Validators.compose([Validators.required, Validators.required])],
      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
    })
@@ -41,7 +43,7 @@ export class SignupPage {
   if (!this.signupForm.valid){
     console.log(this.signupForm.value);
   } else {
-    this.authProvider.signupUser(this.signupForm.value.fname,
+    this.authProvider.signupUser(this.signupForm.value.fname, this.signupForm.value.lname,
       this.signupForm.value.email, this.signupForm.value.password)
     .then(() => {
       this.loader.dismiss().then( () => {
@@ -82,6 +84,9 @@ export class SignupPage {
        content: 'Please wait...'
      });
      this.loader.present();
+   }
+   moreInfo(){
+     this.nav.push(Signup2Page)
    }
 
 

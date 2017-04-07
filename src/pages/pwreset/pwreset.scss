@@ -1,3 +1,31 @@
 page-pwreset {
 
+  #content {
+    background-color: #000000;
+  }
+
+  #content ion-list-header {
+    color: #FFFFFF;
+    font-size: 13px;
+    }
+
+  #pwreset-card{
+    background-color: transparent;
+  }
+
+  #pwreset-card ion-card-title {
+    color: #FFFFFF;
+  }
+
+  #pwreset-card ion-item{
+    background-color: transparent;
+    color: #FFFFFF;
+  }
+  #pwreset-card ion-input{
+    border-bottom: 1px solid #C6E947;
+  }
+
+
+
+
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams} from 'ionic-angular';
 import { ArticlePage } from '../article/article';
+import { ArticleProvider } from '../../providers/article-provider'
+
 
 /*
   Generated class for the Comments page.
@@ -14,12 +16,18 @@ import { ArticlePage } from '../article/article';
 })
 export class CommentsPage {
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
+    private articledb: ArticleProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CommentsPage');
+    this.articledb.getArticleDetail(this.navParams.get('articleId'))
+    .on('value', snapshot => {
+    this.article = snapshot.val();
+    });
+    console.log('ionViewDidLoad CommentsPage')
   }
+
 
   closeComments(){
     this.viewCtrl.dismiss();
