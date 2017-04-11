@@ -1,5 +1,10 @@
 page-profile {
 
+  #content{
+    opacity: 0.3;
+
+  }
+
 
   #profile-header {
     position: fixed;
@@ -57,15 +62,32 @@ page-profile {
 }
 
 #profile-info {
-  margin-top: 200px;
+  margin-top: 210px;
   z-index: -1;
 }
 
 #profile-info ion-list-header{
   color: #FFFFFF;
   font-size: 15px;
-
 }
+
+#profile-info ion-item {
+  background-color: #000000;
+  color: #C6E947;
+}
+
+#profile-info ion-col div {
+  background-color: #000000;
+  padding: 5px;
+  padding-top: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: #C6E947;
+  width: 100px;
+  height: 80px;
+}
+
+
 
 
 
