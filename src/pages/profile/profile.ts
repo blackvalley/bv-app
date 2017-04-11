@@ -5,6 +5,7 @@ import { ProfileData } from '../../providers/profile.data'
 import { AuthProvider } from '../../providers/auth.provider'
 import { LoginPage } from '../login/login';
 import { EditProfilePage } from '../edit-profile/edit-profile'
+import { ConnectionsPage } from '../connections/connections'
 
 @Component({
   selector: 'page-profile',
@@ -35,6 +36,10 @@ export class ProfilePage {
       this.nav.setRoot(LoginPage);
           });
       }
+
+    openConnections() {
+      this.nav.push(ConnectionsPage);
+    }
 
 
 }

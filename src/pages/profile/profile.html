@@ -18,31 +18,55 @@
       </ion-item>
     <h2 id="profile-name" *ngIf="userProfile?.firstName || userProfile?.lastName">
       <b>{{userProfile?.firstName}} {{userProfile?.lastName}}</b></h2>
-      <p>{{userProfile?.college}} - {{userProfile?.location}}</p>
+      <p>{{userProfile?.college}} | {{userProfile?.location}}</p>
     </div>
       <ion-buttons id="settings"><button ion-button  clear icon-only color="secondary" (click)="editProfile()"><ion-icon name="settings" ></ion-icon></button>
       </ion-buttons>
   </ion-item>
 
 <div id="profile-info">
-  <ion-list>
     <ion-list-header>
-      <ion-icon name='person'></ion-icon>
-      Bio
+      <ion-icon name='briefcase'></ion-icon>
+      Employment
     </ion-list-header>
+    <ion-list>
+      <ion-card text-wrap>
+      <ion-item>
+        <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
+      </ion-item>
+      <ion-item>
+      <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
+      <p> www.blackvalley.com </p>
+    </ion-item>
+    </ion-card>
+      <ion-card>
+      <ion-item>
+        <h1 item-left>Apple Inc.</h1><h2 item-right>Summer 2016</h2>
+      </ion-item>
+      <ion-item>
+        <p item-left>Software Developer</p><p item-right> Intern</p>
+      </ion-item>
+    </ion-card>
   </ion-list>
-  <ion-list>
     <ion-list-header>
       <ion-icon name='pulse'></ion-icon>
       Interest
     </ion-list-header>
-  </ion-list>
+    <ion-list>
+      <ion-card>
+      <ion-row center>
+        <ion-col><div>Augmented Reality</div></ion-col>
+        <ion-col><div> App Development</div></ion-col>
+        <ion-col><div> Web Development</div></ion-col>
+      </ion-row>
+    </ion-card>
+    </ion-list>
   <ion-list-header>
     <ion-icon name='link'></ion-icon>
     Connections
   </ion-list-header>
   <ion-list>
-    <button ion-item>
+    <button ion-item (click)="openConnections()">
       Connections
     </button>
     <button ion-item>
