@@ -30,6 +30,14 @@ export class EditProfilePage {
       this.nav.setRoot(LoginPage);
           });
       }
+
+
+      updateProfile(college, location, employment, birthDate): void {
+        this.profileData.updateInfo(college, location, employment)
+        this.profileData.updateDOB(birthDate);
+      }
+
+
       //creates prompt to edit your name.
       updateName(): void {
           let alert = this.alertCtrl.create({

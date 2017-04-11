@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams} from 'ionic-angular';
 import { ArticlePage } from '../article/article';
 import { ArticleProvider } from '../../providers/article-provider'
+import { ProfileData } from '../../providers/profile.data'
+
 
 
 /*
@@ -15,6 +17,7 @@ import { ArticleProvider } from '../../providers/article-provider'
   templateUrl: 'comments.html'
 })
 export class CommentsPage {
+  private profileData
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
     private articledb: ArticleProvider) {
