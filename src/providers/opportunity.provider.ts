@@ -35,7 +35,6 @@ export class OpportunityData {
                     location: oppLocation,
                     deadline: oppDeadline,
                     description: oppDescription
-                  //  creator: this.currentUser.uid
                   })
           });
         }
