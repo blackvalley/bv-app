@@ -14,15 +14,18 @@ export class OpportunityData {
   private currentUser
   private myOpportunities : firebase.database.Reference
   private opportunityList : firebase.database.Reference
+  private jobPicRef
   constructor(public http: Http, private fire :FirebaseConfigService,
     private profile:ProfileData) {
       this.currentUser = this.profile.getUserProfile()
       this.myOpportunities = this.currentUser.child('/opportunityList')
       this.opportunityList = this.fire.getDatabase().ref('/opps')
+      this.jobPicRef = this.fire.getStorage().ref('/oppPics')
     }
 
        createOpportunity(oppName: string, oppDeadline: string,
-          oppLocation: string, oppDescription: string): firebase.Promise<any> {
+          oppLocation: string, oppDescription: string,
+        oppPic=null): firebase.Promise<any> {
           return this.myOpportunities.push({
             name: oppName,
             location: oppLocation,
@@ -35,8 +38,21 @@ export class OpportunityData {
                     location: oppLocation,
                     deadline: oppDeadline,
                     description: oppDescription
-                  //  creator: this.currentUser.uid
                   })
+                  if (oppPic != null) {
+                    console.log(oppPic)
+                    this.jobPicRef.child(newOpp.key).child('eventPicture.png')
+                    .putString(oppPic, 'base64', {contentType: 'image/png'})
+                    .then((savedPicture) => {
+                    this.opportunityList.child(newOpp.key)
+                    .child('eventPicture')
+                    .set(savedPicture.downloadURL);
+                    this.myOpportunities.child(newOpp.key)
+                    .child('eventPicture')
+                    .set(savedPicture.downloadURL)
+                    });
+
+                  }
           });
         }
         getAllEvents(){

@@ -2,15 +2,18 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController,
   AlertController, LoadingController } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
-import { Camera, CameraOptions} from '@ionic-native/camera';
+
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
+
 
 @Component({
   selector: 'page-create-event',
   templateUrl: 'create-event.html'
 })
 export class CreateEventPage {
-  private eventPicture = null
   private loader
+  private captureDataUrl
   constructor(public navCtrl: NavController, public navParams: NavParams, private eventData: EventData,
     private viewCtrl: ViewController, private camera:Camera,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController) {}
@@ -20,9 +23,9 @@ export class CreateEventPage {
   createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
     eventCost: number): void {
       this.eventData.createEvent(eventName, eventDate, eventLocation, eventPrice,
-        eventCost, this.eventPicture)
+        eventCost, this.captureDataUrl)
       .then( () => {
-          this.eventPicture = null
+          this.showSuccess()
           this.navCtrl.pop();
         }).catch((error)=>{
           this.showError(error)
@@ -51,7 +54,9 @@ export class CreateEventPage {
     saveToPhotoAlbum: true
   }
   this.camera.getPicture(options).then(imageData => {
-    this.eventPicture = imageData;
+
+    this.captureDataUrl = imageData;
+    console.log(this.captureDataUrl)
   }, error => {
     console.log("ERROR -> " + JSON.stringify(error));
   });
@@ -75,7 +80,18 @@ export class CreateEventPage {
         buttons: ['OK']
       });
       prompt.present();
+      }
+  showSuccess() {
+        setTimeout(() => {
+          this.loader.dismiss();
+        });
+        let prompt = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: "You have created an event",
+          buttons: ['OK']
+        });
+        prompt.present();
 
-  }
+    }
 
 }
