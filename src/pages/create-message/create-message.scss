@@ -1,11 +1,23 @@
 page-create-message {
   #input-comments {
-    position: fixed;
-    bottom: 5px;
     background: #000000;
     color: #C6E947;
     border-top: 2px solid #C6E947;
+    height: 150px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  #message-img {
+    background-color: lightgray;
+    height: 200px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
 
 
 }
