@@ -23,7 +23,7 @@ export class AuthProvider {
   signupUser(fname: string, lname: string, email: string, password: string): firebase.Promise<any> {
   return this.fireAuth.createUserWithEmailAndPassword(email, password)
     .then((newUser) => {
-      this.userdb.child(newUser.uid).set({email: email, fname:fname, lname:lname});
+      this.userdb.child(newUser.uid).set({email: email, firstName:fname, lastName:lname});
     });
   }
 

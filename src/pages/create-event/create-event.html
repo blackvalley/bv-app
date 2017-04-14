@@ -11,9 +11,8 @@
 
 <ion-content id="content">
   <ion-list>
-    <ion-item (click)="takePicture()">
-      <img id="event-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
-    </ion-item>
+    <button ion-button (click)="takePicture()">Lets take a picture!</button>
+    <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
     <ion-item>
       <ion-input placeholder="Title" [(ngModel)]="eventName" type="text" ></ion-input>
     </ion-item>
@@ -21,7 +20,7 @@
       <ion-input placeholder="Location" [(ngModel)]="eventLocation" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Details" [(ngModel)]="eventLocation" type="text"></ion-input>
+      <ion-input placeholder="Details" [(ngModel)]="eventDetails" type="text"></ion-input>
     </ion-item>
 
     <ion-item>

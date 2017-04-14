@@ -34,6 +34,9 @@ constructor(private fire: FirebaseConfigService) {
 getUserProfile(): firebase.database.Reference {
  return this.userProfile.child(this.currentUser.uid);
 }
+getCurrentUser(){
+  return this.currentUser;
+}
 
 /**
 * This one takes 2 string parameters, firstName & lastName, it just saves those 2 to the userProfile/uid node
