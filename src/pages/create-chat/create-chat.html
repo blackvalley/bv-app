@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>create-chat</ion-title>
+    <ion-title>Create Chatroom</ion-title>
     <ion-buttons>
       <button ion-button icon-only (click)="closeChat()">
         <ion-icon name="close"></ion-icon>
@@ -26,17 +26,19 @@
 <ion-content>
   <ion-searchbar placeholder="Search"> </ion-searchbar>
   <ion-list>
-    <ion-item>
+    <ion-item wrap>
       <div *ngFor="let member of members; let i = index" >
-      <button (click)="deleteMember(i)"><ion-icon name="close"></ion-icon> {{member.firstname}} </button>
+      <button (click)="deleteMember(i)"><ion-icon name="close"></ion-icon> {{member?.firstname}} {{member?.lastname}}  </button>
     </div>
     </ion-item>
-      <ion-item *ngFor="let user of users">
+      <ion-item *ngFor="let user of users" id="friend" (click)=addToChat(user) text-wrap>
         <ion-avatar item-left>
           <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7">
         </ion-avatar>
-        <ion-label>{{user?.firstname}}</ion-label>
-        <ion-checkbox item-right (click)=addToChat(user)></ion-checkbox>
+        <div>
+        <h1>{{user?.firstname}} {{user?.lastname}} </h1>
+        <h2> hello</h2>
+      </div>
       </ion-item>
   </ion-list>
 </ion-content>

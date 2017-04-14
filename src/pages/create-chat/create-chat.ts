@@ -36,7 +36,9 @@ export class CreateChatPage {
       rawList.push({
         id: snap.key,
         firstname: snap.val().fname,
-        lastname:snap.val().lname
+        lastname:snap.val().lname,
+        company: snap.val().company,
+        location: snap.val().location
         })
       return false
       });
