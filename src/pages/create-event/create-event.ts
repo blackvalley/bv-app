@@ -22,6 +22,7 @@ export class CreateEventPage {
       this.eventData.createEvent(eventName, eventDate, eventLocation, eventPrice,
         eventCost, this.captureDataUrl)
       .then( () => {
+          this.showSuccess()
           this.navCtrl.pop();
         }).catch((error)=>{
           this.showError(error)
@@ -75,7 +76,18 @@ export class CreateEventPage {
         buttons: ['OK']
       });
       prompt.present();
+      }
+  showSuccess() {
+        setTimeout(() => {
+          this.loader.dismiss();
+        });
+        let prompt = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: "You have created an event",
+          buttons: ['OK']
+        });
+        prompt.present();
 
-  }
+    }
 
 }

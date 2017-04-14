@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import { OpportunityData } from '../../providers/opportunity.provider';
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 @Component({
@@ -9,10 +9,10 @@ import { Camera } from '@ionic-native/camera';
   templateUrl: 'create-opp.html'
 })
 export class CreateOppPage {
-  // private eventPicture = null
+  private captureDataUrl = null
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
-      private oppData:OpportunityData, private viewCtrl: ViewController, private cameraPlugin:Camera,
+      private oppData:OpportunityData, private viewCtrl: ViewController, private camera:Camera,
       private loadingCtrl:LoadingController, private alertCtrl:AlertController) {}
 
 
@@ -20,8 +20,9 @@ export class CreateOppPage {
   createOpportunity(oppName: string, oppDeadline: string,
      oppLocation: string, oppDescription: string): void {
       this.oppData.createOpportunity(oppName, oppDeadline,
-        oppLocation, oppDescription)
+        oppLocation, oppDescription, this.captureDataUrl)
       .then( () => {
+          this.showSuccess()
           this.navCtrl.pop();
           }).catch((error)=>{
             this.showError(error)
@@ -33,23 +34,25 @@ export class CreateOppPage {
     this.viewCtrl.dismiss();
 
   }
+  takePicture(){
+  const options: CameraOptions = {
+    quality : 95,
+    destinationType : this.camera.DestinationType.DATA_URL,
+    sourceType : this.camera.PictureSourceType.CAMERA,
+    allowEdit : true,
+    encodingType: this.camera.EncodingType.PNG,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: true
+  }
+  this.camera.getPicture(options).then(imageData => {
+    this.captureDataUrl = imageData;
+    console.log(this.captureDataUrl)
+  }, error => {
+    console.log("ERROR -> " + JSON.stringify(error));
+  });
+}
 
-//   takePicture(){
-//   this.cameraPlugin.getPicture({
-//     quality : 95,
-//     destinationType : this.cameraPlugin.DestinationType.DATA_URL,
-//     sourceType : this.cameraPlugin.PictureSourceType.CAMERA,
-//     allowEdit : true,
-//     encodingType: this.cameraPlugin.EncodingType.PNG,
-//     targetWidth: 500,
-//     targetHeight: 500,
-//     saveToPhotoAlbum: true
-//   }).then(imageData => {
-//     this.eventPicture = imageData;
-//   }, error => {
-//     console.log("ERROR -> " + JSON.stringify(error));
-//   });
-// }
 
 showLoading() {
   this.loader = this.loadingCtrl.create({
@@ -72,6 +75,18 @@ showError(text) {
 
 }
 
+showSuccess() {
+      setTimeout(() => {
+        this.loader.dismiss();
+      });
+      let prompt = this.alertCtrl.create({
+        title: 'Success!',
+        subTitle: "You have created an opportunity",
+        buttons: ['OK']
+      });
+      prompt.present();
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateEventPage');

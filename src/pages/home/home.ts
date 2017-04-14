@@ -4,6 +4,7 @@ AlertController, LoadingController } from 'ionic-angular';
 import { ArticleProvider } from '../../providers/article-provider'
 import { ArticlePage } from '../article/article';
 import { CommentsPage } from '../comments/comments';
+import { ProfileData } from '../../providers/profile.data'
 //import { LoginPage } from '../login/login'
 @Component({
   selector: 'page-home',
@@ -12,11 +13,17 @@ import { CommentsPage } from '../comments/comments';
 export class HomePage {
   private articles:any[]
   private loader
+  private user: any;
   constructor(public actionSheetCtrl: ActionSheetController, public platform: Platform, public navCtrl: NavController, public modalCtrl: ModalController,
     private articledb: ArticleProvider,private loadingCtrl:LoadingController,
-    private alertCtrl:AlertController) {
+    private alertCtrl:AlertController, private profile: ProfileData) {
      this.articles = []
      this.getArticles()
+     this.profile;
+
+     this.profile.getUserProfile().on('value', (data) => {
+       this.user = data.val();
+           });
   }
 
   goToArticle(articleId):void{
