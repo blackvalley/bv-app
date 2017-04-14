@@ -55,7 +55,7 @@ export class SignupPage {
           message: error.message,
           buttons: [
             {
-              text: "Ok",
+              text: "Try Again",
               role: 'cancel'
             }
           ]

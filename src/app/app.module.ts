@@ -27,6 +27,7 @@ import { EventData } from '../providers/event.provider'
 import { EventDetailPage } from '../pages/event-detail/event-detail'
 import { ArticleProvider } from '../providers/article-provider'
 import { CreateChatPage } from '../pages/create-chat/create-chat'
+import { CreateMessagePage } from '../pages/create-message/create-message'
 import { OpportunityData } from '../providers/opportunity.provider'
 import { Camera } from '@ionic-native/camera';
 
@@ -51,6 +52,7 @@ import { Camera } from '@ionic-native/camera';
     CreateOppPage,
     OppDetailPage,
     CreateChatPage,
+    CreateMessagePage,
     EditProfilePage
   ],
   imports: [
@@ -77,6 +79,7 @@ import { Camera } from '@ionic-native/camera';
     CreateOppPage,
     OppDetailPage,
     CreateChatPage,
+    CreateMessagePage,
     EditProfilePage
 
   ],

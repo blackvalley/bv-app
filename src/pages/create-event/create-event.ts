@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController,
   AlertController, LoadingController } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
+
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
+
 
 @Component({
   selector: 'page-create-event',
@@ -51,6 +54,7 @@ export class CreateEventPage {
     saveToPhotoAlbum: true
   }
   this.camera.getPicture(options).then(imageData => {
+
     this.captureDataUrl = imageData;
     console.log(this.captureDataUrl)
   }, error => {

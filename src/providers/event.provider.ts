@@ -31,9 +31,11 @@ export class EventData {
         location: eventLocation,
         date: eventDate,
         price: eventPrice * 1,
+
         cost: eventCost * 1,
         creator:"Test"
       })
+
       .then((newEvent) => {
           this.eventList.child(newEvent.key).
               set({name: eventName,
@@ -41,6 +43,7 @@ export class EventData {
               location: eventLocation,
               price: eventPrice * 1,
               cost: eventCost * 1
+
             });
             if (eventPic != null) {
               console.log(eventPic)
@@ -54,6 +57,7 @@ export class EventData {
               .child('eventPicture')
               .set(savedPicture.downloadURL)
               });
+
 
             }
       });

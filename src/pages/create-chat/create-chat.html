@@ -11,7 +11,12 @@
     <ion-buttons>
       <button ion-button icon-only (click)="closeChat()">
         <ion-icon name="close"></ion-icon>
-        </button>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="createMessage(members)">
+        Next<ion-icon name="arrow-forward"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 
@@ -19,16 +24,19 @@
 
 
 <ion-content>
-  <ion-searchbar (ionInput)="searchFriends($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Search"> </ion-searchbar>
   <ion-list>
-    <ion-item-sliding>
-      <ion-item *ngFor="let user of users" (click)=addToChat(user.id)>
+    <ion-item>
+      <div *ngFor="let member of members; let i = index" >
+      <button (click)="deleteMember(i)"><ion-icon name="close"></ion-icon> {{member.firstname}} </button>
+    </div>
+    </ion-item>
+      <ion-item *ngFor="let user of users">
         <ion-avatar item-left>
-          <img src="img/slimer.png">
+          <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7">
         </ion-avatar>
         <ion-label>{{user?.firstname}}</ion-label>
-        <ion-checkbox color="dark" checked="false" item-right></ion-checkbox>
+        <ion-checkbox item-right (click)=addToChat(user)></ion-checkbox>
       </ion-item>
-    </ion-item-sliding>
   </ion-list>
 </ion-content>
