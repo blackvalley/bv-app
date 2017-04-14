@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController,
   AlertController, LoadingController } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions} from '@ionic-native/camera';
 
 @Component({
   selector: 'page-create-event',
@@ -12,7 +12,7 @@ export class CreateEventPage {
   private eventPicture = null
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams, private eventData: EventData,
-    private viewCtrl: ViewController, private cameraPlugin:Camera,
+    private viewCtrl: ViewController, private camera:Camera,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController) {}
 
 
@@ -40,16 +40,17 @@ export class CreateEventPage {
   }
 
   takePicture(){
-  this.cameraPlugin.getPicture({
+  const options: CameraOptions = {
     quality : 95,
-    destinationType : this.cameraPlugin.DestinationType.DATA_URL,
-    sourceType : this.cameraPlugin.PictureSourceType.CAMERA,
+    destinationType : this.camera.DestinationType.DATA_URL,
+    sourceType : this.camera.PictureSourceType.CAMERA,
     allowEdit : true,
-    encodingType: this.cameraPlugin.EncodingType.PNG,
+    encodingType: this.camera.EncodingType.PNG,
     targetWidth: 500,
     targetHeight: 500,
     saveToPhotoAlbum: true
-  }).then(imageData => {
+  }
+  this.camera.getPicture(options).then(imageData => {
     this.eventPicture = imageData;
   }, error => {
     console.log("ERROR -> " + JSON.stringify(error));

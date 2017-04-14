@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController,
     AlertController, LoadingController} from 'ionic-angular';
-import { UserProvider } from '../../providers/user.provider'
+import { UserProvider } from '../../providers/user.provider';
+import { CreateMessagePage } from '../create-message/create-message'
+
 /*
   Generated class for the CreateChat page.
 
@@ -14,12 +16,16 @@ import { UserProvider } from '../../providers/user.provider'
 })
 export class CreateChatPage {
   private users : any[]
+  private members :any[]
+  private id: string
+
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private userPro:UserProvider , private viewCtrl: ViewController,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController
   ) {
     this.users=[]
+    this.members=[];
   }
 
   ionViewDidEnter(){
@@ -30,24 +36,64 @@ export class CreateChatPage {
       rawList.push({
         id: snap.key,
         firstname: snap.val().fname,
+        lastname:snap.val().lname
         })
       return false
       });
       this.users = rawList;
       this.loader.dismiss()
     });
-
   }
 
+
+  // Loop check first see if in array if not add if it is no return
+
+
+addToChat(user:any){
+  this.members.push({
+    id: user.id,
+    firstname: user.firstname,
+    lastname:user.lastname
+    });
+      console.log(this.members.length)
+//   for( var x = 0; x < 2; x++){
+//   if(this.members[0] == this.members[x]){
+//     console.log(this.members);
+//     }
+//   else {
+//     this.members.push({
+//       id: user.id,
+//       firstname: user.firstname,
+//       lastname:user.lastname
+//       });
+//         console.log(this.members)
+//         }
+// }
+}
+
+
+
+    deleteMember(i){
+      this.members.splice(i, 1);
+      console.log(this.members)
+
+    }
     showLoading() {
       this.loader = this.loadingCtrl.create({
         content: 'You\'re Great!...'
       });
       this.loader.present();
     }
+
+    createMessage(){
+      this.navCtrl.push(CreateMessagePage,{
+        members:this.members
+      })
+    }
     closeChat(){
       this.viewCtrl.dismiss();
     }
+
 
 
 }

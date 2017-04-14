@@ -31,29 +31,28 @@ export class EventData {
         date: eventDate,
         price: eventPrice * 1,
         cost: eventCost * 1
-      })
+        })
       .then((newEvent) => {
           this.eventList.child(newEvent.key).
               set({name: eventName,
               date: eventDate,
               location: eventLocation,
               price: eventPrice * 1,
-              cost: eventCost * 1,
-              creator: this.currentUser.uid
+              cost: eventCost * 1
             })
-          // if (eventPic != null) {
-          //   this.eventPicRef.child(newEvent.key).child('eventPicture.png')
-          //   .putString(eventPic, 'base64', {contentType: 'image/png'})
-          //   .then((savedPicture) => {
-          //   this.eventList.child(newEvent.key)
-          //   .child('eventPicture')
-          //   .set(savedPicture.downloadURL);
-          //   this.myEvents.child(newEvent.key)
-          //   .child('eventPicture')
-          //   .set(savedPicture.downloadURL)
-          //   });
-          //
-          // }
+          if (eventPic != null) {
+            this.eventPicRef.child(newEvent.key).child('eventPicture.png')
+            .putString(eventPic, 'base64', {contentType: 'image/png'})
+            .then((savedPicture) => {
+            this.eventList.child(newEvent.key)
+            .child('eventPicture')
+            .set(savedPicture.downloadURL);
+            this.myEvents.child(newEvent.key)
+            .child('eventPicture')
+            .set(savedPicture.downloadURL)
+            });
+
+          }
 
       });
 
