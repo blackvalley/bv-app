@@ -17,7 +17,6 @@ import { CreateMessagePage } from '../create-message/create-message'
 export class CreateChatPage {
   private users : any[]
   private members :any[]
-  private id: string
 
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -57,20 +56,7 @@ addToChat(user:any){
     firstname: user.firstname,
     lastname: user.lastname,
     });
-      console.log(this.members.length)
-//   for( var x = 0; x < 2; x++){
-//   if(this.members[0] == this.members[x]){
-//     console.log(this.members);
-//     }
-//   else {
-//     this.members.push({
-//       id: user.id,
-//       firstname: user.firstname,
-//       lastname:user.lastname
-//       });
-//         console.log(this.members)
-//         }
-// }
+
 }
 
 
