@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams} from 'ionic-angular';
 import { ArticlePage } from '../article/article';
 import { ArticleProvider } from '../../providers/article-provider'
-import { ProfileData } from '../../providers/profile.data'
+//import { ProfileData } from '../../providers/profile.data'
 
 
 
