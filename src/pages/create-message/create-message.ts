@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { GroupchatPage } from '../groupchat/groupchat'
+
 
 
 /*
@@ -20,6 +22,10 @@ export class CreateMessagePage {
     this.members=this.navParams.get('members')
     console.log('ionViewDidLoad CreateMessagePage');
 
+  }
+
+  createGroupChat(){
+    this.navCtrl.push(GroupchatPage);
   }
 
 }

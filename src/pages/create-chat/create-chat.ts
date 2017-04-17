@@ -36,7 +36,9 @@ export class CreateChatPage {
       rawList.push({
         id: snap.key,
         firstname: snap.val().fname,
-        lastname:snap.val().lname
+        lastname:snap.val().lname,
+        college: snap.val().college,
+        employment: snap.val().employment
         })
       return false
       });
@@ -53,7 +55,7 @@ addToChat(user:any){
   this.members.push({
     id: user.id,
     firstname: user.firstname,
-    lastname:user.lastname
+    lastname: user.lastname,
     });
       console.log(this.members.length)
 //   for( var x = 0; x < 2; x++){

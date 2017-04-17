@@ -1,0 +1,51 @@
+page-groupchat {
+
+  #content {
+    background: #000000;
+  }
+
+  #input-comments {
+    position: fixed;
+    bottom: 5px;
+    background: #000000;
+    color: #C6E947;
+    border-top: 2px solid #C6E947;
+  }
+
+  #post {
+    background: #000000;
+  }
+
+  #post h2 {
+    color: #FFFFFF;
+  }
+
+  #post h3 {
+    color: #515151;
+  }
+
+
+
+  #post p {
+    color: #C6E947;
+  }
+
+
+  #poste ion-avatar{
+    border: 1px solid #FFFFFF;
+    border-radius: 100%;
+    height: auto;
+    weight: auto;
+  }
+
+  #post ion-item {
+    padding: 0px;
+    background: #000000;
+  }
+
+  #post p {
+    margin-left: 30px;
+  }
+
+
+}
