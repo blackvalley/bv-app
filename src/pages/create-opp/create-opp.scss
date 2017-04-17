@@ -1,8 +1,21 @@
 page-create-opp {
+  background: rgba(81, 81, 81, 1);
 
-  #content ion-item{
-      background-color: #000000;
-      color: #C6E947;
+
+  #content{
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+  }
+
+  #content ion-item {
+    background: transparent;
+    color: #FFFFFF;
+  }
+
+  #oppName {
+    color: #FFFFFF;
+    text-align: center;
+
   }
 
   #opp-img {
@@ -13,4 +26,16 @@ page-create-opp {
   }
 
 
-}
+
+  ion-row {
+    padding-top: -10px;
+    padding-bottom: -10px;
+    border-bottom: 2px solid #515151;
+  }
+
+  ion-col {
+    border-right: 2px solid #515151;
+  }
+
+
+  }

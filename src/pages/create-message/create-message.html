@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title >Group Name</ion-title>
+    <ion-title >{{groupTopic}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,11 +16,11 @@
 <ion-content>
 
   <ion-item no-lines>
-    <div item-left >
+    <div item-left>
     <img item left id="message-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
     <p>Set Group Photo</p>
   </div>
-    <ion-input item right placeholder="Group Topic" id="groupTopic">
+    <ion-input item right placeholder="Group Topic" id="groupTopic" [(ngModel)]="groupTopic">
     </ion-input>
   </ion-item>
 

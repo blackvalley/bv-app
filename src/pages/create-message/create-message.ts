@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GroupchatPage } from '../groupchat/groupchat'
 

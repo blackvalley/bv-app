@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { ProfileData } from '../../providers/profile.data'
-//import { ConnectionsPage } from '../connections/connections';
 import { AuthProvider } from '../../providers/auth.provider'
 import { LoginPage } from '../login/login';
+import { FormsModule }   from '@angular/forms';
 
 @Component({
   selector: 'page-edit-profile',
@@ -13,9 +13,11 @@ export class EditProfilePage {
     private profileData
     private userProfile: any;
     private birthDate: string;
+    private editProfile: string = "persInfo";
+
 
     constructor(public nav: NavController, private profile: ProfileData,
-      private authData: AuthProvider, private alertCtrl:AlertController) {
+      private authData: AuthProvider, private alertCtrl:AlertController, private forms: FormsModule) {
       this.nav = nav;
       this.profileData = profile;
 
