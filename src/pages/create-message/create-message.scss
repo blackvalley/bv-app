@@ -1,21 +1,30 @@
 page-create-message {
   #input-comments {
-    background: #000000;
+    background: rgba(0,0,0,0.4);
+    border-radius: 15px;
     color: #C6E947;
-    border-top: 2px solid #C6E947;
+    border: 2px solid #515151;
     height: 150px;
     width: 300px;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
   }
 
   #message-img {
     background-color: lightgray;
-    height: 200px;
-    width: 400px;
+    border-radius: 15px;
+    height: 80px;
+    width: 80px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 40px;
 
+  }
+
+  #groupTopic{
+    border-bottom: 1px solid #000000;
+    color: #C6E947;
   }
 
 

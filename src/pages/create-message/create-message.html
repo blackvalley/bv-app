@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title value="groupTopic"></ion-title>
+    <ion-title >Group Name</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,21 +15,21 @@
 
 <ion-content>
 
-  <ion-item>
-    <div><h2 *ngFor="let member of members"> {{member.firstname}} </h2></div>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Group Topic" name="groupTopic">
+  <ion-item no-lines>
+    <div item-left >
+    <img item left id="message-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
+    <p>Set Group Photo</p>
+  </div>
+    <ion-input item right placeholder="Group Topic" id="groupTopic">
     </ion-input>
-    <button end>
-      <ion-icon name="close"></ion-icon>
-    </button>
   </ion-item>
 
-  <ion-item >
-    <h1> Add Image</h1>
-    <img id="message-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
+
+  <ion-item no-lines>
+    <div> <h2 *ngFor="let member of members" style="white-space: nowrap"> {{member.firstname}} </h2></div>
   </ion-item>
+
+
 
 
 
@@ -37,7 +37,14 @@
    <ion-input type="text" placeholder="Enter your comment here..."></ion-input>
  </ion-item>
 
- <button item-right id="connect-btn"> Post</button>
+ <ion-item>
+    <ion-label>Interns Only</ion-label>
+    <ion-toggle></ion-toggle>
+  </ion-item>
+
+
+
+ <button ion-button full (click)="createGroupChat()"> Create</button>
 
 
 

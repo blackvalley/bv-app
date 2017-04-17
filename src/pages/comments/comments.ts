@@ -18,9 +18,17 @@ import { ProfileData } from '../../providers/profile.data'
 })
 export class CommentsPage {
   private profileData
+  private userProfile: any;
+
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
-    private articledb: ArticleProvider) {
+    private articledb: ArticleProvider, private profile: ProfileData) {
+      this.profileData = profile;
+
+      this.profileData.getUserProfile().on('value', (data) => {
+        this.userProfile = data.val();
+            });
+
   }
 
   ionViewDidLoad() {

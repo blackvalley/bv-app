@@ -3,6 +3,9 @@ import { NavController, ModalController, AlertController,
       LoadingController} from 'ionic-angular';
 import { ProfileData } from '../../providers/profile.data'
 import { CreateChatPage } from '../create-chat/create-chat';
+import { GroupchatPage } from '../groupchat/groupchat'
+
+
 @Component({
   selector: 'page-multichat',
   templateUrl: 'multichat.html'
@@ -26,6 +29,10 @@ export class MultiChatPage {
       let eventModal = this.modalCtrl.create(CreateChatPage)
       eventModal.present()
   }
+  openGroupChat(){
+    this.navCtrl.push(GroupchatPage);
+  }
+
   showChats(){
     this.showLoading()
     this.myChats.on('value',snapshot=>{
