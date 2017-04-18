@@ -17,7 +17,7 @@ export class OppDetailPage {
   private oppData:OpportunityData) {}
 
     ionViewDidLoad() {
-      this.oppData.getOppDetail(this.navParams.get('eventId'))
+      this.oppData.getOppDetail(this.navParams.get('oppId'))
       .on('value', snapshot => {
       this.opp = snapshot.val();
       });
