@@ -53,8 +53,8 @@ export class CreateChatPage {
 addToChat(user:any){
   this.members.push({
     id: user.id,
-    firstname: user.firstname,
-    lastname: user.lastname,
+    firstname: user.firstname
+    // lastname: user.lastname,
     });
 
 }
