@@ -7,9 +7,14 @@ import 'rxjs/add/operator/map';
 export class UserProvider{
 
     private userdb = this.fire.getDatabase().ref('/users')
-
-    constructor (private fire: FirebaseConfigService){}
+    private _currentUser
+    constructor (private fire: FirebaseConfigService){
+        this._currentUser = this.fire.getAuth().currentUser
+    }
     //create listener for users in the database
+    get currentUser(){
+      return this._currentUser
+    }
     getAddedUsers():Observable<any>{
       return Observable.create(obs=>{
         this.userdb.on('child_added', user =>{
