@@ -25,12 +25,13 @@ export class EventData {
 
    createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
       eventCost: number, eventPic=null): firebase.Promise<any> {
-
+      let date =  Date.now()
       return this.myEvents.push({
         name: eventName,
         location: eventLocation,
         date: eventDate,
         price: eventPrice * 1,
+        timestamp:date,
         cost: eventCost * 1,
         creator:"Test"
       })
@@ -41,8 +42,8 @@ export class EventData {
               date: eventDate,
               location: eventLocation,
               price: eventPrice * 1,
-              cost: eventCost * 1
-
+              cost: eventCost * 1,
+              timestamp:date
             });
             if (eventPic != null) {
               console.log(eventPic)

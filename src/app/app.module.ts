@@ -31,6 +31,7 @@ import { CreateMessagePage } from '../pages/create-message/create-message'
 import { GroupchatPage } from '../pages/groupchat/groupchat'
 import { OpportunityData } from '../providers/opportunity.provider'
 import { Camera } from '@ionic-native/camera';
+import { ChatProvider } from '../providers/chat.provider'
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { Camera } from '@ionic-native/camera';
       UserProvider, ProfileData,
       AuthProvider, EventData,
       DummyData, ArticleProvider,
-      OpportunityData, Camera]
+      OpportunityData, Camera,
+      ChatProvider]
 
 })
 export class AppModule {}

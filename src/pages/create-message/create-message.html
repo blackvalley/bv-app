@@ -20,7 +20,7 @@
     <img item left id="message-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
     <p>Set Group Photo</p>
   </div>
-  <ion-input item right placeholder="Group Topic" id="groupTopic">
+  <ion-input item right [(ngModel)]="topic" placeholder="Group Topic" id="groupTopic">
 
     </ion-input>
   </ion-item>
@@ -35,7 +35,7 @@
 
 
   <ion-item id="input-comments" no-lines>
-   <ion-input type="text" placeholder="Enter your comment here..."></ion-input>
+   <ion-input type="text" [(ngModel)]="message" placeholder="Enter your message here..."></ion-input>
  </ion-item>
 
  <ion-item>
@@ -45,7 +45,7 @@
 
 
 
- <button ion-button full (click)="createGroupChat()"> Create</button>
+ <button ion-button full (click)="createGroupChat(message,topic)"> Create</button>
 
 
 

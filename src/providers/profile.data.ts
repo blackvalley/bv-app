@@ -45,7 +45,7 @@ getCurrentUser(){
 updateName(firstName: string, lastName: string): firebase.Promise<any> {
  return this.userProfile.child(this.currentUser.uid).update({
    firstName: firstName,
-   lastName: lastName,
+   lastName: lastName
  });
 }
 
@@ -54,7 +54,7 @@ updateName(firstName: string, lastName: string): firebase.Promise<any> {
 */
 updateDOB(birthDate: string): firebase.Promise<any> {
  return this.userProfile.child(this.currentUser.uid).update({
-   birthDate: birthDate,
+   birthDate: birthDate
  });
 }
 
@@ -62,7 +62,7 @@ updateInfo(college: string, location: string, employment: string): firebase.Prom
  return this.userProfile.child(this.currentUser.uid).update({
    college: college,
    location: location,
-   employment: employment,
+   employment: employment
  });
 }
 
