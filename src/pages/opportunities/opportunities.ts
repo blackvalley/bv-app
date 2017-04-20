@@ -43,7 +43,7 @@ export class OpportunitiesPage {
         rawList.push({
         id: snap.key,
         name: snap.val().name,
-        price: snap.val().deadline,
+        deadline: snap.val().deadline,
         date: snap.val().cost,
         location: snap.val().location
       });

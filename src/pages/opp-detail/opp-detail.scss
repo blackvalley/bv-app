@@ -3,6 +3,9 @@ page-opp-detail {
 #content{
   background: rgba(0, 0, 0, 0.3);
   position: absolute;
+  color: #FFFFFF;
+
+
 }
 
 #content ion-item {
@@ -36,13 +39,20 @@ text-align: center;
   bottom: 0px;
   border-top: 2px solid #515151;
   background: rgba(0, 0, 0, 0.4);
+  height: 60px;
 
+}
+
+#icons div{
+  margin-top: -10px;
 }
 
 
 
 
 ion-row {
+  margin-top: 0px;
+  margin-bottom: 0px;
   padding-top: -10px;
   padding-bottom: -10px;
   border-bottom: 2px solid #515151;

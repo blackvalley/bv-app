@@ -8,7 +8,7 @@
 
 
 
-<ion-content>
+<ion-content id="content">
 
   <ion-fab top right edge >
     <button ion-fab mini><ion-icon name="arrow-dropdown"></ion-icon></button>
@@ -21,7 +21,33 @@
         <img src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png"/>
         <ion-card-content>
 
-        <ion-item id="card-header">
+          <ion-row>
+            <ion-col><div>
+              <h2 id="oppName">{{opp?.name}}</h2>
+            </div></ion-col>
+          </ion-row>
+          <ion-row center>
+            <ion-col><div>
+              <ion-item no-lines>
+              <ion-icon item-left color=primary name="calendar"></ion-icon>
+              <ion-label stacked>Deadline</ion-label>
+              <ion-label>{{opp?.deadline}}</ion-label>
+            </ion-item>
+            </div></ion-col>
+          </ion-row>
+          <ion-row >
+            <ion-col><div>
+              <ion-item no-lines>
+              <ion-icon name="pin" color=primary item-left></ion-icon>
+              <ion-label stacked>Location</ion-label>
+              <ion-label>
+                {{opp?.location}}
+              </ion-label>
+            </ion-item>
+            </div></ion-col>
+          </ion-row>
+
+        <!-- <ion-item id="card-header">
           <div id="event-date" item-left>
           <h3>Feb</h3>
           <h4>14</h4>
@@ -33,7 +59,7 @@
           <ion-card-title id="card-title">{{opp?.name}}</ion-card-title>
           <p id="opp-referral"><a href="">Keisha Ebbesen</a> Shared this opportunity with you</p>
         </ion-item>
-        </ion-item>
+        </ion-item> -->
         </ion-card-content>
 
         <ion-row no-padding>

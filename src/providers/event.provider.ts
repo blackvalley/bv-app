@@ -31,7 +31,6 @@ export class EventData {
         location: eventLocation,
         date: eventDate,
         price: eventPrice * 1,
-
         cost: eventCost * 1,
         creator:"Test"
       })
