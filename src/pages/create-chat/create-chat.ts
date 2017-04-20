@@ -3,7 +3,7 @@ import { NavController, NavParams, ViewController,
     AlertController, LoadingController} from 'ionic-angular';
 import { UserProvider } from '../../providers/user.provider';
 import { CreateMessagePage } from '../create-message/create-message'
-
+import { ProfileData } from '../../providers/profile.data';
 /*
   Generated class for the CreateChat page.
 
@@ -17,15 +17,18 @@ import { CreateMessagePage } from '../create-message/create-message'
 export class CreateChatPage {
   private users : any[]
   private members :any[]
-  private id: string
+  private me
 
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private userPro:UserProvider , private viewCtrl: ViewController,
-    private loadingCtrl:LoadingController, private alertCtrl:AlertController
-  ) {
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController,
+    private profile:ProfileData) {
     this.users=[]
     this.members=[];
+    this.profile.getUserProfile().on('value', (data) => {
+      this.me = data.val();
+          });
   }
 
   ionViewDidEnter(){
@@ -36,7 +39,9 @@ export class CreateChatPage {
       rawList.push({
         id: snap.key,
         firstname: snap.val().fname,
-        lastname:snap.val().lname
+        lastname:snap.val().lname,
+        college: snap.val().college,
+        employment: snap.val().employment
         })
       return false
       });
@@ -52,26 +57,11 @@ export class CreateChatPage {
 addToChat(user:any){
   this.members.push({
     id: user.id,
-    firstname: user.firstname,
-    lastname:user.lastname
+    firstname: user.firstname
+    // lastname: user.lastname,
     });
-      console.log(this.members.length)
-//   for( var x = 0; x < 2; x++){
-//   if(this.members[0] == this.members[x]){
-//     console.log(this.members);
-//     }
-//   else {
-//     this.members.push({
-//       id: user.id,
-//       firstname: user.firstname,
-//       lastname:user.lastname
-//       });
-//         console.log(this.members)
-//         }
-// }
+
 }
-
-
 
     deleteMember(i){
       this.members.splice(i, 1);
@@ -86,8 +76,15 @@ addToChat(user:any){
     }
 
     createMessage(){
-      this.navCtrl.push(CreateMessagePage,{
-        members:this.members
+      this.members.push({
+        id:this.userPro.currentUser.uid,
+        firstname:this.me.firstName
+      })
+      this.navCtrl.pop()
+      .then(()=>{
+        this.navCtrl.push(CreateMessagePage,{
+          members:this.members
+        })
       })
     }
     closeChat(){

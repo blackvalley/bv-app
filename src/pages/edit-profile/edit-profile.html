@@ -7,146 +7,169 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>edit-profile</ion-title>
+    <ion-title>Edit Profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding id="content">
-  <div id="edits">
-      <ion-list-header>
-        Personal Information
-      </ion-list-header>
 
-      <ion-item id=profile-img>
-        <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7" alt="avatar">
-      </ion-item>
+
+  <!-- Edit Page Nav. -->
+
+        <ion-segment [(ngModel)]="editProfile">
+          <ion-segment-button value="persInfo">
+            Personal Info
+          </ion-segment-button>
+          <ion-segment-button value="busInfo">
+            Business Info
+          </ion-segment-button>
+          <ion-segment-button value="Other">
+            Other
+          </ion-segment-button>
+        </ion-segment>
 
 
       <ion-list>
 
-      <ion-item (click)="updateName()">
-        <ion-grid>
-          <ion-row>
-            <ion-col width-50>
-              Name
-            </ion-col>
-            <ion-col *ngIf="userProfile?.firstName || userProfile?.lastName">
-              {{userProfile?.firstName}} {{userProfile?.lastName}}
-            </ion-col>
-            <ion-col class="placeholder-profile" *ngIf="!userProfile?.firstName">
-              <span>
-                Tap here to edit.
-              </span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+      <div [ngSwitch]="editProfile">
 
-      <ion-item>
-        <ion-label class="dob-label">Date of Birth</ion-label>
-        <ion-datetime displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY"
-          [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)"></ion-datetime>
-      </ion-item>
+        <!--Personal Edit Page  -->
+        <ion-list *ngSwitchCase="'persInfo'">
+            <ion-item id=profile-img>
+              <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7" alt="avatar">
+            </ion-item>
 
+            <ion-item (click)="updateName()">
+              <ion-grid>
+                <ion-row>
+                  <ion-col width-50>
+                    Name
+                  </ion-col>
+                  <ion-col *ngIf="userProfile?.firstName || userProfile?.lastName">
+                    {{userProfile?.firstName}} {{userProfile?.lastName}}
+                  </ion-col>
+                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.firstName">
+                    <span>
+                      Tap here to edit.
+                    </span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
 
-
-      <ion-item (click)="updateEmail()">
-        <ion-grid>
-          <ion-row>
-            <ion-col width-50>
-              Email
-            </ion-col>
-            <ion-col width-50 *ngIf="userProfile?.email">
-              {{userProfile?.email}}
-            </ion-col>
-            <ion-col class="placeholder-profile" *ngIf="!userProfile?.email">
-              <span>
-                Tap here to edit.
-              </span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-      <ion-item (click)="updateInfo()">
-        <ion-grid>
-          <ion-row>
-            <ion-col width-50>
-              College
-            </ion-col>
-            <ion-col *ngIf="userProfile?.college || userProfile?.location || userProfile?.employment">
-              {{userProfile?.college}}
-            </ion-col>
-            <ion-col class="placeholder-profile" *ngIf="!userProfile?.college">
-
-              <span>
-                Tap here to edit.
-              </span>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col width-50>
-              Location
-            </ion-col>
-            <ion-col *ngIf="userProfile?.location || userProfile?.employment">
-              {{userProfile?.location}} {{userProfile?.employment}}
-            </ion-col>
-            <ion-col class="placeholder-profile" *ngIf="!userProfile?.location || !userProfile?.employment">
-
-            <span>
-              Tap here to edit.
-            </span>
-          </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-      <ion-item (click)="updatePassword()">
-        <ion-grid>
-          <ion-row>
-            <ion-col width-50>
-              Password
-            </ion-col>
-            <ion-col class="placeholder-profile">
-              <span>
-                Tap here to edit.
-              </span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-  </ion-list>
-
-  <ion-list>
-    <ion-item>
-      <ion-input [(ngModel)]="college" placeholder="{{userProfile?.college}}">
-
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="location" placeholder="{{userProfile?.location}}">
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="employment" placeholder="{{userProfile?.employment}}">
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="birthDate">
-      </ion-input>
-    </ion-item>
+            <ion-item>
+              <ion-label class="dob-label">Date of Birth</ion-label>
+              <ion-datetime displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY"
+                [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)"></ion-datetime>
+            </ion-item>
 
 
-  </ion-list>
 
-</div>
+            <ion-item (click)="updateEmail()">
+              <ion-grid>
+                <ion-row>
+                  <ion-col width-50>
+                    Email
+                  </ion-col>
+                  <ion-col width-50 *ngIf="userProfile?.email">
+                    {{userProfile?.email}}
+                  </ion-col>
+                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.email">
+                    <span>
+                      Tap here to edit.
+                    </span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
 
-<button (click)="updateProfile(college, location, employment, birthDate)">
-  Update page
-</button>
+            <ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col width-50>
+                    College
+                  </ion-col>
+                  <ion-col *ngIf="userProfile?.college || userProfile?.location || userProfile?.employment">
+                    {{userProfile?.college}}
+                  </ion-col>
+                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.college">
+
+                    <span>
+                      Tap here to edit.
+                    </span>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col width-50>
+                    Location
+                  </ion-col>
+
+                  <ion-col *ngIf="userProfile?.location || userProfile?.employment">
+                    {{userProfile?.location}} {{userProfile?.employment}}
+                  </ion-col>
+                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.location || !userProfile?.employment">
+
+                  <span>
+                    Tap here to edit.
+                  </span>
+                </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <ion-item (click)="updatePassword()">
+              <ion-grid>
+                <ion-row>
+                  <ion-col width-50>
+                    Password
+                  </ion-col>
+                  <ion-col class="placeholder-profile">
+                    <span>
+                      Tap here to edit.
+                    </span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
 
 
+                      <ion-item>
+                        <ion-input [(ngModel)]="college" type="text" name="college" >
+                        </ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input type="text" [(ngModel)]="location" placeholder="{{userProfile?.location}}">
+                        </ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input [(ngModel)]="employment" placeholder="{{userProfile?.employment}}">
+                        </ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input [(ngModel)]="birthDate">
+                        </ion-input>
+                      </ion-item>
+
+
+                    <button ion-button full (click)="updateProfile(college, location, employment, birthDate)">
+                      Update page
+                    </button>
+
+
+        </ion-list>
+
+        <!--Business Edit Page  -->
+        <ion-list *ngSwitchCase="'busInfo'">
+        </ion-list>
+
+        <!--Other Edit Page  -->
+          <ion-list *ngSwitchCase="'Other'">
+          </ion-list>
+
+
+
+        </div>
+    </ion-list>
 </ion-content>

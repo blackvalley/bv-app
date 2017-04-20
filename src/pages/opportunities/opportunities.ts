@@ -47,9 +47,9 @@ export class OpportunitiesPage {
         date: snap.val().cost,
         location: snap.val().location
       });
-      console.log(rawList)
       return false
       });
+      console.log(rawList)
       this.opps = rawList;
       this.loader.dismiss()
       });

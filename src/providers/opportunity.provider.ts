@@ -26,18 +26,21 @@ export class OpportunityData {
        createOpportunity(oppName: string, oppDeadline: string,
           oppLocation: string, oppDescription: string,
         oppPic=null): firebase.Promise<any> {
+          let date =  Date.now()
           return this.myOpportunities.push({
             name: oppName,
             location: oppLocation,
             deadline: oppDeadline,
-            description: oppDescription
+            description: oppDescription,
+            timestamp:date
           })
           .then((newOpp) => {
               this.opportunityList.child(newOpp.key).
               set({ name: oppName,
                     location: oppLocation,
                     deadline: oppDeadline,
-                    description: oppDescription
+                    description: oppDescription,
+                    timestamp:date
                   })
                   if (oppPic != null) {
                     console.log(oppPic)

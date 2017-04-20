@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { FirebaseConfigService } from '../core/service/service'
-import { Observable } from 'rxjs/Observable'
+//import { Observable } from 'rxjs/Observable'
 /*
   Generated class for the ArticleProvider provider.
 

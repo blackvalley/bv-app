@@ -7,45 +7,84 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Opp Detail</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+  <ion-list id="content">
+
   <div class="event-header">
-    <img src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png" alt="ionic logo">
+    <img id="opp-img" src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png" alt="ionic logo">
   </div>
-  <div padding class="event-info">
-    <h2>{{opp?.name}}</h2>
-    <ion-list no-lines>
-      <ion-item>
-        <ion-icon name="calendar" item-left></ion-icon>
-        <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="conferenceDate"></ion-datetime>
-      </ion-item>
 
-      <ion-item>
-        <ion-icon name="pin" item-left></ion-icon>
-        <ion-label>Location</ion-label>
-        <ion-select>
-          <ion-option value="madison" selected>Madison, WI</ion-option>
-          <ion-option value="austin">Austin, TX</ion-option>
-          <ion-option value="chicago">Chicago, IL</ion-option>
-          <ion-option value="seattle">Seattle, WA</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
 
-    <p>
-      The Ionic Conference is a one-day conference featuring talks from the
-      Ionic team. It is focused on Ionic applications being built with
-      Ionic 2. This includes migrating apps from Ionic 1 to Ionic 2,
-      Angular concepts, Webpack, Sass, and many other technologies used
-      in Ionic 2. Tickets are completely sold out, and we’re expecting
-      more than 1000 developers – making this the largest Ionic
-      conference ever!
-    </p>
-  </div>
+  <ion-row>
+    <ion-col><div>
+      <h2 id="oppName">{{opp?.name}}</h2>
+    </div></ion-col>
+  </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon item-left color=primary name="calendar"></ion-icon>
+      <ion-label stacked>Deadline</ion-label>
+      <ion-label>{{opp?.deadline}}</ion-label>
+    </ion-item>
+    </div></ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon name="pin" color=primary item-left></ion-icon>
+      <ion-label stacked>Location</ion-label>
+      <ion-label>
+        {{opp?.location}}
+      </ion-label>
+    </ion-item>
+    </div></ion-col>
+  </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>Overview:</ion-title>
+      <p>
+        {{opp?.description}}
+      </p>
+
+      <h6>Restrictions:</h6>
+      <p>
+        {{opp?.description}}
+      </p>
+    </div></ion-col>
+  </ion-row>
+  <ion-row center>
+    <ion-col><div>
+
+    </div></ion-col>
+  </ion-row>
+
+  <ion-row id="icons" no-padding>
+    <ion-col ><div>
+        <button ion-button clear large icon-left>
+          <ion-icon name="clipboard"></ion-icon>
+          Apply
+        </button>
+      </div></ion-col>
+        <ion-col ><div>
+      <button ion-button clear large icon-left>
+        <ion-icon name="bookmark"></ion-icon>
+        Bookmark
+      </button>
+    </div></ion-col>
+      <ion-col ><div>
+      <button ion-button clear large icon-left>
+        <ion-icon name="share-alt"></ion-icon>
+        Share
+      </button>
+
+    </div></ion-col>
+  </ion-row>
+</ion-list>
+
 </ion-content>
