@@ -1,9 +1,25 @@
-page-community {
+page-multichat {
 
   #chatroom ion-note{
     font-size: 12px;
     align-self: flex-start;
     margin-top: 14px;
   }
+
+  #chatroom {
+    background: #000000;
+    border-top: 1px solid #FFFFFF;
+  }
+
+  #chatroom h2{
+    color: #C6E947;
+
+  }
+
+  #chatroom p {
+    color: #FFFFFF;
+
+  }
+
 
 }
