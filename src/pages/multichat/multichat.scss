@@ -1,5 +1,10 @@
 page-multichat {
 
+  #navbar {
+    box-shadow: 0px 0px 10px 1px #515151;
+
+  }
+
   #chatroom ion-note{
     font-size: 12px;
     align-self: flex-start;
@@ -8,7 +13,7 @@ page-multichat {
 
   #chatroom {
     background: #000000;
-    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #515151;
   }
 
   #chatroom h2{
@@ -18,8 +23,18 @@ page-multichat {
 
   #chatroom p {
     color: #FFFFFF;
+  }
+
+  #message-img {
+    background-color: lightgray;
+    border-radius: 15px;
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
 
   }
+
 
 
 }

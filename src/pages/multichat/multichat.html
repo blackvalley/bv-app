@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar id="navbar">
     <ion-title>Chat Rooms</ion-title>
     <ion-buttons end id="create-chat">
       <button ion-button icon-only clear (click)="createChat()">
@@ -12,12 +12,15 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let chat of chats"(click)="openGroupChat()" id="chatroom" no-lines>
+
       <ion-avatar item-left>
-        <img src="img/avatar-finn.png">
+        <img item left id="message-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
       </ion-avatar>
       <h2>{{chat?.topic}}</h2>
       <p>{{chat?.messages.message}}</p>
-      <ion-note item-right>{{chat?.timestamp|date}}</ion-note>
+      <span item-right text-wrap>
+      <ion-note>{{chat?.timestamp|date : 'MMM/dd'}} <br>{{chat?.timestamp|date : 'h:mma'}}</ion-note>
+    </span>
     </ion-item>
   </ion-list>
 </ion-content>
