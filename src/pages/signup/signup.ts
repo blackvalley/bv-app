@@ -31,8 +31,9 @@ export class SignupPage {
    this.signupForm = formBuilder.group({
      fname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
      lname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
-     email: ['', Validators.compose([Validators.required, Validators.required])],
-     password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+     field: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+     email: ['', Validators.compose([Validators.minLength(6),Validators.required])],
+     password: ['', Validators.compose([Validators.minLength(6),Validators.required])]
    })
  }
   ionViewDidLoad() {
@@ -44,10 +45,10 @@ export class SignupPage {
     console.log(this.signupForm.value);
   } else {
     this.authProvider.signupUser(this.signupForm.value.fname, this.signupForm.value.lname,
-      this.signupForm.value.email, this.signupForm.value.password)
+       this.signupForm.value.email, this.signupForm.value.field, this.signupForm.value.password)
     .then(() => {
       this.loader.dismiss().then( () => {
-        this.nav.setRoot(TabsPage);
+        this.nav.push(Signup2Page)
       });
     }, (error) => {
       this.loader.dismiss().then( () => {

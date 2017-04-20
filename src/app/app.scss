@@ -16,12 +16,11 @@
 // automatically applied to the <body> element in the app.
 
 #connect-btn {
+  background: rgba(81, 81, 81, 0.6);
   display: block;
-  background-color: transparent;
-  border-radius: 15px;
-  border: 2px solid #C6E947;
+  margin: 20px auto;
+  width: 200px;
   color: #C6E947;
-  margin: 10px auto;
 }
 
 #blackvalley-header-logo{
