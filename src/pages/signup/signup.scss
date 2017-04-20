@@ -42,7 +42,9 @@ page-signup {
     color: #FFFFFF;
   }
   #signup-form ion-input{
-    border-bottom: 1px solid #C6E947;
+    border: 1px solid #C6E947;
+    padding-left: 5px;
+
   }
 
   #signup-card ion-datetime{
