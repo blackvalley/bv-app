@@ -6,8 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar id="navbar">
     <ion-title >Group Name</ion-title>
+    <ion-buttons>
+      <button ion-button icon-only (click)="cancelMessage()">
+        <ion-icon name="back">Back</ion-icon>
+        </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -29,9 +35,6 @@
   <ion-item no-lines>
     <div> <h2 *ngFor="let member of members" style="white-space: nowrap"> {{member.firstname}} </h2></div>
   </ion-item>
-
-
-
 
 
   <ion-item id="input-comments" no-lines>

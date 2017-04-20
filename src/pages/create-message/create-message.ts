@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ViewController } from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat.provider'
 import { Camera, CameraOptions } from '@ionic-native/camera'
 
@@ -17,7 +17,7 @@ export class CreateMessagePage {
   private members:any[]
   private loader
   private captureDataUrl
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController,
                 private loadingCtrl:LoadingController, private alertCtrl:AlertController,
                 private chatData:ChatProvider, private camera:Camera) {}
 
@@ -87,5 +87,11 @@ export class CreateMessagePage {
           prompt.present();
 
       }
+
+    cancelMessage() {
+        this.viewCtrl.dismiss();
+      }
+
+  
 
 }
