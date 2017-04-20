@@ -1,5 +1,11 @@
 page-opportunities {
 
+  #content ion-item {
+    background: transparent;
+    color: #FFFFFF;
+  }
+
+
 
   #opp-card{
     box-shadow: 0 0 3px 2px #000;
@@ -38,6 +44,13 @@ page-opportunities {
   #opp-referral {
     margin: -5px 10px 0px 10px;
   }
+
+  ion-row {
+    padding-top: -10px;
+    padding-bottom: -10px;
+    height: 50px;
+  }
+
 
 
 

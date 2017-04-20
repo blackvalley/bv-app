@@ -10,8 +10,8 @@
 
     <ion-card id="login-form">
     <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" placeholder="Your email address"
+      <ion-icon item-left name="mail"></ion-icon>
+      <ion-input #email icon-left formControlName="email" type="email" placeholder="Email"
         [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message"
@@ -20,8 +20,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input #password formControlName="password" type="password" placeholder="Your password"
+      <ion-icon item-left name="lock"></ion-icon>
+      <ion-input #password formControlName="password" type="password" placeholder="Password"
         [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message"
@@ -31,13 +31,13 @@
   </ion-card>
 
     <button ion-button icon-right type="submit" id="connect-btn">
-      Connect
+      Log in
     </button>
   </form>
 
 
 
-<ion-item>
+<ion-item no-lines>
   <button item-left ion-button clear (click)="goToSignup()" id="buttons">
     Join the Network
   </button>

@@ -20,7 +20,7 @@ export class AuthProvider {
     return this.fireAuth.currentUser.uid
   }
   //signs up user
-  signupUser(fname: string, lname: string, email: string, password: string): firebase.Promise<any> {
+  signupUser(fname: string, lname: string, email: string, field: string, password: string): firebase.Promise<any> {
   return this.fireAuth.createUserWithEmailAndPassword(email, password)
     .then((newUser) => {
       let date =  Date.now()
@@ -28,10 +28,20 @@ export class AuthProvider {
         .set({  email: email,
                 firstName:fname,
                 lastName:lname,
+                field:field,
                 timestamp:date
               });
+
     });
   }
+
+  //sign up page 2 for user
+  signup2User(profileType: string, gender: string, city: string, state: string): firebase.Promise<any> {
+      return this.userdb.child(this.getCurrentUser()).set({profileType:profileType, gender:gender,
+        city:city, state:state});
+
+  }
+
 
   //reset password
   resetPassword(email: string): firebase.Promise<any> {
