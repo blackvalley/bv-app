@@ -28,15 +28,10 @@ export class AuthProvider {
         .set({  email: email,
                 firstName:fname,
                 lastName:lname,
-<<<<<<< HEAD
-                timestamp:date
-              });
-=======
                 field:field,
                 timestamp:date
               });
 
->>>>>>> 15a7582d078460387d829511c9c4379a7b9f0797
     });
   }
 
