@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { FirebaseConfigService } from '../core/service/service'
+import { Observable } from 'rxjs/Observable'
 /*
   Generated class for the ChatProvider provider.
 
@@ -12,28 +13,43 @@ import { FirebaseConfigService } from '../core/service/service'
 export class ChatProvider {
 
   private chatdb : firebase.database.Reference
-  private currentUser
+  private _currentUser
   constructor(public http: Http, private fire:FirebaseConfigService) {
     console.log('Hello ChatProvider Provider');
     this.chatdb = this.fire.getDatabase().ref('/chats')
-    this.currentUser = this.fire.getAuth().currentUser
+    this._currentUser = this.fire.getAuth().currentUser
   }
   public get chats(){
     return this.chatdb
+  }
+  getAddedChats():Observable<any>{
+    return Observable.create(obs=>{
+      this.chatdb.on('child_added', chat =>{
+        obs.next(chat.val())//gets data from user and converts to json
+      },
+      err =>{
+
+      })
+    })
+  }
+  public get currentUser(){
+    return this._currentUser
   }
   createChat(members:any[],message:string,topic?:string):firebase.Promise<any>{
     let timestamp = Date.now()
     return this.chatdb.push({
         timestamp:timestamp,
-        topic:topic
-    }).then((newChat)=>{
-      this.chatdb.child(newChat.key).child('/messages').push({
+        topic:topic,
+        members:members,
+        messages:{
           message:message,
           timestamp:timestamp,
           sender:this.currentUser.uid
-        })
-      this.chatdb.child(newChat.key).child('/members').set(members)
+        }
     })
+  }
+  addMessage(){
+
   }
 
 }

@@ -3,7 +3,7 @@ import { NavController, NavParams, ViewController,
     AlertController, LoadingController} from 'ionic-angular';
 import { UserProvider } from '../../providers/user.provider';
 import { CreateMessagePage } from '../create-message/create-message'
-
+import { ProfileData } from '../../providers/profile.data';
 /*
   Generated class for the CreateChat page.
 
@@ -17,14 +17,18 @@ import { CreateMessagePage } from '../create-message/create-message'
 export class CreateChatPage {
   private users : any[]
   private members :any[]
+  private me
 
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private userPro:UserProvider , private viewCtrl: ViewController,
-    private loadingCtrl:LoadingController, private alertCtrl:AlertController
-  ) {
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController,
+    private profile:ProfileData) {
     this.users=[]
     this.members=[];
+    this.profile.getUserProfile().on('value', (data) => {
+      this.me = data.val();
+          });
   }
 
   ionViewDidEnter(){
@@ -59,8 +63,6 @@ addToChat(user:any){
 
 }
 
-
-
     deleteMember(i){
       this.members.splice(i, 1);
       console.log(this.members)
@@ -74,8 +76,15 @@ addToChat(user:any){
     }
 
     createMessage(){
-      this.navCtrl.push(CreateMessagePage,{
-        members:this.members
+      this.members.push({
+        id:this.userPro.currentUser.uid,
+        firstname:this.me.firstName
+      })
+      this.navCtrl.pop()
+      .then(()=>{
+        this.navCtrl.push(CreateMessagePage,{
+          members:this.members
+        })
       })
     }
     closeChat(){

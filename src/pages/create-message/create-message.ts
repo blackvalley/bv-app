@@ -33,7 +33,10 @@ export class CreateMessagePage {
       .then( () => {
         this.showSuccess()
         this.navCtrl.pop();
-      })
+      }).catch((error)=>{
+        this.showError(error)
+        this.loader.dismiss()
+      });
   }
 
   takePicture(){

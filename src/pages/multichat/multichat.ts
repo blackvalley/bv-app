@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, AlertController,
       LoadingController} from 'ionic-angular';
-import { ProfileData } from '../../providers/profile.data'
+import { ChatProvider } from '../../providers/chat.provider'
 import { CreateChatPage } from '../create-chat/create-chat';
 import { GroupchatPage } from '../groupchat/groupchat'
 
@@ -12,18 +12,23 @@ import { GroupchatPage } from '../groupchat/groupchat'
 })
 export class MultiChatPage {
   private chats: any[]
+  private allChats:any[]
   private loader
-  private myChats:firebase.database.Reference
-  constructor(public navCtrl:NavController, private profile:ProfileData,
+  private chatdb:firebase.database.Reference
+  constructor(public navCtrl:NavController, private chatData:ChatProvider,
     private modalCtrl: ModalController, private loadingCtrl: LoadingController,
     private alertCtrl:AlertController) {
     this.chats=[]
-    this.myChats=this.profile.getUserProfile().child('/chats')
+    this.allChats=[]
+    this.chatdb=this.chatData.chats
     this.showChats()
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MultiChatPage');
+
+
   }
   createChat(){
       let eventModal = this.modalCtrl.create(CreateChatPage)
@@ -35,19 +40,22 @@ export class MultiChatPage {
 
   showChats(){
     this.showLoading()
-    this.myChats.on('value',snapshot=>{
-      let rawList = []
-      snapshot.forEach( snap =>{
-        rawList.push({
-          id: snap.key,
-          title: snap.val().title,
-          //inception: snap.val().creationDate,
-        })
-        return false
-      })
-      this.chats=rawList
-      this.loader.dismiss()
-    })
+    this.chatData.getAddedChats()
+              .subscribe(chat=> {
+                //sort chats for only my chats
+                let members = chat.members
+                for(let member of members){
+                  if(member.id==this.chatData.currentUser.uid){
+                    this.chats.push(chat);
+                    console.log(this.chats)
+                    break
+                  }
+                }
+              },
+              err =>{
+                 console.error("Unable to get chat - ", err)
+              })
+    this.loader.dismiss()
   }
   showLoading() {
     this.loader = this.loadingCtrl.create({
@@ -55,7 +63,6 @@ export class MultiChatPage {
     });
     this.loader.present();
   }
-
   showError(text) {
     setTimeout(() => {
       this.loader.dismiss();
@@ -67,7 +74,7 @@ export class MultiChatPage {
       buttons: ['OK']
     });
     prompt.present();
+  }
 
-}
 
   }
