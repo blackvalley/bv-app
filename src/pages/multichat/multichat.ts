@@ -34,23 +34,34 @@ export class MultiChatPage {
       let eventModal = this.modalCtrl.create(CreateChatPage)
       eventModal.present()
   }
-  openGroupChat(){
-    this.navCtrl.push(GroupchatPage);
+  openGroupChat(chatid:string){
+    this.navCtrl.push(GroupchatPage,{
+      chatid:chatid
+    });
   }
 
   showChats(){
     this.showLoading()
-    this.chatData.getAddedChats()
-              .subscribe(chat=> {
+    this.chatData.getAllChats()
+              .on('value', snapshot=> {
                 //sort chats for only my chats
-                let members = chat.members
-                for(let member of members){
-                  if(member.id==this.chatData.currentUser.uid){
-                    this.chats.push(chat);
-                    console.log(this.chats)
-                    break
+                snapshot.forEach(snap =>{
+                  let members = snap.val().members
+                  for(let member of members){
+                    if(member.id==this.chatData.currentUser.uid){
+                      this.chats.push({
+                        id:snap.key,
+                        topic:snap.val().topic,
+                        timestamp:snap.val().timestamp,
+                        messages:snap.val().messages,
+                        members:snap.val().members
+                      });
+                      break
+                    }
                   }
-                }
+                  return false
+                })
+
               },
               err =>{
                  console.error("Unable to get chat - ", err)

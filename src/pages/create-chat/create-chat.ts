@@ -41,10 +41,10 @@ export class CreateChatPage {
       snapshot.forEach( snap => {
       rawList.push({
         id: snap.key,
-        firstname: snap.val().fname,
-        lastname:snap.val().lname,
-        college: snap.val().college,
-        employment: snap.val().employment
+        firstname: snap.val().firstName,
+        lastname:snap.val().lastName,
+        college:snap.val().college,
+        employment:snap.val().employment
         })
       return false
       });
@@ -63,7 +63,6 @@ addToChat(user:any){
   this.members.push({
     id: user.id,
     firstname: user.firstname
-    // lastname: user.lastname,
     });
 
 }

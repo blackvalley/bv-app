@@ -76,9 +76,6 @@ showError(text) {
 }
 
 showSuccess() {
-      setTimeout(() => {
-        this.loader.dismiss();
-      });
       let prompt = this.alertCtrl.create({
         title: 'Success!',
         subTitle: "You have created an opportunity",

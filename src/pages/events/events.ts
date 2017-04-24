@@ -27,7 +27,8 @@ export class EventsPage {
         name: snap.val().name,
         price: snap.val().price,
         date: snap.val().date,
-        location: snap.val().location
+        location: snap.val().location,
+        eventPic:snap.val().eventPicture
       })
       return false
       });
