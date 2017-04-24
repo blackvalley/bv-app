@@ -24,13 +24,21 @@
 
 
 <ion-content>
-  <ion-searchbar placeholder="Search"> </ion-searchbar>
-    <ion-item wrap >
-      <div *ngFor="let member of members; let i = index" >
-      <button ion-button (click)="deleteMember(i)"><ion-icon name="close"></ion-icon> {{member?.firstname}} {{member?.lastname}}  </button>
-    </div>
-    </ion-item>
-    <ion-list>
+  <ion-searchbar placeholder="Search">
+  </ion-searchbar>
+
+
+  <ion-scroll scrollX="true" class="item">
+    <ion-row>
+    <ion-col *ngFor="let member of members; let i = index" >
+    <button ion-button icon-right (click)="deleteMember(i)">  {{member?.firstname}} {{member?.lastname}}
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-col>
+  </ion-row>
+
+  </ion-scroll>
+  <ion-list id="chatList">
       <ion-item *ngFor="let user of users"  (click)="addToChat(user)" id="friend">
         <ion-avatar item-left>
           <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7">

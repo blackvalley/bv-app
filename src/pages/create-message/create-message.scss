@@ -1,37 +1,67 @@
 page-create-message {
 
+  #content {
+    background: #000000;
+  }
+
   #navbar {
     box-shadow: 0px 0px 10px 1px #515151;
 
   }
 
-  #input-comments {
-    background: rgba(0,0,0,0.4);
-    border-radius: 15px;
-    color: #C6E947;
-    border: 2px solid #515151;
-    height: 150px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-  }
-
-  #message-img {
-    background-color: lightgray;
-    border-radius: 15px;
-    height: 80px;
-    width: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-
-  }
-
   #groupTopic{
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #515151;
     color: #C6E947;
   }
+
+
+  #item {
+    height: 40px;
+    background: rgba(255,255,255, 0.1);
+  }
+
+  #item p {
+  color: #515151
+
+}
+
+  #item ion-col{
+    width: 10px;
+    margin-right: 0px;
+  }
+
+  #members p{
+    background: rgba(255,255,255, 0.1);
+    color: #FFFFFF;
+  }
+
+  #message-img{
+    background: #000000;
+  }
+
+  #message-img ion-item{
+    background: lightgray;
+    border-radius: 15px;
+    height: 100px;
+    width: 100px;
+
+  }
+
+  #message-img p {
+    width: 200px;
+    color: #000000;
+  }
+
+  #input-comments {
+    position: absolute;
+    bottom: 0px;
+    background: #000000;
+    color: #C6E947;
+    border-top: 2px solid #C6E947;
+  }
+
+
+
 
 
 

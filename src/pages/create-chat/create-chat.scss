@@ -1,5 +1,28 @@
 page-create-chat {
 
+
+  #membersInChat {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  #membersInChat ion-row {
+    text-align: left;
+    height: 25px;
+
+  }
+
+  #membersInChat ion-col {
+    border-radius: 30px;
+
+  }
+
+  .item {
+    position: sticky;
+    top: auto;
+    height: 60px;
+
+  }
+
   #friend {
     color: #FFFFFF;
   }

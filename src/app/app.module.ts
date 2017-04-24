@@ -19,6 +19,7 @@ import { Signup2Page } from '../pages/signup2/signup2'
 import { PwresetPage } from '../pages/pwreset/pwreset'
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { EditChatPage } from '../pages/edit-chat/edit-chat';
 import { CreateOppPage } from '../pages/create-opp/create-opp';
 import { OppDetailPage } from '../pages/opp-detail/opp-detail'
 import { AuthProvider } from '../providers/auth.provider'
@@ -56,7 +57,8 @@ import { ChatProvider } from '../providers/chat.provider'
     CreateChatPage,
     GroupchatPage,
     CreateMessagePage,
-    EditProfilePage
+    EditProfilePage,
+    EditChatPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -84,7 +86,8 @@ import { ChatProvider } from '../providers/chat.provider'
     CreateChatPage,
     GroupchatPage,
     CreateMessagePage,
-    EditProfilePage
+    EditProfilePage,
+    EditChatPage,
 
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},

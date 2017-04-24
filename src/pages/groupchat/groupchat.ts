@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ProfileData } from '../../providers/profile.data'
+import { ProfileData } from '../../providers/profile.data';
+import { ChatProvider } from '../../providers/chat.provider';
+import { EditChatPage } from '../edit-chat/edit-chat';
+
+
 
 
 /*
@@ -28,6 +32,10 @@ export class GroupchatPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GroupchatPage');
+  }
+
+  editchat(){
+    this.navCtrl.push(EditChatPage);
   }
 
 }
