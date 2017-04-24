@@ -4,6 +4,8 @@ import { NavController, NavParams, ViewController,
 import { UserProvider } from '../../providers/user.provider';
 import { CreateMessagePage } from '../create-message/create-message'
 import { ProfileData } from '../../providers/profile.data';
+
+
 /*
   Generated class for the CreateChat page.
 
@@ -23,12 +25,13 @@ export class CreateChatPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private userPro:UserProvider , private viewCtrl: ViewController,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController,
-    private profile:ProfileData) {
+    private profile:ProfileData,) {
     this.users=[]
     this.members=[];
     this.profile.getUserProfile().on('value', (data) => {
       this.me = data.val();
           });
+
   }
 
   ionViewDidEnter(){
@@ -48,7 +51,9 @@ export class CreateChatPage {
       this.users = rawList;
       this.loader.dismiss()
     });
-  }
+    }
+
+
 
 
   // Loop check first see if in array if not add if it is no return

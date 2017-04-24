@@ -7,10 +7,10 @@
 <ion-header>
 
   <ion-navbar id="navbar">
-    <ion-title >Group Name</ion-title>
+    <ion-title>{{topic}}</ion-title>
     <ion-buttons>
       <button ion-button icon-only (click)="cancelMessage()">
-        <ion-icon name="back">Back</ion-icon>
+        <ion-icon name="arrow-back"></ion-icon> Back
         </button>
     </ion-buttons>
 
@@ -19,36 +19,36 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content id="content">
 
-  <ion-item no-lines>
-    <div item-left >
-    <img item left id="message-img"padding src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Camera_font_awesome.svg.png?alt=media&token=49f5e053-7e13-4041-9f4e-a0eb53601d11" alt="avatar">
-    <p>Set Group Photo</p>
-  </div>
+  <ion-item id="message-img" no-lines>
+    <ion-item  item-left >
+    <img padding src="{{chat?.pic}}" alt="avatar">
+    <p>Set Photo</p>
+  </ion-item>
   <ion-input item right [(ngModel)]="topic" placeholder="Group Topic" id="groupTopic">
 
     </ion-input>
   </ion-item>
 
+  <ion-scroll scrollX="true" class="item" id="membersTitle">
+    <ion-row>
+      <ion-col width-30>
+        <p>Members:</p>
+      </ion-col>
+    <ion-col *ngFor="let member of members" style="white-space: nowrap" class="item" id="members">
+    <p> {{member.firstname}} {{member?.lastname}}</p>
 
-  <ion-item no-lines>
-    <div> <h2 *ngFor="let member of members" style="white-space: nowrap"> {{member.firstname}} </h2></div>
-  </ion-item>
+  </ion-col>
+  </ion-row>
 
-
-  <ion-item id="input-comments" no-lines>
-   <ion-input type="text" [(ngModel)]="message" placeholder="Enter your message here..."></ion-input>
- </ion-item>
-
- <ion-item>
-    <ion-label>Interns Only</ion-label>
-    <ion-toggle></ion-toggle>
-  </ion-item>
+  </ion-scroll>
 
 
-
- <button ion-button full (click)="createGroupChat(message,topic)"> Create</button>
+ <ion-item id="input-comments" no-lines>
+  <ion-input type="text" [(ngModel)]="message" placeholder="Enter your message here..."></ion-input>
+  <button item-right ion-button> Post</button>
+</ion-item>
 
 
 

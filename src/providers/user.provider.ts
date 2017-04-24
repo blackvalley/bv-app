@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { FirebaseConfigService } from '../core/service/service'
-import 'rxjs/add/operator/map';
+
+
 
 @Injectable()
 export class UserProvider{
 
-    private userdb = this.fire.getDatabase().ref('/users')
-    private _currentUser
+    private userdb: any;
+    private _currentUser: any;
     constructor (private fire: FirebaseConfigService){
         this._currentUser = this.fire.getAuth().currentUser
+        this.userdb = this.fire.getDatabase().ref('/users')
+
     }
     //create listener for users in the database
     get currentUser(){
@@ -29,4 +32,6 @@ export class UserProvider{
     getUsers() {
       return this.userdb
     }
+
+
 }
