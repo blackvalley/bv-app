@@ -45,7 +45,8 @@ export class OpportunitiesPage {
         name: snap.val().name,
         deadline: snap.val().deadline,
         date: snap.val().cost,
-        location: snap.val().location
+        location: snap.val().location,
+        picture:snap.val().opportunityPicture
       });
       return false
       });

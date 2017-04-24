@@ -20,7 +20,7 @@
 
 
     <ion-card id="event-card" *ngFor="let event of events"(click)="goToEventDetail(event.id)">
-      <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/Screen%20Shot%202016-11-13%20at%2012.30.43%20AM.png?alt=media&token=8847f4cc-0c66-48fa-b497-d2e1cdb894f5"/>
+      <img src={{event?.eventPic}}/>
       <ion-card-content>
         <ion-item id="card-header">
           <div id="event-date" item-left>

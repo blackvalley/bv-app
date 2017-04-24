@@ -44,14 +44,14 @@ export class OpportunityData {
                   })
                   if (oppPic != null) {
                     console.log(oppPic)
-                    this.jobPicRef.child(newOpp.key).child('eventPicture.png')
+                    this.jobPicRef.child(newOpp.key).child('opportunityPicture.png')
                     .putString(oppPic, 'base64', {contentType: 'image/png'})
                     .then((savedPicture) => {
                     this.opportunityList.child(newOpp.key)
-                    .child('eventPicture')
+                    .child('opportunityPicture')
                     .set(savedPicture.downloadURL);
                     this.myOpportunities.child(newOpp.key)
-                    .child('eventPicture')
+                    .child('opportunityPicture')
                     .set(savedPicture.downloadURL)
                     });
 
