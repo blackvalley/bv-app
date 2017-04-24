@@ -48,6 +48,13 @@ export class ChatProvider {
         }
     })
   }
+  getChat(id:string):firebase.database.Reference{
+    return this.chatdb.child(id)
+  }
+  getAllChats():firebase.database.Reference{
+    return this.chatdb
+  }
+
   addMessage(){
 
   }

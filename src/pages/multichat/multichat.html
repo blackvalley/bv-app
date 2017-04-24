@@ -13,7 +13,7 @@
   <ion-list>
 
     <ion-item-sliding *ngFor="let chat of chats" >
-            <button ion-item (click)="openGroupChat()" id="chatroom">
+            <button ion-item (click)="openGroupChat(chat?.id)" id="chatroom">
                 <ion-thumbnail item-left>
                     <img id="message-img"padding src="{{chat?.pic}}" alt="GroupPhoto"/>
                 </ion-thumbnail>
