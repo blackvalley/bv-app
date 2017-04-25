@@ -1,31 +1,47 @@
-import { Component, NgModule } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { ProfileData } from '../../providers/profile.data'
 import { AuthProvider } from '../../providers/auth.provider'
 import { LoginPage } from '../login/login';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, FormBuilder, Validators }   from '@angular/forms';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'page-edit-profile',
   templateUrl: 'edit-profile.html'
 })
 export class EditProfilePage {
-    private profileData
+    private profileData;
     private userProfile: any;
     private birthDate: string;
-    private editProfile: string = "persInfo";
+    private editProfile: string;
+    private editProfileForm;
+    private loader;
+
 
 
     constructor(public nav: NavController, private profile: ProfileData,
+      private formBuilder: FormBuilder, private loadingCtrl: LoadingController,
       private authData: AuthProvider, private alertCtrl:AlertController, private forms: FormsModule) {
       this.nav = nav;
       this.profileData = profile;
+      this.editProfile = "persInfo";
 
       this.profileData.getUserProfile().on('value', (data) => {
         this.userProfile = data.val();
         this.birthDate = this.userProfile.birthDate;
-            });
+        });
+
+      this.editProfileForm = formBuilder.group({
+        college: [this.userProfile.college, Validators.minLength(2)],
+        location: [this.userProfile.location, Validators.minLength(2)],
+        employment: [this.userProfile.employment, Validators.minLength(2)],
+        birthDate: [this.userProfile.birthDate, Validators.minLength(2)]
+      });
+
         }
+
+
 
     logOut(): void {
       this.authData.logoutUser().then(() => {
@@ -33,11 +49,35 @@ export class EditProfilePage {
           });
       }
 
+      updateProfile(){
+        if (!this.editProfileForm.valid){
+          console.log('Form Invalid');
+        } else {
+          console.log('Form Valid');
+          this.profileData.updateProfile(this.editProfileForm.value.college,
+            this.editProfileForm.value.location,this.editProfileForm.value.employment).then(() => {
+                this.nav.push(ProfilePage);
+              });
+        } (error) => {
+          this.loader.dismiss().then( () => {
+            let alert = this.alertCtrl.create({
+              message: error.message,
+              buttons: [
+                {
+                  text: "Try Again",
+                  role: 'cancel'
+                }
+              ]
+            });
+            alert.present();
+          });
 
-      updateProfile(college, location, employment, birthDate): void {
-        this.profileData.updateInfo(college, location, employment)
-        this.profileData.updateDOB(birthDate);
+        this.loader = this.loadingCtrl.create();
+        this.loader.present();
+        }
       }
+
+
 
 
       //creates prompt to edit your name.
@@ -114,43 +154,6 @@ export class EditProfilePage {
               text: 'Save',
               handler: data => {
                 this.profileData.updatePassword(data.newPassword);
-              }
-            }
-          ]
-        });
-        alert.present();
-      }
-
-
-      //creates prompt to edit your name.
-      updateInfo(): void {
-          let alert = this.alertCtrl.create({
-          message: "Update following info:",
-          inputs: [
-            {
-              name: 'college',
-              placeholder: 'Enter the college you attended:',
-              value: this.userProfile.college
-            },
-            {
-              name: 'location',
-              placeholder: 'Where are you located?',
-              value: this.userProfile.location
-            },
-            {
-              name: 'employment',
-              placeholder: 'Where are you working at?',
-              value: this.userProfile.employment
-            },
-          ],
-          buttons: [
-            {
-              text: 'Cancel',
-            },
-            {
-              text: 'Save',
-              handler: data => {
-                this.profileData.updateInfo(data.college, data.location, data.employment);
               }
             }
           ]

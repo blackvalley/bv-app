@@ -1,11 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bv-logo.png?alt=media&token=edcd44fd-6479-4764-89ff-3df661724f92" width="80" height="40"/>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="logOut()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end id="settings"><button ion-button  clear icon-only color="secondary" (click)="editProfile()"><ion-icon name="settings" ></ion-icon></button>
     </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
@@ -20,8 +18,6 @@
       <b>{{userProfile?.firstName}} {{userProfile?.lastName}}</b></h2>
       <p>{{userProfile?.college}} | {{userProfile?.location}}</p>
     </div>
-      <ion-buttons id="settings"><button ion-button  clear icon-only color="secondary" (click)="editProfile()"><ion-icon name="settings" ></ion-icon></button>
-      </ion-buttons>
   </ion-item>
 
 <div id="profile-info">

@@ -41,6 +41,59 @@
               <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7" alt="avatar">
             </ion-item>
 
+
+            <ion-card>
+              <form [formGroup]="editProfileForm" (submit)="updateInfo()" novalidate>
+                <ion-item>
+                  <ion-label stacked>College</ion-label>
+                  <ion-input #college formControlName="college" type="text"
+                    [class.invalid]="!editProfileForm.controls.college.valid && editProfileForm.controls.college.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.college.valid  && editProfileForm.controls.college.dirty">
+                  <p> College must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>Location</ion-label>
+                  <ion-input #location formControlName="location" type="text" placeholder="Location"
+                    [class.invalid]="!editProfileForm.controls.location.valid && editProfileForm.controls.location.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.location.valid  && editProfileForm.controls.location.dirty">
+                  <p>Location must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>Employment</ion-label>
+                  <ion-input #employment formControlName="employment" type="text"
+                    [class.invalid]="!editProfileForm.controls.employment.valid && editProfileForm.controls.employment.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.employment.valid  && editProfileForm.controls.employment.dirty">
+                  <p>Employment name must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label class="dob-label">Date of Birth</ion-label>
+                  <ion-datetime displayFormat="MMM D, YYYY"
+                    formControlName="birthDate" ></ion-datetime>
+                </ion-item>
+
+
+                <button ion-button icon-right type="submit" id="connect-btn" >
+                    Submit
+                </button>
+
+
+
+
+              </form>
+            </ion-card>
+
             <ion-item (click)="updateName()">
               <ion-grid>
                 <ion-row>
@@ -85,39 +138,6 @@
               </ion-grid>
             </ion-item>
 
-            <ion-item>
-              <ion-grid>
-                <ion-row>
-                  <ion-col width-50>
-                    College
-                  </ion-col>
-                  <ion-col *ngIf="userProfile?.college || userProfile?.location || userProfile?.employment">
-                    {{userProfile?.college}}
-                  </ion-col>
-                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.college">
-
-                    <span>
-                      Tap here to edit.
-                    </span>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col width-50>
-                    Location
-                  </ion-col>
-
-                  <ion-col *ngIf="userProfile?.location || userProfile?.employment">
-                    {{userProfile?.location}} {{userProfile?.employment}}
-                  </ion-col>
-                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.location || !userProfile?.employment">
-
-                  <span>
-                    Tap here to edit.
-                  </span>
-                </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
 
             <ion-item (click)="updatePassword()">
               <ion-grid>
@@ -135,28 +155,11 @@
             </ion-item>
 
 
-                      <ion-item>
-                        <ion-input [(ngModel)]="college" type="text" name="college" >
 
-                        </ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-input type="text" [(ngModel)]="location" placeholder="{{userProfile?.location}}">
-                        </ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-input [(ngModel)]="employment" placeholder="{{userProfile?.employment}}">
-                        </ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-input [(ngModel)]="birthDate">
-                        </ion-input>
-                      </ion-item>
-
-
-                    <button ion-button full (click)="updateProfile(college, location, employment, birthDate)">
-                      Update page
+                    <button ion-button full (click)="logOut()">
+                      Logout page
                     </button>
+
 
 
         </ion-list>

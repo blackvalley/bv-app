@@ -49,22 +49,18 @@ updateName(firstName: string, lastName: string): firebase.Promise<any> {
  });
 }
 
-/**
-* Pretty much the same as before, just that instead of saving the name it's saving the date of birth
-*/
-updateDOB(birthDate: string): firebase.Promise<any> {
- return this.userProfile.child(this.currentUser.uid).update({
-   birthDate: birthDate
- });
-}
-
-updateInfo(college: string, location: string, employment: string): firebase.Promise<any> {
+updateProfile(college: string, location: string, employment: string, birthDate: string): firebase.Promise<any> {
  return this.userProfile.child(this.currentUser.uid).update({
    college: college,
    location: location,
-   employment: employment
+   employment: employment,
+   birthDate: birthDate
+
  });
 }
+
+
+
 
 /**
 * This is were things get trickier, this one is taking the user's email and first it's calling the

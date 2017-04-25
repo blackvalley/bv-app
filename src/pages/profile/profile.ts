@@ -31,11 +31,6 @@ export class ProfilePage {
       this.nav.push(EditProfilePage)
     }
 
-    logOut(): void {
-      this.authData.logoutUser().then(() => {
-      this.nav.setRoot(LoginPage);
-          });
-      }
 
     openConnections() {
       this.nav.push(ConnectionsPage);
