@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { ProfileData } from '../../providers/profile.data'
 import { AuthProvider } from '../../providers/auth.provider'
@@ -13,7 +13,7 @@ export class EditProfilePage {
     private profileData
     private userProfile: any;
     private birthDate: string;
-    private editProfile: string = "persInfo";
+    //private editProfile: string = "persInfo";
 
 
     constructor(public nav: NavController, private profile: ProfileData,

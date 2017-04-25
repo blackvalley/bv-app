@@ -52,15 +52,14 @@ export class CreateEventPage {
     targetWidth: 500,
     targetHeight: 500,
     saveToPhotoAlbum: true
-  }
-  this.camera.getPicture(options).then(imageData => {
-
-    this.captureDataUrl = imageData;
-    console.log(this.captureDataUrl)
-  }, error => {
+    }
+    this.camera.getPicture(options).then(imageData => {
+      this.captureDataUrl = imageData;
+      console.log(this.captureDataUrl)
+    }, error => {
     console.log("ERROR -> " + JSON.stringify(error));
-  });
-}
+    });
+  }
 
     showLoading() {
       this.loader = this.loadingCtrl.create({
@@ -82,9 +81,6 @@ export class CreateEventPage {
       prompt.present();
       }
   showSuccess() {
-        setTimeout(() => {
-          this.loader.dismiss();
-        });
         let prompt = this.alertCtrl.create({
           title: 'Success!',
           subTitle: "You have created an event",
