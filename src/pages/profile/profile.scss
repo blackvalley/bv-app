@@ -23,6 +23,10 @@ page-profile {
     color: #FFFFFF;
   }
 
+  #interest {
+    background: #515151;
+  }
+
 
 
 
@@ -39,6 +43,9 @@ page-profile {
 
 }
 
+ion-scroll {
+	height: 100%;
+}
 
 
 #user-img {
@@ -66,11 +73,20 @@ page-profile {
 }
 
 #profile-info ion-item {
+  color: #C6E947;
+}
+
+#employment ion-item  {
   background-color: #000000;
   color: #C6E947;
 }
 
-#profile-info ion-col div {
+#interest{
+  position: relative;
+}
+
+
+#interest ion-col div {
   background-color: #000000;
   padding: 5px;
   padding-top: 20px;

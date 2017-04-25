@@ -8,6 +8,8 @@
 </ion-header>
 
 <ion-content id="content">
+
+
   <ion-item id="profile-header">
     <img id="profile-bg-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/default%20BG.jpg?alt=media&token=890ddab2-35a4-4edd-9e1c-9abd040d20d5">
     <div id="profile-header-content">
@@ -20,20 +22,33 @@
     </div>
   </ion-item>
 
-<div id="profile-info">
+  <ion-scroll scrollX="true" id="interest">
+    <ion-row>
+      <ion-col><div> Augmented Reality</div></ion-col>
+      <ion-col><div> App Development</div></ion-col>
+      <ion-col><div> Web Development</div></ion-col>
+      <ion-col><div> Virtual Reality</div></ion-col>
+      <ion-col><div> Another Interest</div></ion-col>
+  </ion-row>
+  </ion-scroll>
+
+
+
+
+<!-- <div id="profile-info">
     <ion-list-header>
       <ion-icon name='briefcase'></ion-icon>
       Employment
     </ion-list-header>
-    <ion-list>
+    <ion-list id="employment">
       <ion-card text-wrap>
-      <ion-item>
-        <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
+        <ion-item>
+          <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
+        </ion-item>
+        <ion-item>
+        <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
+        <p> www.blackvalley.com </p>
       </ion-item>
-      <ion-item>
-      <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
-      <p> www.blackvalley.com </p>
-    </ion-item>
     </ion-card>
       <ion-card>
       <ion-item>
@@ -43,12 +58,18 @@
         <p item-left>Software Developer</p><p item-right> Intern</p>
       </ion-item>
     </ion-card>
+
   </ion-list>
     <ion-list-header>
       <ion-icon name='pulse'></ion-icon>
       Interest
     </ion-list-header>
-    <ion-list>
+
+
+ -->
+
+      <!-- <ion-list>
+
       <ion-card>
       <ion-row center>
         <ion-col><div>Augmented Reality</div></ion-col>
@@ -56,8 +77,11 @@
         <ion-col><div> Web Development</div></ion-col>
       </ion-row>
     </ion-card>
-    </ion-list>
-  <ion-list-header>
+    </ion-list> -->
+
+
+
+  <!-- <ion-list-header>
     <ion-icon name='link'></ion-icon>
     Connections
   </ion-list-header>
@@ -74,5 +98,5 @@
 
 
   </ion-list>
-</div>
+</div> -->
 </ion-content>
