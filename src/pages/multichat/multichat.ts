@@ -21,16 +21,17 @@ export class MultiChatPage {
     this.chats=[]
     this.allChats=[]
     this.chatdb=this.chatData.chats
+
+
+  }
+
+  ionViewDidEnter() {
+    console.log('ionViewDidLoad MultiChatPage');
     this.showChats()
 
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MultiChatPage');
-
-
-  }
   createChat(){
+      this.chats = []
       let eventModal = this.modalCtrl.create(CreateChatPage)
       eventModal.present()
   }
@@ -41,31 +42,32 @@ export class MultiChatPage {
   }
 
   showChats(){
+    let rawList = []
     this.showLoading()
-    this.chatData.getAllChats()
-              .on('value', snapshot=> {
-                //sort chats for only my chats
+    this.chatData.getAllChats().on('value', snapshot=> {
                 snapshot.forEach(snap =>{
                   let members = snap.val().members
                   for(let member of members){
                     if(member.id==this.chatData.currentUser.uid){
-                      this.chats.push({
+                      rawList.push({
                         id:snap.key,
                         topic:snap.val().topic,
                         timestamp:snap.val().timestamp,
-                        messages:snap.val().messages,
-                        members:snap.val().members
+                        members:snap.val().members,
+                        latestMessage:snap.val().latestMessage
                       });
                       break
                     }
                   }
                   return false
                 })
+                console.log(rawList)
 
               },
               err =>{
                  console.error("Unable to get chat - ", err)
               })
+    this.chats=rawList
     this.loader.dismiss()
   }
   showLoading() {

@@ -17,19 +17,21 @@ export class CreateMessagePage {
   private members:any[]
   private loader
   private captureDataUrl
+  private me
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController,
                 private loadingCtrl:LoadingController, private alertCtrl:AlertController,
                 private chatData:ChatProvider, private camera:Camera) {}
 
   ionViewDidLoad() {
     this.members=this.navParams.get('members')
+    this.me = this.navParams.get('me')
     console.log('ionViewDidLoad CreateMessagePage');
 
   }
 
   createGroupChat(message:string,topic?:string){
-
-      this.chatData.createChat(this.members,message,topic)
+      this.members.push(this.me)
+      this.chatData.createChat(this.members,message,this.me.id,topic)
       .then( () => {
         this.showSuccess()
         this.navCtrl.pop();
@@ -92,6 +94,6 @@ export class CreateMessagePage {
         this.viewCtrl.dismiss();
       }
 
-  
+
 
 }
