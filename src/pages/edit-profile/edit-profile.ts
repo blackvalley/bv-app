@@ -13,7 +13,7 @@ export class EditProfilePage {
     private profileData
     private userProfile: any;
     private birthDate: string;
-    //private editProfile: string = "persInfo";
+    private editProfile: string = "persInfo";
 
 
     constructor(public nav: NavController, private profile: ProfileData,
