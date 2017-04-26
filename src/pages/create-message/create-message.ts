@@ -31,7 +31,7 @@ export class CreateMessagePage {
 
   createGroupChat(message:string,topic?:string){
       this.members.push(this.me)
-      this.chatData.createChat(this.members,message,this.me.id,topic)
+      this.chatData.createChat(this.members,message,this.me,topic)
       .then( () => {
         this.showSuccess()
         this.navCtrl.pop();

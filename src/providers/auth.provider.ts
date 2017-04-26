@@ -11,7 +11,7 @@ export class AuthProvider {
   private userdb
   users: any;
   constructor(private fire: FirebaseConfigService){
-    this.profilePicRef = this.fire.getStorage().ref('/eventPics')
+    this.profilePicRef = this.fire.getStorage().ref('/profilePics')
     this.fireAuth = this.fire.getAuth()
     this.userdb = this.fire.getDatabase().ref('/users')
   }
@@ -52,11 +52,11 @@ export class AuthProvider {
   }
 
   //sign up page 2 for user
-  signup2User(profileType: string, gender: string, city: string, state: string): firebase.Promise<any> {
-      return this.userdb.child(this.getCurrentUser()).update({profileType:profileType, gender:gender,
-        city:city, state:state});
-
-  }
+signup2User(bio): firebase.Promise<any> {
+    return this.userdb.child(this.getCurrentUser()).update({
+          bio:bio
+          });
+}
 
 
   //reset password
