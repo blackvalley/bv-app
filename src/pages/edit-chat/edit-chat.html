@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>edit-chat</ion-title>
+    <ion-title>Edit chat</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,15 +15,38 @@
 
 <ion-content padding>
 
-  <ion-item id="message-img" no-lines>
+  <ion-item id="message-img">
     <ion-item  item-left >
     <img padding src="{{chat?.pic}}" alt="avatar">
-    <p>Set Photo</p>
-  </ion-item>
-  <ion-input item right [(ngModel)]="topic" placeholder="Group Topic" id="groupTopic">
-
+    <p>Edit Photo</p>
+    </ion-item>
+    <ion-input item right [(ngModel)]="topic" id="groupTopic">
     </ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label>Notifications</ion-label>
+    <ion-toggle [(ngModel)]="notifications"></ion-toggle>
+  </ion-item>
+
+  <ion-list-header>
+    Members:
+  </ion-list-header>
+
+  <ion-list>
+      <ion-item *ngFor="let item of items" id="user-friends">
+    <ion-avatar item-left>
+      <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7">
+    </ion-avatar>
+    <h2>{{item.title}}</h2>
+    <h3> Morehouse College | Apple Inc. </h3>
+  </ion-item>
+
+  </ion-list>
+
+
+
+
 
 
 </ion-content>

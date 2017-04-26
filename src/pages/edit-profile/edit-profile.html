@@ -13,25 +13,28 @@
 </ion-header>
 
 
-<ion-content padding id="content">
+
+
+<ion-content id="content">
 
 
   <!-- Edit Page Nav. -->
 
-        <ion-segment [(ngModel)]="editProfile">
-          <ion-segment-button value="persInfo">
-            Personal Info
-          </ion-segment-button>
-          <ion-segment-button value="busInfo">
-            Business Info
-          </ion-segment-button>
-          <ion-segment-button value="Other">
-            Other
-          </ion-segment-button>
-        </ion-segment>
+  <ion-segment [(ngModel)]="editProfile" no-lines id="segmentToggle">
+    <ion-segment-button value="persInfo">
+      Personal Info
+    </ion-segment-button>
+    <ion-segment-button value="busInfo">
+      Business Info
+    </ion-segment-button>
+    <ion-segment-button value="Other">
+      Other
+    </ion-segment-button>
+  </ion-segment>
 
 
-      <ion-list>
+
+      <ion-list id="segments">
 
       <div [ngSwitch]="editProfile">
 
@@ -41,83 +44,95 @@
               <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7" alt="avatar">
             </ion-item>
 
-            <ion-item (click)="updateName()">
-              <ion-grid>
-                <ion-row>
-                  <ion-col width-50>
-                    Name
-                  </ion-col>
-                  <ion-col *ngIf="userProfile?.firstName || userProfile?.lastName">
-                    {{userProfile?.firstName}} {{userProfile?.lastName}}
-                  </ion-col>
-                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.firstName">
-                    <span>
-                      Tap here to edit.
-                    </span>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
 
-            <ion-item>
-              <ion-label class="dob-label">Date of Birth</ion-label>
-              <ion-datetime displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY"
-                [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)"></ion-datetime>
-            </ion-item>
+              <form [formGroup]="editProfileForm" (submit)="updateInfo()" novalidate>
+                <ion-item>
+                  <ion-label stacked>First Name</ion-label>
+                  <ion-input #firstName formControlName="firstName" type="text" placeholder="First name"
+                    [class.invalid]="!editProfileForm.controls.firstName.valid && editProfileForm.controls.firstName.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.firstName.valid  && editProfileForm.controls.firstName.dirty">
+                  <p>First name must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>Last Name</ion-label>
+                  <ion-input #lastName formControlName="lastName" type="text" placeholder="Last name"
+                    [class.invalid]="!editProfileForm.controls.lastName.valid && editProfileForm.controls.lastName.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.lastName.valid  && editProfileForm.controls.lastName.dirty">
+                  <p>Last name must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>Field of Study</ion-label>
+                  <ion-input #field formControlName="field" type="text" placeholder="Field"
+                    [class.invalid]="!editProfileForm.controls.field.valid && editProfileForm.controls.field.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.field.valid  && editProfileForm.controls.field.dirty">
+                  <p>Field must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>College</ion-label>
+                  <ion-input #college formControlName="college" type="text"
+                    [class.invalid]="!editProfileForm.controls.college.valid && editProfileForm.controls.college.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.college.valid  && editProfileForm.controls.college.dirty">
+                  <p> College must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>Location</ion-label>
+                  <ion-input #location formControlName="location" type="text" placeholder="Location"
+                    [class.invalid]="!editProfileForm.controls.location.valid && editProfileForm.controls.location.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.location.valid  && editProfileForm.controls.location.dirty">
+                  <p>Location must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label stacked>Employment</ion-label>
+                  <ion-input #employment formControlName="employment" type="text"
+                    [class.invalid]="!editProfileForm.controls.employment.valid && editProfileForm.controls.employment.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.employment.valid  && editProfileForm.controls.employment.dirty">
+                  <p>Employment name must be at least two characters.</p>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label class="dob-label">Date of Birth</ion-label>
+                  <ion-datetime displayFormat="MMM D, YYYY"
+                    formControlName="birthDate" ></ion-datetime>
+                </ion-item>
+
+                <!-- <ion-item>
+                  <ion-label stacked>Email</ion-label>
+                  <ion-input #email formControlName="email" type="email" placeholder="Email address"
+                    [class.invalid]="!editProfileForm.controls.email.valid && editProfileForm.controls.email.dirty">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="error-message"
+                  *ngIf="!editProfileForm.controls.email.valid  && editProfileForm.controls.email.dirty">
+                  <p>Please enter a valid email.</p>
+                </ion-item> -->
 
 
 
-            <ion-item (click)="updateEmail()">
-              <ion-grid>
-                <ion-row>
-                  <ion-col width-50>
-                    Email
-                  </ion-col>
-                  <ion-col width-50 *ngIf="userProfile?.email">
-                    {{userProfile?.email}}
-                  </ion-col>
-                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.email">
-                    <span>
-                      Tap here to edit.
-                    </span>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
+              </form>
 
-            <ion-item>
-              <ion-grid>
-                <ion-row>
-                  <ion-col width-50>
-                    College
-                  </ion-col>
-                  <ion-col *ngIf="userProfile?.college || userProfile?.location || userProfile?.employment">
-                    {{userProfile?.college}}
-                  </ion-col>
-                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.college">
-
-                    <span>
-                      Tap here to edit.
-                    </span>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col width-50>
-                    Location
-                  </ion-col>
-
-                  <ion-col *ngIf="userProfile?.location || userProfile?.employment">
-                    {{userProfile?.location}} {{userProfile?.employment}}
-                  </ion-col>
-                  <ion-col class="placeholder-profile" *ngIf="!userProfile?.location || !userProfile?.employment">
-
-                  <span>
-                    Tap here to edit.
-                  </span>
-                </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
 
             <ion-item (click)="updatePassword()">
               <ion-grid>
@@ -134,29 +149,17 @@
               </ion-grid>
             </ion-item>
 
-
-                      <ion-item>
-                        <ion-input [(ngModel)]="college" type="text" name="college" >
-
-                        </ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-input type="text" [(ngModel)]="location" placeholder="{{userProfile?.location}}">
-                        </ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-input [(ngModel)]="employment" placeholder="{{userProfile?.employment}}">
-                        </ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-input [(ngModel)]="birthDate">
-                        </ion-input>
-                      </ion-item>
+            <button ion-button full type="submit" id="connect-btn" >
+                Submit
+            </button>
 
 
-                    <button ion-button full (click)="updateProfile(college, location, employment, birthDate)">
-                      Update page
+
+
+                    <button ion-button full (click)="logOut()">
+                      Logout page
                     </button>
+
 
 
         </ion-list>

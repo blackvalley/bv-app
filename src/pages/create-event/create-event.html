@@ -10,45 +10,87 @@
 </ion-header>
 
 <ion-content id="content">
+
+
   <ion-list>
-    <button ion-button (click)="takePicture()">Lets take a picture!</button>
-    <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
-    <ion-item>
-      <ion-input placeholder="Title" [(ngModel)]="eventName" type="text" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Location" [(ngModel)]="eventLocation" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Details" [(ngModel)]="eventDetails" type="text"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label>Start Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="eventDate"></ion-datetime>
+  <ion-row id="event-img">
+
+    <button ion-button clear small icon-left id="event-img" (click)="takePicture()">
+      <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
+      <ion-icon color="dark" name='camera'></ion-icon>
+      Add Image
+    </button>
+
+  </ion-row>
+
+  <ion-row>
+    <ion-col><div>
+      <h2 id="eventName"><ion-input [(ngModel)]="eventName" type="text" placeholder="Event Name"></ion-input>
+      </h2>
+    </div></ion-col>
+  </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon item-left color=primary name="calendar"></ion-icon>
+      <ion-label stacked>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"[(ngModel)]="eventDate"></ion-datetime>
     </ion-item>
+    </div></ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon name="pin" color=primary item-left></ion-icon>
+      <ion-label stacked>Location</ion-label>
+      <ion-input [(ngModel)]="eventLocation" type="text" placeholder="Location"></ion-input>
+    </ion-item>
+    </div></ion-col>
+  </ion-row>
+
+  <ion-row >
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon name="pricetag" color=primary item-left></ion-icon>
+      <ion-label stacked>Price</ion-label>
+      <ion-input [(ngModel)]="eventPrice" type="text" placeholder="Cost"></ion-input>
+    </ion-item>
+    </div></ion-col>
+  </ion-row>
+
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>Overview:</ion-title>
+      <p>
+        <ion-input [(ngModel)]="eventDetails" type="text" placeholder="Event Details"></ion-input>
+      </p>
+    </div></ion-col>
+  </ion-row>
+
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>How to Apply: </ion-title>
+      <p>
+        <ion-input type="text" placeholder="Opportunity Details"></ion-input>
+      </p>
+    </div></ion-col>
+  </ion-row>
+
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>Restrictions: </ion-title>
+      <p>
+        <ion-input type="text" placeholder="Opportunity Details"></ion-input>
+      </p>
+    </div></ion-col>
+  </ion-row>
 
 
-    <ion-item>
-      <ion-label>Start Time</ion-label>
-      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" ></ion-datetime>
-    </ion-item>
+</ion-list>
 
-    <ion-item>
-      <ion-label>Ends</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
-    </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Cost</ion-label>
-      <ion-input [(ngModel)]="eventPrice" type="number" placeholder="How much is the event?"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Cost</ion-label>
-      <ion-input [(ngModel)]="eventCost" type="number" placeholder="How much are you spending?"></ion-input>
-    </ion-item>
 
-  </ion-list>
 
   <ion-list>
     <button ion-item>
@@ -58,7 +100,7 @@
   </ion-list>
 
   <button ion-button block (click)="createEvent(eventName, eventDate, eventLocation,
-  eventPrice, eventCost)">
+  eventPrice)">
     Share Event
   </button>
 

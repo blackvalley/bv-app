@@ -1,20 +1,17 @@
 page-profile {
 
   #content{
-    
+
   }
 
 
   #profile-header {
-    position: fixed;
-    top: 5px;
     left: 0px;
     background-color: lightgray;
     border: 2px solid black;
     width: 100%;
     text-align: center;
     min-height: 220px;
-    margin-top: 50px;
     color: #FFFFFF;
     z-index: 1;
   }
@@ -23,12 +20,11 @@ page-profile {
     color: #FFFFFF;
   }
 
-
-  #settings{
-    position: absolute;
-    top: 10px;
-    right: 0px;
+  #interest {
+    background: #515151;
   }
+
+
 
 
 #profile-img {
@@ -44,6 +40,9 @@ page-profile {
 
 }
 
+ion-scroll {
+	height: 110px;
+}
 
 
 #user-img {
@@ -62,7 +61,6 @@ page-profile {
 
 #profile-info {
   margin-top: 210px;
-  z-index: -1;
 }
 
 #profile-info ion-list-header{
@@ -71,11 +69,20 @@ page-profile {
 }
 
 #profile-info ion-item {
+  color: #C6E947;
+}
+
+#employment ion-item  {
   background-color: #000000;
   color: #C6E947;
 }
 
-#profile-info ion-col div {
+#interest{
+  position: relative;
+}
+
+
+#interest ion-col div {
   background-color: #000000;
   padding: 5px;
   padding-top: 20px;

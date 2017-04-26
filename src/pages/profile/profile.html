@@ -1,15 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/bv-logo.png?alt=media&token=edcd44fd-6479-4764-89ff-3df661724f92" width="80" height="40"/>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="logOut()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end id="settings"><button ion-button  clear icon-only color="secondary" (click)="editProfile()"><ion-icon name="settings" ></ion-icon></button>
     </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
-<ion-content id="content">
+<ion-content>
+
+
   <ion-item id="profile-header">
     <img id="profile-bg-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/default%20BG.jpg?alt=media&token=890ddab2-35a4-4edd-9e1c-9abd040d20d5">
     <div id="profile-header-content">
@@ -20,24 +20,21 @@
       <b>{{userProfile?.firstName}} {{userProfile?.lastName}}</b></h2>
       <p>{{userProfile?.college}} | {{userProfile?.location}}</p>
     </div>
-      <ion-buttons id="settings"><button ion-button  clear icon-only color="secondary" (click)="editProfile()"><ion-icon name="settings" ></ion-icon></button>
-      </ion-buttons>
   </ion-item>
 
-<div id="profile-info">
     <ion-list-header>
       <ion-icon name='briefcase'></ion-icon>
       Employment
     </ion-list-header>
-    <ion-list>
+    <ion-list id="employment">
       <ion-card text-wrap>
-      <ion-item>
-        <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
+        <ion-item>
+          <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
+        </ion-item>
+        <ion-item>
+        <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
+        <p> www.blackvalley.com </p>
       </ion-item>
-      <ion-item>
-      <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
-      <p> www.blackvalley.com </p>
-    </ion-item>
     </ion-card>
       <ion-card>
       <ion-item>
@@ -47,20 +44,25 @@
         <p item-left>Software Developer</p><p item-right> Intern</p>
       </ion-item>
     </ion-card>
+
   </ion-list>
     <ion-list-header>
       <ion-icon name='pulse'></ion-icon>
       Interest
     </ion-list-header>
-    <ion-list>
-      <ion-card>
-      <ion-row center>
-        <ion-col><div>Augmented Reality</div></ion-col>
+    <ion-scroll scrollX="true" id="interest">
+      <ion-row>
+        <ion-col><div> Augmented Reality</div></ion-col>
         <ion-col><div> App Development</div></ion-col>
         <ion-col><div> Web Development</div></ion-col>
-      </ion-row>
-    </ion-card>
-    </ion-list>
+        <ion-col><div> Virtual Reality</div></ion-col>
+        <ion-col><div> Another Interest</div></ion-col>
+    </ion-row>
+    </ion-scroll>
+
+
+
+
   <ion-list-header>
     <ion-icon name='link'></ion-icon>
     Connections
@@ -78,5 +80,4 @@
 
 
   </ion-list>
-</div>
 </ion-content>
