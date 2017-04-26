@@ -20,7 +20,6 @@ export class EditProfilePage {
       private authData: AuthProvider, private alertCtrl:AlertController, private forms: FormsModule) {
       this.nav = nav;
       this.profileData = profile;
-
       this.profileData.getUserProfile().on('value', (data) => {
         this.userProfile = data.val();
         this.birthDate = this.userProfile.birthDate;

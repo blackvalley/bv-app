@@ -42,7 +42,7 @@
 
   <ion-item id="classify">
     <ion-label>Gender</ion-label>
-    <ion-select #gender formControlName="gender" multiple="true" cancelText="Cancel" okText="Confirm"
+    <ion-select #gender formControlName="gender" multiple="false" cancelText="Cancel" okText="Confirm"
         [class.invalid]="!signup2Form.controls.gender.valid && signup2Form.controls.gender.dirty">
       <ion-option value="Male">Male</ion-option>
       <ion-option value="Female">Female</ion-option>
@@ -142,7 +142,7 @@
       </ion-row>
     </ion-list>
 
-      <button ion-button icon-right type="submit" id="connect-btn" (click)="goToLoginPage()">
+      <button ion-button icon-right type="submit" id="connect-btn">
         Connect
       </button>
 
