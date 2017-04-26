@@ -1,40 +1,57 @@
 page-event-detail {
 
-  #event-header {
-  background-color: #434954;
-  padding: 16px;
-  width: 100%;
-  min-height: 150px;
+  #content{
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    color: #FFFFFF;
+  }
+
+
+  #content ion-item {
+    background: transparent;
+    color: #FFFFFF;
+  }
+
+  #eventName {
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+  #event-img {
+    background-color: lightgray;
+    height: 250px;
+    width: 100%;
+
+  }
+
+
+
+  #icons button{
+  padding: 10px;
   text-align: center;
-}
 
-#event-header img {
-  max-width: 200px;
-  min-height: 115px;
-  margin-left: -15px;
-  padding: 25px 0 20px 0;
-}
+  }
 
+  #icons {
+    margin-right: 0px;
+    position: sticky;
+    bottom: 0px;
+    border-top: 2px solid #515151;
+    background: rgba(0, 0, 0, 0.4);
+    height: 60px;
 
+  }
 
-#event-info p {
-  color: #697072;
-  text-align: left;
-}
-
-#event-info ion-icon {
-  color: color($colors, primary);
-  width: 20px;
-}
+  #icons div{
+    margin-top: -10px;
+  }
 
 
-#event-info {
-  text-align: center;
-}
+  ion-row {
+    border-bottom: 2px solid #515151;
+    height: auto;
+  }
 
-#event-info ion-icon {
-  width: auto;
-  margin-right: 10px;
-}
+
 
 }

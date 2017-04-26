@@ -1,6 +1,10 @@
 <ion-header >
   <ion-navbar>
     <ion-title id="Welcome">Welcome, {{user?.firstName}}</ion-title>
+    <ion-buttons end>
+      <button ion-button  clear icon-only color="secondary" ><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -42,12 +46,6 @@
 
   </ion-card>
 </ion-list>
-
-
-  <button ion-button block >
-    Submit Article
-  </button>
-
 
 
 </ion-content>

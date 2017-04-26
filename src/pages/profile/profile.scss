@@ -6,15 +6,12 @@ page-profile {
 
 
   #profile-header {
-    position: fixed;
-    top: 5px;
     left: 0px;
     background-color: lightgray;
     border: 2px solid black;
     width: 100%;
     text-align: center;
     min-height: 220px;
-    margin-top: 50px;
     color: #FFFFFF;
     z-index: 1;
   }
@@ -44,7 +41,7 @@ page-profile {
 }
 
 ion-scroll {
-	height: 100%;
+	height: 110px;
 }
 
 
@@ -64,7 +61,6 @@ ion-scroll {
 
 #profile-info {
   margin-top: 210px;
-  z-index: -1;
 }
 
 #profile-info ion-list-header{

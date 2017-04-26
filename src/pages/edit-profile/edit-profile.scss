@@ -1,3 +1,20 @@
 page-edit-profile {
-   
+
+  #content {
+    padding: 10px;
+  }
+
+  #segmentToggle {
+    position: fixed;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #segments {
+    position: absolute;
+    top: 50px;
+    z-index: -1;
+  }
+
+
 }

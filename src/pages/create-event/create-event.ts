@@ -23,7 +23,7 @@ export class CreateEventPage {
   createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
     eventCost: number): void {
       this.eventData.createEvent(eventName, eventDate, eventLocation, eventPrice,
-        eventCost, this.captureDataUrl)
+         this.captureDataUrl)
       .then( () => {
           this.showSuccess()
           this.navCtrl.pop();
