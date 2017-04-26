@@ -3,9 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat.provider';
 import { EditChatPage } from '../edit-chat/edit-chat';
 
-
-
-
 /*
   Generated class for the Groupchat page.
 
@@ -17,23 +14,35 @@ import { EditChatPage } from '../edit-chat/edit-chat';
   templateUrl: 'groupchat.html'
 })
 export class GroupchatPage {
-  private userProfile: any
-  private chat
-  private messages
-  constructor(public navCtrl: NavController, public navParams: NavParams, private chatData: ChatProvider) {
 
-      this.chatData.getChat(this.navParams.get('chatid')).on('value', (data) => {
-        this.chat = data.val();
-        console.log(this.chat)
-            });
+  private chat
+  private messages =[]
+  constructor(public navCtrl: NavController, public navParams: NavParams, private chatData: ChatProvider) {
+      this.chatData.getChat(this.navParams.get('chatid')).on('value', snapshot => {
+        this.chat = snapshot.val()
+      });
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GroupchatPage');
+    this.getAddedMessages()
 
   }
-
+  getAddedMessages(){
+    this.chatData.getAddedMessages(this.navParams.get('chatid')).
+            subscribe(message => {
+              this.messages.push(message)
+              console.log(this.messages)
+            },
+            err =>{
+               console.error("Unable to add user - ", err)
+            })
+  }
+  sendMessage(message:string){
+    this.chatData.sendMessage(message,this.chatData.currentUser.uid,
+        this.navParams.get('chatid'))
+  }
   editchat(){
     this.navCtrl.push(EditChatPage);
   }

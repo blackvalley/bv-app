@@ -22,10 +22,10 @@ export class ChatProvider {
   public get chats(){
     return this.chatdb
   }
-  getAddedChats():Observable<any>{
+  getAddedMessages(chatid:string):Observable<any>{
     return Observable.create(obs=>{
-      this.chatdb.on('child_added', chat =>{
-        obs.next(chat.val())//gets data from user and converts to json
+      this.chatdb.child(chatid).child('messages').on('child_added', message =>{
+        obs.next(message.val())//gets data from user and converts to json
       },
       err =>{
 
@@ -35,17 +35,19 @@ export class ChatProvider {
   public get currentUser(){
     return this._currentUser
   }
-  createChat(members:any[],message:string,topic?:string):firebase.Promise<any>{
+  createChat(members:any[],message:string,sender,topic?:string):firebase.Promise<any>{
     let timestamp = Date.now()
     return this.chatdb.push({
         timestamp:timestamp,
         topic:topic,
         members:members,
-        messages:{
-          message:message,
-          timestamp:timestamp,
-          sender:this.currentUser.uid
-        }
+        latestMessage:message
+    }).then((newChat)=>{
+      this.chatdb.child(newChat.key).child('messages').push({
+        message:message,
+        sender:sender,
+        timestamp:timestamp
+      })
     })
   }
   getChat(id:string):firebase.database.Reference{
@@ -55,7 +57,19 @@ export class ChatProvider {
     return this.chatdb
   }
 
-  addMessage(){
+  sendMessage(message:string,sender,chatid):firebase.Promise<any>{
+    let timestamp = Date.now()
+    return this.chatdb.child(chatid).update({
+        latestUpdate:timestamp,
+        latestMessage:message
+    }).then(()=>{
+      this.chatdb.child(chatid).
+      child('messages').push({
+        message:message,
+        sender:sender,
+        timestamp:timestamp
+      })
+    })
 
   }
 

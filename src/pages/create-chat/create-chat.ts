@@ -25,13 +25,16 @@ export class CreateChatPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private userPro:UserProvider , private viewCtrl: ViewController,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController,
-    private profile:ProfileData,) {
+    private profile:ProfileData) {
     this.users=[]
     this.members=[];
     this.profile.getUserProfile().on('value', (data) => {
-      this.me = data.val();
+      this.me ={
+        id:data.key,
+        firstname:data.val().firstName
+        // pic:data.val().profilePic
+      }
           });
-
   }
 
   ionViewDidEnter(){
@@ -45,6 +48,7 @@ export class CreateChatPage {
         lastname:snap.val().lastName,
         college:snap.val().college,
         employment:snap.val().employment
+        // pic:snap.val().profilePic
         })
       return false
       });
@@ -53,19 +57,14 @@ export class CreateChatPage {
     });
     }
 
+    addToChat(user:any){
+      this.members.push({
+        id: user.id,
+        firstname: user.firstname
+        // pic:user.pic
+        });
 
-
-
-  // Loop check first see if in array if not add if it is no return
-
-
-addToChat(user:any){
-  this.members.push({
-    id: user.id,
-    firstname: user.firstname
-    });
-
-}
+    }
 
     deleteMember(i){
       this.members.splice(i, 1);
@@ -80,14 +79,11 @@ addToChat(user:any){
     }
 
     createMessage(){
-      this.members.push({
-        id:this.userPro.currentUser.uid,
-        firstname:this.me.firstName
-      })
       this.navCtrl.pop()
       .then(()=>{
         this.navCtrl.push(CreateMessagePage,{
-          members:this.members
+          members:this.members,
+          me:this.me
         })
       })
     }

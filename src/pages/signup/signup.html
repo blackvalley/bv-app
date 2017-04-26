@@ -15,14 +15,13 @@
       Basic Info
     </ion-list-header>
     <ion-list>
-      <ion-item id=profile-img>
+      <ion-item id=profile-img (click)="takePicture()">
         <p>Click to Add Profile Image </p>
         <img id="user-img"  alt="avatar">
     </ion-item>
 
       <ion-item>
-        <ion-label stacked>First Name</ion-label>
-        <ion-input #fname formControlName="fname" type="fname" placeholder="First name"
+        <ion-input #fname formControlName="fname" type="fname" placeholder="First Name"
           [class.invalid]="!signupForm.controls.fname.valid && signupForm.controls.fname.dirty">
           </ion-input>
       </ion-item>
@@ -32,9 +31,8 @@
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Last Name</ion-label>
         <ion-input #n
-        lame formControlName="lname" type="lname" placeholder="Last name"
+        lame formControlName="lname" type="lname" placeholder="Last Name"
           [class.invalid]="!signupForm.controls.lname.valid && signupForm.controls.lname.dirty">
           </ion-input>
       </ion-item>
@@ -44,8 +42,8 @@
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Field of Study</ion-label>
-        <ion-input #field formControlName="field" type="text" placeholder="Field"
+
+        <ion-input #field formControlName="field" type="text" placeholder="Field of study"
           [class.invalid]="!signupForm.controls.field.valid && signupForm.controls.field.dirty">
           </ion-input>
       </ion-item>
@@ -55,7 +53,6 @@
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Email</ion-label>
         <ion-input #email formControlName="email" type="email" placeholder="Email address"
           [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty">
           </ion-input>
@@ -66,7 +63,6 @@
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Password</ion-label>
         <ion-input #password formControlName="password" type="password" placeholder="Your password"
           [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
           </ion-input>

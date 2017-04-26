@@ -18,9 +18,10 @@
                     <img id="message-img"padding src="{{chat?.pic}}" alt="GroupPhoto"/>
                 </ion-thumbnail>
                 <h2>{{chat?.topic}}</h2>
-                <p>{{chat?.messages.message}}</p>
+
                 <span item-right text-wrap>
                 <ion-note>{{chat?.timestamp|date : 'h:mma'}} <br> {{chat?.timestamp|date : 'MMM/dd'}} </ion-note>
+                <p>{{chat?.latestMessage}}</p>
               </span>
             </button>
             <ion-item-options side="left">

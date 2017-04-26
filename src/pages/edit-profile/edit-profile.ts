@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
+
 import { ProfileData } from '../../providers/profile.data'
 import { AuthProvider } from '../../providers/auth.provider'
 import { LoginPage } from '../login/login';
@@ -13,6 +15,7 @@ import { ProfilePage } from '../profile/profile';
 export class EditProfilePage {
     private profileData;
     private userProfile: any;
+
     private editProfile: string;
     private editProfileForm;
     private loader;
