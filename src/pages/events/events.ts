@@ -18,7 +18,6 @@ export class EventsPage {
     this.events = [];
   }
   ionViewDidEnter(){
-    this.showLoading()
     this.eventData.getEventList().on('value', snapshot => {
       let rawList = [];
       snapshot.forEach( snap => {
@@ -34,7 +33,6 @@ export class EventsPage {
       });
       this.events = rawList;
       console.log(this.events)
-      this.loader.dismiss()
     });
 
   }

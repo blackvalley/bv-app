@@ -22,6 +22,9 @@ export class ChatProvider {
   public get chats(){
     return this.chatdb
   }
+  getUserProfile(){
+    return this.fire.getDatabase().ref('/users').child(this._currentUser.uid)
+  }
   getAddedMessages(chatid:string):Observable<any>{
     return Observable.create(obs=>{
       this.chatdb.child(chatid).child('messages').on('child_added', message =>{

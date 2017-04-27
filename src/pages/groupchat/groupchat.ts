@@ -17,11 +17,18 @@ export class GroupchatPage {
 
   private chat
   private messages =[]
+  private me
   constructor(public navCtrl: NavController, public navParams: NavParams, private chatData: ChatProvider) {
       this.chatData.getChat(this.navParams.get('chatid')).on('value', snapshot => {
         this.chat = snapshot.val()
       });
-
+      this.chatData.getUserProfile().on('value', (data) => {
+        this.me ={
+          id:data.key,
+          firstname:data.val().firstName,
+          pic:data.val().profilePic
+        }
+            });
   }
 
   ionViewDidLoad() {
@@ -40,7 +47,7 @@ export class GroupchatPage {
             })
   }
   sendMessage(message:string){
-    this.chatData.sendMessage(message,this.chatData.currentUser.uid,
+    this.chatData.sendMessage(message,this.me,
         this.navParams.get('chatid'))
   }
   editchat(){
