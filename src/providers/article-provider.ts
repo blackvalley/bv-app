@@ -35,6 +35,14 @@ export class ArticleProvider {
   getArticleDetail(articleId): firebase.database.Reference {
   return this.articledb.child(articleId);
   }
+  addComment(articleid:string,comment:string,sender):firebase.Promise<any>{
+    let timestamp=Date.now()
+    return this.articledb.child(articleid).child('/comments').push({
+        comment:comment,
+        sender:sender,
+        timestamp:timestamp
+    })
+  }
 
 
 }

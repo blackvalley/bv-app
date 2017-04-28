@@ -18,7 +18,7 @@
       </ion-item>
     <h2 id="profile-name" *ngIf="userProfile?.firstName || userProfile?.lastName">
       <b>{{userProfile?.firstName}} {{userProfile?.lastName}}</b></h2>
-      <p>{{userProfile?.college}} | {{userProfile?.location}}</p>
+      <p>{{userProfile?.field}}</p>
     </div>
   </ion-item>
 
@@ -44,9 +44,9 @@
         <p item-left>Software Developer</p><p item-right> Intern</p>
       </ion-item>
     </ion-card>
-
   </ion-list>
-    <ion-list-header>
+
+  <ion-list-header>
       <ion-icon name='pulse'></ion-icon>
       Interest
     </ion-list-header>
@@ -61,8 +61,6 @@
     </ion-scroll>
 
 
-
-
   <ion-list-header>
     <ion-icon name='link'></ion-icon>
     Connections
@@ -71,10 +69,10 @@
     <button ion-item (click)="openConnections()">
       Connections
     </button>
-    <button ion-item>
+    <button ion-item (click)="openMyEvents()">
       Events
     </button>
-    <button ion-item>
+    <button ion-item (click)="openMyOpps()">
       Opportunties
     </button>
 

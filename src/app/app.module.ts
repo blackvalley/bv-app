@@ -33,6 +33,9 @@ import { GroupchatPage } from '../pages/groupchat/groupchat'
 import { OpportunityData } from '../providers/opportunity.provider'
 import { Camera } from '@ionic-native/camera';
 import { ChatProvider } from '../providers/chat.provider'
+import { MyOppsPage } from '../pages/my-opps/my-opps'
+import { MyEventsPage } from '../pages/my-events/my-events'
+import { ViewProfilePage } from '../pages/view-profile/view-profile'
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { ChatProvider } from '../providers/chat.provider'
     CreateMessagePage,
     EditProfilePage,
     EditChatPage,
+    ViewProfilePage,
+    MyEventsPage,
+    MyOppsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -88,6 +94,9 @@ import { ChatProvider } from '../providers/chat.provider'
     CreateMessagePage,
     EditProfilePage,
     EditChatPage,
+    ViewProfilePage,
+    MyEventsPage,
+    MyOppsPage
 
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
