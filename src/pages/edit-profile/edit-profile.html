@@ -41,7 +41,7 @@
         <!--Personal Edit Page  -->
         <ion-list *ngSwitchCase="'persInfo'">
             <ion-item id=profile-img>
-              <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7" alt="avatar">
+              <img id="user-img" src={{userProfile?.profilePic}} alt="avatar">
             </ion-item>
 
 
@@ -131,7 +131,7 @@
 
 
 
-              </form>
+
 
 
             <ion-item (click)="updatePassword()">
@@ -161,7 +161,7 @@
                     </button>
 
 
-
+                  </form>
         </ion-list>
 
         <!--Business Edit Page  -->

@@ -80,9 +80,6 @@ export class EditProfilePage {
             });
             alert.present();
           });
-
-        this.loader = this.loadingCtrl.create();
-        this.loader.present();
         }
       }
 

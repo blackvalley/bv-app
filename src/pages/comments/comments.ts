@@ -18,28 +18,52 @@ import { ProfileData } from '../../providers/profile.data'
 })
 export class CommentsPage {
   private profileData
-  private userProfile: any;
-
+  private me: any;
+  private comments: any[]
+  private articleid
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
     private articledb: ArticleProvider, private profile: ProfileData) {
-      this.profileData = profile;
-
-      this.profileData.getUserProfile().on('value', (data) => {
-        this.userProfile = data.val();
+      this.articleid = this.navParams.get('articleId');
+      this.comments=[]
+      this.profile.getUserProfile().on('value', (data) => {
+              this.me ={
+                id:data.key,
+                firstname:data.val().firstName,
+                lastname:data.val().lastName,
+                pic:data.val().profilePic
+              }
             });
+      this.getArticle()
+      this.getAddedComments()
 
   }
 
   ionViewDidLoad() {
-    this.articledb.getArticleDetail(this.navParams.get('articleId'))
+    console.log('ionViewDidLoad CommentsPage')
+  }
+  getArticle(){
+    this.articledb.getArticleDetail(this.articleid)
     .on('value', snapshot => {
     this.article = snapshot.val();
     });
-    console.log('ionViewDidLoad CommentsPage')
   }
-
-
+  getAddedComments(){
+    this.articledb.getAddedComments(this.articleid)
+        .subscribe(comment => {
+      this.comments.push(comment)
+      console.log(this.comments)
+    },
+    err =>{
+       console.error("Unable to add user - ", err)
+    })
+  }
+  addComment(comment:string){
+    this.articledb.addComment(this.articleid,comment,this.me).
+    then(()=>{
+      
+    })
+  }
   closeComments(){
     this.viewCtrl.dismiss();
   }

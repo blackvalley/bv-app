@@ -6,6 +6,8 @@ import { AuthProvider } from '../../providers/auth.provider'
 import { LoginPage } from '../login/login';
 import { EditProfilePage } from '../edit-profile/edit-profile'
 import { ConnectionsPage } from '../connections/connections'
+import { MyEventsPage } from '../my-events/my-events'
+import { MyOppsPage } from '../my-opps/my-opps'
 
 @Component({
   selector: 'page-profile',
@@ -33,6 +35,14 @@ export class ProfilePage {
 
     openConnections() {
       this.nav.push(ConnectionsPage);
+    }
+
+    openMyEvents() {
+      this.nav.push(MyEventsPage);
+    }
+
+    openMyOpps() {
+      this.nav.push(MyOppsPage);
     }
 
 
