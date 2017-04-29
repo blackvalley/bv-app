@@ -79,13 +79,10 @@ export class CreateChatPage {
     }
 
     createMessage(){
-      this.navCtrl.pop()
-      .then(()=>{
         this.navCtrl.push(CreateMessagePage,{
           members:this.members,
           me:this.me
         })
-      })
     }
     closeChat(){
       this.viewCtrl.dismiss();

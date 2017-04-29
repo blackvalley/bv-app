@@ -8,12 +8,6 @@
 
   <ion-navbar id="navbar">
     <ion-title>{{topic}}</ion-title>
-    <ion-buttons>
-      <button ion-button icon-only (click)="cancelMessage()">
-        <ion-icon name="arrow-back"></ion-icon> Back
-        </button>
-    </ion-buttons>
-
   </ion-navbar>
 
 </ion-header>
@@ -21,31 +15,35 @@
 
 <ion-content id="content">
 
+
+
   <ion-item id="message-img" no-lines>
     <ion-item  item-left >
-    <img padding src="{{chat?.pic}}" alt="avatar">
-    <p>Set Photo</p>
+      <button ion-button clear small icon-left (click)="cameraOptions()">
+        <img [src]="captureDataUrl" id="img" *ngIf="captureDataUrl"/>
+        <ion-icon color="dark" name='camera'></ion-icon>
+        Add Image
+      </button>
+
   </ion-item>
   <ion-input item right [(ngModel)]="topic" placeholder="Group Topic" id="groupTopic">
 
     </ion-input>
   </ion-item>
 
-  <ion-scroll scrollX="true" class="item" id="membersTitle">
-    <ion-row>
+    <ion-row id="membersInGroup">
       <ion-col width-30>
         <p>Members:</p>
       </ion-col>
     <ion-col *ngFor="let member of members" style="white-space: nowrap" class="item" id="members">
-    <p> {{member.firstname}} {{member?.lastname}}</p>
-
+      <p> {{member.firstname}} {{member?.lastname}}</p>
   </ion-col>
   </ion-row>
 
-  </ion-scroll>
 
 
  <ion-item id="input-comments" no-lines>
+   <ion-icon item-left name="camera" (click)="cameraOptions()"></ion-icon>
   <ion-input type="text" [(ngModel)]="message" placeholder="Enter your message here..."></ion-input>
   <button item-right ion-button (click)=createGroupChat(message,topic)> Post</button>
 </ion-item>

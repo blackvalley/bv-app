@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, LoadingController,
+          ActionSheetController, Platform} from 'ionic-angular';
 import { OpportunityData } from '../../providers/opportunity.provider';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -9,11 +10,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'create-opp.html'
 })
 export class CreateOppPage {
-  private captureDataUrl = null
+  private captureDataUrl: string
   private loader
   constructor(public navCtrl: NavController, public navParams: NavParams,
       private oppData:OpportunityData, private viewCtrl: ViewController, private camera:Camera,
-      private loadingCtrl:LoadingController, private alertCtrl:AlertController) {}
+      private loadingCtrl:LoadingController, private alertCtrl:AlertController,
+      private actionSheetCtrl: ActionSheetController, private platform: Platform) {
+
+      }
 
 
   //uses opportunity provider to create an opportunity
@@ -34,24 +38,69 @@ export class CreateOppPage {
     this.viewCtrl.dismiss();
 
   }
-  takePicture(){
-  const options: CameraOptions = {
-    quality : 95,
-    destinationType : this.camera.DestinationType.DATA_URL,
-    sourceType : this.camera.PictureSourceType.CAMERA,
-    allowEdit : true,
-    encodingType: this.camera.EncodingType.PNG,
-    targetWidth: 500,
-    targetHeight: 500,
-    saveToPhotoAlbum: true
+
+  cameraOptions(){
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Get Photo from ...',
+      cssClass: 'share-action-sheet',
+      enableBackdropDismiss: true,
+      buttons: [
+        {
+          text: 'Camera',
+          role: 'destructive',
+          icon: !this.platform.is('ios') ? 'camera' : null,
+          handler: () => {
+            const options: CameraOptions = {
+              quality : 95,
+              destinationType : this.camera.DestinationType.DATA_URL,
+              sourceType : this.camera.PictureSourceType.CAMERA,
+              allowEdit : true,
+              encodingType: this.camera.EncodingType.PNG,
+              targetWidth: 500,
+              targetHeight: 500,
+              saveToPhotoAlbum: true
+            }
+            this.camera.getPicture(options).then(imageData => {
+              this.captureDataUrl = imageData;
+              console.log(this.captureDataUrl)
+            }, error => {
+              console.log("ERROR -> " + JSON.stringify(error));
+            });
+          }
+        },
+        {
+          text: 'Photo Library',
+          icon: !this.platform.is('ios') ? 'images' : null,
+          handler: () => {
+            const options: CameraOptions = {
+              quality : 95,
+              destinationType : this.camera.DestinationType.DATA_URL,
+              sourceType : this.camera.PictureSourceType.PHOTOLIBRARY,
+              allowEdit : true,
+              encodingType: this.camera.EncodingType.PNG,
+              targetWidth: 500,
+              targetHeight: 500,
+              }
+              this.camera.getPicture(options).then(imageData => {
+                this.captureDataUrl = imageData;
+                console.log(this.captureDataUrl)
+              }, error => {
+              console.log("ERROR -> " + JSON.stringify(error));
+              });
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: !this.platform.is('ios') ? 'close' : null,
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
-  this.camera.getPicture(options).then(imageData => {
-    this.captureDataUrl = imageData;
-    console.log(this.captureDataUrl)
-  }, error => {
-    console.log("ERROR -> " + JSON.stringify(error));
-  });
-}
 
 
 showLoading() {

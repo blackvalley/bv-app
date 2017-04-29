@@ -18,18 +18,26 @@ page-create-opp {
 
   }
 
-  #opp-img {
-    background-color: lightgray;
-    color: #000000;
+
+  #img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height:auto;
+
   }
 
 
+
   #opp-img button{
-    background: url("captureDataUrl");
     height: 325px;
     width: 325px;
     margin-right: auto;
     margin-left: auto;
+    border-radius: 100%;
+    color: #000000;
+
+
 
   }
 
@@ -37,8 +45,6 @@ page-create-opp {
 
 
   ion-row {
-    padding-top: -10px;
-    padding-bottom: -10px;
     border-bottom: 2px solid #515151;
   }
 

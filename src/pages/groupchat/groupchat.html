@@ -38,11 +38,16 @@
   </ion-list>
 
 
-  <ion-item id="input-comments" no-lines>
-   <ion-input type="text" [(ngModel)]="message" placeholder="Enter your comment here..."></ion-input>
-   <button item-right ion-button (click)=sendMessage(message)> Post</button>
- </ion-item>
-
 
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item id="input-comments" no-lines>
+      <ion-icon item-left name="camera"></ion-icon>
+     <ion-input type="text" [(ngModel)]="message" placeholder="Enter your comment here..."></ion-input>
+     <button item-right ion-button (click)=sendMessage(message)> Post</button>
+   </ion-item>
+  </ion-toolbar>
+</ion-footer>

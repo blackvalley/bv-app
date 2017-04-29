@@ -1,7 +1,7 @@
 import {
   NavController,
   LoadingController,
-  AlertController } from 'ionic-angular';
+  AlertController, ActionSheetController, Platform, } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth.provider';
@@ -26,7 +26,8 @@ export class SignupPage {
 
  constructor(private nav: NavController, private authProvider: AuthProvider,
    private formBuilder: FormBuilder, private loadingCtrl: LoadingController,
-   private alertCtrl: AlertController, private camera:Camera) {
+   private alertCtrl: AlertController, private camera:Camera,
+   private actionSheetCtrl: ActionSheetController, private platform: Platform) {
 
    this.signupForm = formBuilder.group({
      fname: ['', Validators.compose([Validators.minLength(2),Validators.required])],
@@ -87,23 +88,71 @@ export class SignupPage {
      this.nav.push(Signup2Page)
    }
 
-   takePicture(){
-   const options: CameraOptions = {
-     quality : 95,
-     destinationType : this.camera.DestinationType.DATA_URL,
-     sourceType : this.camera.PictureSourceType.PHOTOLIBRARY,
-     allowEdit : true,
-     encodingType: this.camera.EncodingType.PNG,
-     targetWidth: 500,
-     targetHeight: 500,
-     }
-     this.camera.getPicture(options).then(imageData => {
-       this.profilePic = imageData;
-       console.log(this.profilePic)
-     }, error => {
-     console.log("ERROR -> " + JSON.stringify(error));
+
+
+   cameraOptions() {
+     let actionSheet = this.actionSheetCtrl.create({
+       title: 'Get Photo from ...',
+       cssClass: 'share-action-sheet',
+       enableBackdropDismiss: true,
+       buttons: [
+         {
+           text: 'Camera',
+           role: 'destructive',
+           icon: !this.platform.is('ios') ? 'camera' : null,
+           handler: () => {
+             const options: CameraOptions = {
+               quality : 95,
+               destinationType : this.camera.DestinationType.DATA_URL,
+               sourceType : this.camera.PictureSourceType.CAMERA,
+               allowEdit : true,
+               encodingType: this.camera.EncodingType.PNG,
+               targetWidth: 500,
+               targetHeight: 500,
+               saveToPhotoAlbum: true
+             }
+             this.camera.getPicture(options).then(imageData => {
+               this.profilePic = imageData;
+               console.log(this.profilePic)
+             }, error => {
+               console.log("ERROR -> " + JSON.stringify(error));
+             });
+           }
+         },
+         {
+           text: 'Photo Library',
+           icon: !this.platform.is('ios') ? 'images' : null,
+           handler: () => {
+             const options: CameraOptions = {
+               quality : 95,
+               destinationType : this.camera.DestinationType.DATA_URL,
+               sourceType : this.camera.PictureSourceType.PHOTOLIBRARY,
+               allowEdit : true,
+               encodingType: this.camera.EncodingType.PNG,
+               targetWidth: 500,
+               targetHeight: 500,
+               }
+               this.camera.getPicture(options).then(imageData => {
+                 this.profilePic = imageData;
+                 console.log(this.profilePic)
+               }, error => {
+               console.log("ERROR -> " + JSON.stringify(error));
+               });
+           }
+         },
+         {
+           text: 'Cancel',
+           role: 'cancel', // will always sort to be on the bottom
+           icon: !this.platform.is('ios') ? 'close' : null,
+           handler: () => {
+             console.log('Cancel clicked');
+           }
+         }
+       ]
      });
+     actionSheet.present();
    }
+
 
 
 }
