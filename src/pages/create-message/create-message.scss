@@ -1,7 +1,6 @@
 page-create-message {
 
   #content {
-    background: #000000;
   }
 
   #navbar {
@@ -30,7 +29,16 @@ page-create-message {
     margin-right: 0px;
   }
 
+  #membersInGroup{
+
+  }
+
+  #members{
+    width: 500px;
+  }
+
   #members p{
+    text-align: center;
     background: rgba(255,255,255, 0.1);
     color: #FFFFFF;
   }

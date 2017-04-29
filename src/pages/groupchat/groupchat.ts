@@ -50,7 +50,7 @@ export class GroupchatPage {
     this.chatData.sendMessage(message,this.me,
         this.navParams.get('chatid'))
   }
-  editchat(){
+  editChat(){
     this.navCtrl.push(EditChatPage);
   }
 

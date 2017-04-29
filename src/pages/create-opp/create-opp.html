@@ -16,8 +16,8 @@
 
     <ion-row id="opp-img">
 
-      <button ion-button clear small icon-left id="opp-img" (click)="takePicture()">
-        <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
+      <button ion-button clear small icon-left (click)="cameraOptions()">
+        <img [src]="captureDataUrl" id="img" *ngIf="captureDataUrl"/>
         <ion-icon color="dark" name='camera'></ion-icon>
         Add Image
       </button>

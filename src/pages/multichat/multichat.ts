@@ -31,10 +31,11 @@ export class MultiChatPage {
 
   }
   createChat(){
-      this.chats = []
-      let eventModal = this.modalCtrl.create(CreateChatPage)
-      eventModal.present()
+    this.navCtrl.push(CreateChatPage)
+
   }
+
+
   openGroupChat(chatid:string){
     this.navCtrl.push(GroupchatPage,{
       chatid:chatid
