@@ -14,7 +14,7 @@ import { ConnectionsPage } from '../connections/connections'
 export class ProfilePage {
     private profileData
     private userProfile: any;
-    private birthDate: string;
+
 
     constructor(public nav: NavController, private profile: ProfileData,
       private authData: AuthProvider, private alertCtrl:AlertController) {
@@ -23,7 +23,6 @@ export class ProfilePage {
 
       this.profileData.getUserProfile().on('value', (data) => {
         this.userProfile = data.val();
-        this.birthDate = this.userProfile.birthDate;
             });
         }
 

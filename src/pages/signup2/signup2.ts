@@ -42,31 +42,24 @@ export class Signup2Page {
   if (!this.signup2Form.valid){
     console.log(this.signup2Form.value);
   } else {
-        this.loader.dismiss().then( () => {
-        this.navCtrl.setRoot(TabsPage);
-      });
-    } (error) => {
-      this.loader.dismiss().then( () => {
-        let alert = this.alertCtrl.create({
-          message: error.message,
-          buttons: [
-            {
-              text: "Try Again",
-              role: 'cancel'
-            }
-          ]
-        });
-        alert.present();
-      });
+        let bio = {
+          profileType:this.signup2Form.value.profileType,
+          gender:this.signup2Form.value.gender,
+          city:this.signup2Form.value.city,
+          state:this.signup2Form.value.state
+        }
+        this.authProvider.signup2User(bio)
+        .then(()=>{
+          this.showSuccess()
+          this.navCtrl.setRoot(TabsPage)
+        })
+        .catch((error)=>{
+          this.showError(error)
+        })
 
-    this.loader = this.loadingCtrl.create();
-    this.loader.present();
     }
   }
   showError(text){
-    setTimeout(() => {
-      this.loader.dismiss();
-    });
 
     let prompt = this.alertCtrl.create({
       title: 'Fail',
@@ -85,6 +78,15 @@ export class Signup2Page {
   goToLoginPage(){
     this.navCtrl.push(LoginPage);
   }
+  showSuccess() {
+        let prompt = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: "You are signed up!",
+          buttons: ['OK']
+        });
+        prompt.present();
+
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup2Page');

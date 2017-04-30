@@ -44,18 +44,17 @@ export class SignupPage {
   if (!this.signupForm.valid){
     this.showError("All Fields Required")
     console.log(this.signupForm.value);
-  } else if(this.profilePic == null){
+  }
+   else if(this.profilePic == null){
     this.showError("Profile Picture Needed")
-  } else {
+  }
+  else {
     this.authProvider.signupUser(this.signupForm.value.fname, this.signupForm.value.lname,
        this.signupForm.value.email, this.signupForm.value.field, this.signupForm.value.password,
         this.profilePic)
     .then(() => {
-      this.loader.dismiss().then( () => {
         this.nav.push(Signup2Page)
-      });
     }, (error) => {
-      this.loader.dismiss().then( () => {
         let alert = this.alertCtrl.create({
           message: error.message,
           buttons: [
@@ -66,10 +65,8 @@ export class SignupPage {
           ]
         });
         alert.present();
-      });
     });
-    this.loader = this.loadingCtrl.create();
-    this.loader.present();
+
     }
   }
   showError(text){

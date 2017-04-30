@@ -31,8 +31,8 @@ export class CreateChatPage {
     this.profile.getUserProfile().on('value', (data) => {
       this.me ={
         id:data.key,
-        firstname:data.val().firstName
-        // pic:data.val().profilePic
+        firstname:data.val().firstName,
+        pic:data.val().profilePic
       }
           });
   }
@@ -47,8 +47,8 @@ export class CreateChatPage {
         firstname: snap.val().firstName,
         lastname:snap.val().lastName,
         college:snap.val().college,
-        employment:snap.val().employment
-        // pic:snap.val().profilePic
+        employment:snap.val().employment,
+        pic:snap.val().profilePic
         })
       return false
       });
@@ -60,8 +60,8 @@ export class CreateChatPage {
     addToChat(user:any){
       this.members.push({
         id: user.id,
-        firstname: user.firstname
-        // pic:user.pic
+        firstname: user.firstname,
+        pic:user.pic
         });
 
     }
