@@ -12,6 +12,7 @@ import { EditChatPage } from '../edit-chat/edit-chat';
 @Component({
   selector: 'page-groupchat',
   templateUrl: 'groupchat.html'
+
 })
 export class GroupchatPage {
 
@@ -48,10 +49,11 @@ export class GroupchatPage {
   }
   sendMessage(message:string){
     this.chatData.sendMessage(message,this.me,
-        this.navParams.get('chatid'))
+        this.navParams.get('chatid'));
   }
   editChat(){
     this.navCtrl.push(EditChatPage);
   }
+
 
 }

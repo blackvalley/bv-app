@@ -36,14 +36,17 @@
 
   </ion-scroll>
   <ion-list id="chatList">
-      <ion-item *ngFor="let user of users"  (click)="addToChat(user)" id="friend">
+      <ion-item *ngFor="let user of users"  (click)="addToChat(user)" id="friend" no-lines>
         <ion-avatar item-left>
           <img src={{user?.pic}}>
         </ion-avatar>
-        <div>
+        <ion-label>
         <h2 >{{user?.firstname}} {{user?.lastname}} </h2>
         <h3>{{user?.employment}} | {{user?.college}}</h3>
-      </div>
+      </ion-label>
+      <ion-checkbox item-right>
+    </ion-checkbox>
+
       </ion-item>
   </ion-list>
 </ion-content>

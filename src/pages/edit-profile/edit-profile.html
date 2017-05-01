@@ -9,17 +9,6 @@
   <ion-navbar>
     <ion-title>Edit Profile</ion-title>
   </ion-navbar>
-
-</ion-header>
-
-
-
-
-<ion-content id="content">
-
-
-  <!-- Edit Page Nav. -->
-
   <ion-segment [(ngModel)]="editProfile" no-lines id="segmentToggle">
     <ion-segment-button value="persInfo">
       Personal Info
@@ -32,11 +21,21 @@
     </ion-segment-button>
   </ion-segment>
 
+</ion-header>
 
 
-      <ion-list id="segments">
 
-      <div [ngSwitch]="editProfile">
+
+<ion-content id="content">
+
+
+  <!-- Edit Page Nav. -->
+
+
+
+
+
+      <div [ngSwitch]="editProfile" id="segments">
 
         <!--Personal Edit Page  -->
         <ion-list *ngSwitchCase="'persInfo'">
@@ -45,7 +44,7 @@
             </ion-item>
 
 
-              <form [formGroup]="editProfileForm" (submit)="updateInfo()" novalidate>
+              <form [formGroup]="editProfileForm" (submit)="updatePersonalInfo()" novalidate>
                 <ion-item>
                   <ion-label stacked>First Name</ion-label>
                   <ion-input #firstName formControlName="firstName" type="text" placeholder="First name"
@@ -166,14 +165,96 @@
 
         <!--Business Edit Page  -->
         <ion-list *ngSwitchCase="'busInfo'">
+
+          <form [formGroup]="editEmploymentForm" (submit)="updateEmploymentInfo()" novalidate>
+            <ion-item>
+              <ion-label stacked>Company</ion-label>
+              <ion-input #jobName formControlName="jobName" type="text" placeholder="Black Valley"
+                [class.invalid]="!editEmploymentForm.controls.jobName.valid && editEmploymentForm.controls.jobName.dirty">
+                </ion-input>
+            </ion-item>
+            <ion-item class="error-message"
+              *ngIf="!editEmploymentForm.controls.jobName.valid  && editEmploymentForm.controls.jobName.dirty">
+              <p> Company name must be at least two characters.</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Position</ion-label>
+              <ion-input #jobPosition formControlName="jobPosition" type="text" placeholder="Position"
+                [class.invalid]="!editEmploymentForm.controls.jobPosition.valid && editEmploymentForm.controls.jobPosition.dirty">
+                </ion-input>
+            </ion-item>
+            <ion-item class="error-message"
+              *ngIf="!editEmploymentForm.controls.jobPosition.valid  && editEmploymentForm.controls.jobPosition.dirty">
+              <p>Your Position must be at least two characters.</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Description</ion-label>
+              <ion-input #jobDescription formControlName="jobDescription" type="text" placeholder="Description"
+                [class.invalid]="!editEmploymentForm.controls.jobDescription.valid && editEmploymentForm.controls.jobDescription.dirty">
+                </ion-input>
+            </ion-item>
+            <ion-item class="error-message"
+              *ngIf="!editEmploymentForm.controls.jobDescription.valid  && editEmploymentForm.controls.jobDescription.dirty">
+              <p>Job name must be at least two characters.</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Start Date</ion-label>
+              <ion-input #jobDate formControlName="jobDate" type="text" placeholder="Summer 2017"
+                [class.invalid]="!editEmploymentForm.controls.jobName.valid && editEmploymentForm.controls.jobDate.dirty">
+                </ion-input>
+            </ion-item>
+            <ion-item class="error-message"
+              *ngIf="!editEmploymentForm.controls.jobDate.valid  && editEmploymentForm.controls.jobDate.dirty">
+              <p>Job name must be at least two characters.</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Link</ion-label>
+              <ion-input #jobLink formControlName="jobLink" type="text" placeholder="www.therealblackvalley.com"
+                [class.invalid]="!editEmploymentForm.controls.jobLink.valid && editEmploymentForm.controls.jobName.dirty">
+                </ion-input>
+            </ion-item>
+            <ion-item class="error-message"
+              *ngIf="!editEmploymentForm.controls.jobLink.valid  && editEmploymentForm.controls.jobLink.dirty">
+              <p>Job name must be at least two characters.</p>
+            </ion-item>
+
+
+            <button ion-button full type="submit" id="connect-btn" >
+                Submit
+            </button>
+
+          </form>
+
+
+
         </ion-list>
 
         <!--Other Edit Page  -->
-          <ion-list *ngSwitchCase="'Other'">
+          <ion-list *ngSwitchCase="'Other'" id="other">
+
+          <ion-list-header>
+            <ion-icon name='pulse'></ion-icon>
+            Interest
+          </ion-list-header>
+
+          <ion-scroll scrollX="true" >
+            <ion-row>
+              <button ion-button clear class="interest"><ion-col><div id="addInterest"> <ion-icon name="add"></ion-icon> Add <br> Interest</div></ion-col></button>
+              <ion-col><div class="interest"> Augmented Reality</div></ion-col>
+              <ion-col><div class="interest"> App Development</div></ion-col>
+              <ion-col><div class="interest"> Web Development</div></ion-col>
+              <ion-col><div class="interest"> Virtual Reality</div></ion-col>
+              <ion-col><div class="interest"> Another Interest</div></ion-col>
+          </ion-row>
+          </ion-scroll>
+
           </ion-list>
 
 
 
         </div>
-    </ion-list>
 </ion-content>

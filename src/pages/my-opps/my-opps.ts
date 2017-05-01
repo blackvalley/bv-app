@@ -15,11 +15,13 @@ import { OpportunityData } from '../../providers/opportunity.provider'
 export class MyOppsPage {
   calendar: any = "event"
   private loader
+  private myOpps: string
   private opps : any[]
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modalCtrl: ModalController, private oppData:OpportunityData,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
       this.opps=[]
+      this.myOpps = "post"
     }
 
   ionViewDidEnter(){
