@@ -2,12 +2,71 @@ page-edit-profile {
 
   #content {
     padding: 10px;
+    background: #000000;
+
+
   }
+
+
+  #other {
+    background: #515151;
+    padding-bottom: 1px;
+
+
+  }
+
+  #userEmployment{
+    background: #515151;
+    padding-bottom: 1px;
+
+  }
+
+  #content ion-item {
+    background: #transparent;
+    background: #000000;
+    color: #FFFFFF;
+
+  }
+
+  #content ion-item ion-icon{
+      color:  #C6E947;
+  }
+
+
+  #logout-btn {
+    background: rgba(81, 81, 81, 0.6);
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+    color: #FF0000;
+  }
+
+  #employment ion-card{
+    background-color: #000000;
+    color: #C6E947;
+    padding: 5px;
+
+  }
+
+  #employment ion-card{
+    background-color: #000000;
+    color: #C6E947;
+    padding: 5px;
+
+  }
+  #employment p{
+    color: #515151;
+
+  }
+
+
+
 
   #segmentToggle {
     position: fixed;
     margin-right: auto;
     margin-left: auto;
+    background: #000000;
   }
 
   #segments {
@@ -18,14 +77,25 @@ page-edit-profile {
     z-index: -1;
   }
 
-
-  #interest {
-    background: #515151;
+  #segments ion-list-header {
+    color: #FFFFFF;
   }
+
+  #segments ion-list-header ion-icon{
+    color: #FFFFFF;
+  }
+
+
+
+
+
 
   #interest{
     position: relative;
+    background: #515151;
+
   }
+
 
   #addInterest{
     padding-top: 10px;
@@ -35,9 +105,6 @@ page-edit-profile {
     text-align: center;
 
   }
-
-
-
 
   .interest {
     background-color: #000000;
@@ -49,6 +116,7 @@ page-edit-profile {
     width: 100px;
     height: 80px;
   }
+
 
   ion-scroll {
   	height: 110px;

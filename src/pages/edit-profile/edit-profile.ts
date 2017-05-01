@@ -40,7 +40,6 @@ export class EditProfilePage {
         college: [this.userProfile.college, Validators.minLength(2)],
         field: [this.userProfile.field, Validators.minLength(2)],
         location: [this.userProfile.location, Validators.minLength(2)],
-        employment: [this.userProfile.employment, Validators.minLength(2)],
         birthDate: [this.userProfile.birthDate, Validators.minLength(2)],
         email: [this.userProfile.email, Validators.compose([Validators.minLength(6),Validators.required])],
       });
@@ -99,7 +98,7 @@ export class EditProfilePage {
           this.profileData.updateName(this.editProfileForm.value.firstName,
             this.editProfileForm.value.lastName);
           this.profileData.updateProfile(this.editProfileForm.value.college, this.editProfileForm.value.field,
-            this.editProfileForm.value.location,this.editProfileForm.value.employment, this.editProfileForm.value.birthDate)
+            this.editProfileForm.value.location, this.editProfileForm.value.birthDate)
           this.profileData.updateEmail(this.editProfileForm.value.email)
           .then(() => {
                 this.nav.push(ProfilePage);
@@ -144,5 +143,35 @@ export class EditProfilePage {
         });
         alert.present();
       }
+
+
+
+  addInterest() {
+  let alert = this.alertCtrl.create({
+    title: 'Add Interest',
+    message: 'What are you Interested in?',
+    inputs: [
+      {
+        name: 'interest',
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Add',
+        handler: () => {
+          console.log('Buy clicked');
+        }
+      }
+    ]
+  });
+  alert.present();
+}
 
 }

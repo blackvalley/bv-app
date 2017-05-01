@@ -38,15 +38,23 @@
       <div [ngSwitch]="editProfile" id="segments">
 
         <!--Personal Edit Page  -->
-        <ion-list *ngSwitchCase="'persInfo'">
-            <ion-item id=profile-img>
+        <ion-list *ngSwitchCase="'persInfo'" id="persInfo">
+          <ion-list-header>
+            <ion-icon name='albums'></ion-icon>
+            Bio
+          </ion-list-header>
+
+            <ion-item id=profile-img no-lines>
               <img id="user-img" src={{userProfile?.profilePic}} alt="avatar">
             </ion-item>
 
 
               <form [formGroup]="editProfileForm" (submit)="updatePersonalInfo()" novalidate>
+
+                <ion-row>
+                  <ion-col>
                 <ion-item>
-                  <ion-label stacked>First Name</ion-label>
+                  <ion-label><ion-icon name="person"></ion-icon></ion-label>
                   <ion-input #firstName formControlName="firstName" type="text" placeholder="First name"
                     [class.invalid]="!editProfileForm.controls.firstName.valid && editProfileForm.controls.firstName.dirty">
                     </ion-input>
@@ -55,9 +63,10 @@
                   *ngIf="!editProfileForm.controls.firstName.valid  && editProfileForm.controls.firstName.dirty">
                   <p>First name must be at least two characters.</p>
                 </ion-item>
+              </ion-col>
+              <ion-col>
 
                 <ion-item>
-                  <ion-label stacked>Last Name</ion-label>
                   <ion-input #lastName formControlName="lastName" type="text" placeholder="Last name"
                     [class.invalid]="!editProfileForm.controls.lastName.valid && editProfileForm.controls.lastName.dirty">
                     </ion-input>
@@ -66,10 +75,12 @@
                   *ngIf="!editProfileForm.controls.lastName.valid  && editProfileForm.controls.lastName.dirty">
                   <p>Last name must be at least two characters.</p>
                 </ion-item>
+              </ion-col>
+            </ion-row>
 
                 <ion-item>
-                  <ion-label stacked>Field of Study</ion-label>
-                  <ion-input #field formControlName="field" type="text" placeholder="Field"
+                  <ion-label><ion-icon name="book"></ion-icon></ion-label>
+                  <ion-input #field formControlName="field" type="text" placeholder="Focus"
                     [class.invalid]="!editProfileForm.controls.field.valid && editProfileForm.controls.field.dirty">
                     </ion-input>
                 </ion-item>
@@ -79,7 +90,7 @@
                 </ion-item>
 
                 <ion-item>
-                  <ion-label stacked>College</ion-label>
+                  <ion-label><ion-icon name="school"></ion-icon></ion-label>
                   <ion-input #college formControlName="college" type="text"
                     [class.invalid]="!editProfileForm.controls.college.valid && editProfileForm.controls.college.dirty">
                     </ion-input>
@@ -90,7 +101,7 @@
                 </ion-item>
 
                 <ion-item>
-                  <ion-label stacked>Location</ion-label>
+                  <ion-label><ion-icon name="pin"></ion-icon></ion-label>
                   <ion-input #location formControlName="location" type="text" placeholder="Location"
                     [class.invalid]="!editProfileForm.controls.location.valid && editProfileForm.controls.location.dirty">
                     </ion-input>
@@ -101,24 +112,7 @@
                 </ion-item>
 
                 <ion-item>
-                  <ion-label stacked>Employment</ion-label>
-                  <ion-input #employment formControlName="employment" type="text"
-                    [class.invalid]="!editProfileForm.controls.employment.valid && editProfileForm.controls.employment.dirty">
-                    </ion-input>
-                </ion-item>
-                <ion-item class="error-message"
-                  *ngIf="!editProfileForm.controls.employment.valid  && editProfileForm.controls.employment.dirty">
-                  <p>Employment name must be at least two characters.</p>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label class="dob-label">Date of Birth</ion-label>
-                  <ion-datetime displayFormat="MMM D, YYYY"
-                    formControlName="birthDate" ></ion-datetime>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label stacked>Email</ion-label>
+                  <ion-label><ion-icon name="mail"></ion-icon></ion-label>
                   <ion-input #email formControlName="email" type="email" placeholder="Email address"
                     [class.invalid]="!editProfileForm.controls.email.valid && editProfileForm.controls.email.dirty">
                     </ion-input>
@@ -128,25 +122,27 @@
                   <p>Please enter a valid email.</p>
                 </ion-item>
 
+                <ion-item>
+                  <ion-label id="dob-label"> Date of Birth</ion-label>
+                  <ion-datetime displayFormat="MMM D, YYYY"
+                    formControlName="birthDate" ></ion-datetime>
+                </ion-item>
 
 
-
-
-
-            <ion-item (click)="updatePassword()">
-              <ion-grid>
-                <ion-row>
-                  <ion-col width-50>
-                    Password
-                  </ion-col>
-                  <ion-col class="placeholder-profile">
-                    <span>
-                      Tap here to edit.
-                    </span>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
+                <ion-item (click)="updatePassword()">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col width-50>
+                        Password
+                      </ion-col>
+                      <ion-col class="placeholder-profile">
+                        <span>
+                          Tap here to edit.
+                        </span>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
 
             <button ion-button full type="submit" id="connect-btn" >
                 Submit
@@ -155,7 +151,7 @@
 
 
 
-                    <button ion-button full (click)="logOut()">
+                    <button ion-button full id="logout-btn" (click)="logOut()">
                       Logout page
                     </button>
 
@@ -164,7 +160,12 @@
         </ion-list>
 
         <!--Business Edit Page  -->
-        <ion-list *ngSwitchCase="'busInfo'">
+        <ion-list *ngSwitchCase="'busInfo'" id="busInfo">
+          <ion-list-header>
+            <ion-icon name='briefcase'></ion-icon>
+            New Employment
+          </ion-list-header>
+
 
           <form [formGroup]="editEmploymentForm" (submit)="updateEmploymentInfo()" novalidate>
             <ion-item>
@@ -228,6 +229,31 @@
             </button>
 
           </form>
+          <ion-list id="userEmployment">
+        <ion-list-header>
+          <ion-icon name='briefcase'></ion-icon>
+          Current Employment
+        </ion-list-header>
+
+
+          <ion-list id="employment">
+            <ion-card text-wrap>
+              <ion-row>
+                <ion-col><div><h1 item-left>{{userProfile?.jobName}}</h1></div></ion-col>
+                <ion-col class="end"><div> <h2 item-right>{{userProfile?.jobPosition}}</h2></div></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col><div><p>{{userProfile?.jobDescription}}</p></div></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col><div> <a href={{userProfile?.jobLink}}>Link</a></div></ion-col>
+                <ion-col class="end"><p>{{userProfile?.jobDate}}</p></ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-list>
+
+        </ion-list>
+
 
 
 
@@ -243,7 +269,7 @@
 
           <ion-scroll scrollX="true" >
             <ion-row>
-              <button ion-button clear class="interest"><ion-col><div id="addInterest"> <ion-icon name="add"></ion-icon> Add <br> Interest</div></ion-col></button>
+              <button ion-button clear class="interest" (click)="addInterest()"><ion-col><div id="addInterest"> <ion-icon name="add"></ion-icon> Add <br> Interest</div></ion-col></button>
               <ion-col><div class="interest"> Augmented Reality</div></ion-col>
               <ion-col><div class="interest"> App Development</div></ion-col>
               <ion-col><div class="interest"> Web Development</div></ion-col>
