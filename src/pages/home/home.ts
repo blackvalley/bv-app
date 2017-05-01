@@ -39,7 +39,6 @@ export class HomePage {
   }
 
   getArticles(){
-    this.showLoading()
     this.articledb.getArticles().on('value',snapshot =>{
         let rawData = [];
       snapshot.forEach(snap =>{
@@ -58,7 +57,6 @@ export class HomePage {
         return false
       })
       this.articles=rawData
-      this.loader.dismiss()
 
     })
   }
@@ -118,6 +116,7 @@ export class HomePage {
     });
     actionSheet.present();
   }
+
 
 
 

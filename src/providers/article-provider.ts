@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { FirebaseConfigService } from '../core/service/service'
-//import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable'
 /*
   Generated class for the ArticleProvider provider.
 
@@ -18,22 +18,36 @@ export class ArticleProvider {
     console.log('Hello ArticleProvider Provider');
     this.articledb= this.fire.getDatabase().ref('/articles')
   }
-  // getAddedArticles():Observable<any>{
-  //   return Observable.create(obs=>{
-  //     this.articledb.on('child_added', article =>{
-  //       obs.next(article.val())//gets data from article and converts to json
-  //     },
-  //     err =>{
-  //
-  //     })
-  //   })
-  // }
+  getAddedComments(articleid:string):Observable<any>{
+    return Observable.create(obs=>{
+      this.articledb.child(articleid).child('comments').on('child_added', comment =>{
+        obs.next(comment.val())//gets data from article and converts to json
+      },
+      err =>{
+
+      })
+    })
+  }
 
   getArticles():firebase.database.Reference{
     return this.articledb
   }
   getArticleDetail(articleId): firebase.database.Reference {
   return this.articledb.child(articleId);
+  }
+  addComment(articleid:string,comment:string,sender):firebase.Promise<any>{
+    let timestamp=Date.now()
+    return this.articledb.child(articleid).update({
+      latestUpdate:timestamp,
+      latestComment:comment
+    }).then(()=>{
+      this.articledb.child(articleid).child('comments').push({
+          timestamp:timestamp,
+          sender:sender,
+          comment:comment
+      })
+    })
+
   }
 
 

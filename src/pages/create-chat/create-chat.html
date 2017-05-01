@@ -8,11 +8,6 @@
 
   <ion-navbar id="navbar">
     <ion-title>Create Chatroom</ion-title>
-    <ion-buttons>
-      <button ion-button icon-only (click)="closeChat()">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="createMessage(members)">
         Next<ion-icon name="arrow-forward"></ion-icon>
@@ -41,14 +36,17 @@
 
   </ion-scroll>
   <ion-list id="chatList">
-      <ion-item *ngFor="let user of users"  (click)="addToChat(user)" id="friend">
+      <ion-item *ngFor="let user of users"  (click)="addToChat(user)" id="friend" no-lines>
         <ion-avatar item-left>
-          <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7">
+          <img src={{user?.pic}}>
         </ion-avatar>
-        <div>
+        <ion-label>
         <h2 >{{user?.firstname}} {{user?.lastname}} </h2>
         <h3>{{user?.employment}} | {{user?.college}}</h3>
-      </div>
+      </ion-label>
+      <ion-checkbox item-right>
+    </ion-checkbox>
+
       </ion-item>
   </ion-list>
 </ion-content>

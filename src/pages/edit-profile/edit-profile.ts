@@ -18,6 +18,7 @@ export class EditProfilePage {
 
     private editProfile: string;
     private editProfileForm;
+    private editEmploymentForm;
     private loader;
 
 
@@ -44,6 +45,14 @@ export class EditProfilePage {
         email: [this.userProfile.email, Validators.compose([Validators.minLength(6),Validators.required])],
       });
 
+      this.editEmploymentForm = formBuilder.group({
+        jobName: [this.userProfile.jobName, Validators.minLength(2)],
+        jobPosition: [this.userProfile.jobPosition, Validators.minLength(2)],
+        jobDescription: [this.userProfile.jobDescription, Validators.minLength(2)],
+        jobDate: [this.userProfile.jobDate, Validators.minLength(2)],
+        jobLink: [this.userProfile.jobLink, Validators.minLength(2)],
+      });
+
         }
 
 
@@ -54,7 +63,35 @@ export class EditProfilePage {
           });
       }
 
-      updateInfo(){
+      updateEmploymentInfo(){
+        if (!this.editEmploymentForm.valid){
+          console.log('Form Invalid');
+        } else {
+          console.log('Form Valid');
+          this.profileData.updateEmployment(this.editEmploymentForm.value.jobName,
+            this.editEmploymentForm.value.jobPosition, this.editEmploymentForm.value.jobDescription,
+            this.editEmploymentForm.value.jobDate, this.editEmploymentForm.value.jobLink)
+          .then(() => {
+                this.nav.push(ProfilePage);
+              });
+        } (error) => {
+          this.loader.dismiss().then( () => {
+            let alert = this.alertCtrl.create({
+              message: error.message,
+              buttons: [
+                {
+                  text: "Try Again",
+                  role: 'cancel'
+                }
+              ]
+            });
+            alert.present();
+          });
+        }
+      }
+
+
+      updatePersonalInfo(){
         if (!this.editProfileForm.valid){
           console.log('Form Invalid');
         } else {
@@ -80,9 +117,6 @@ export class EditProfilePage {
             });
             alert.present();
           });
-
-        this.loader = this.loadingCtrl.create();
-        this.loader.present();
         }
       }
 

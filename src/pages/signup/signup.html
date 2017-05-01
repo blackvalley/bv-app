@@ -15,10 +15,16 @@
       Basic Info
     </ion-list-header>
     <ion-list>
-      <ion-item id=profile-img (click)="takePicture()">
-        <p>Click to Add Profile Image </p>
-        <img id="user-img"  alt="avatar">
-    </ion-item>
+
+  <ion-row id="profile-img">
+
+      <button ion-button clear small icon-left (click)="cameraOptions()">
+        <img id="user-img" [src]="profilePic"  *ngIf="profilePic"/>
+        <ion-icon color="primary" name='camera'></ion-icon>
+        Add Image
+    </button>
+  </ion-row>
+
 
       <ion-item>
         <ion-input #fname formControlName="fname" type="fname" placeholder="First Name"

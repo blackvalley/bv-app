@@ -31,10 +31,11 @@ export class MultiChatPage {
 
   }
   createChat(){
-      this.chats = []
-      let eventModal = this.modalCtrl.create(CreateChatPage)
-      eventModal.present()
+    this.navCtrl.push(CreateChatPage)
+
   }
+
+
   openGroupChat(chatid:string){
     this.navCtrl.push(GroupchatPage,{
       chatid:chatid
@@ -43,7 +44,6 @@ export class MultiChatPage {
 
   showChats(){
     let rawList = []
-    this.showLoading()
     this.chatData.getAllChats().on('value', snapshot=> {
                 snapshot.forEach(snap =>{
                   let members = snap.val().members
@@ -68,7 +68,6 @@ export class MultiChatPage {
                  console.error("Unable to get chat - ", err)
               })
     this.chats=rawList
-    this.loader.dismiss()
   }
   showLoading() {
     this.loader = this.loadingCtrl.create({
@@ -77,10 +76,6 @@ export class MultiChatPage {
     this.loader.present();
   }
   showError(text) {
-    setTimeout(() => {
-      this.loader.dismiss();
-    });
-
     let prompt = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,

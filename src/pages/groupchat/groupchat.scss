@@ -1,16 +1,12 @@
 page-groupchat {
 
-  #navbar {
-    box-shadow: 0px 0px 10px 1px #515151;
-
-  }
 
   #content {
     background: #000000;
   }
 
   #input-comments {
-    position: absolute;
+    position: sticky;
     bottom: 0px;
     background: #000000;
     color: #C6E947;
@@ -31,19 +27,20 @@ page-groupchat {
 
   #post p {
     color: #C6E947;
-    margin-left: 30px;
+  }
+
+  #user-img {
+    border: 1px solid #FFFFFF;
+
   }
 
 
   #post ion-avatar{
-    border: 1px solid #FFFFFF;
     border-radius: 100%;
-    height: auto;
-    weight: auto;
+    background: transparent;
   }
 
   #post ion-item {
-    padding: 0px;
     background: #000000;
   }
 

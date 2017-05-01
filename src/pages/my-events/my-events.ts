@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, AlertController,
-  LoadingController } from 'ionic-angular';
-import { CreateEventPage } from '../create-event/create-event';
-import { EventDetailPage } from '../event-detail/event-detail';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
+/*
+  Generated class for the MyEvents page.
 
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
-  selector: 'page-events',
-  templateUrl: 'events.html'
+  selector: 'page-my-events',
+  templateUrl: 'my-events.html'
 })
-export class EventsPage {
+export class MyEventsPage {
   private events : any[]
   private loader
+  private myEvents: string
   constructor(private navCtrl: NavController, private eventData : EventData,
-    private modalCtrl: ModalController,  private loadingCtrl:LoadingController,
     private alertCtrl:AlertController) {
     this.events = [];
+    this.myEvents = "post";
+
   }
   ionViewDidEnter(){
-    this.eventData.getEventList().on('value', snapshot => {
+    this.eventData.getMyEvents().on('value', snapshot => {
       let rawList = [];
       snapshot.forEach( snap => {
       rawList.push({
@@ -36,29 +40,21 @@ export class EventsPage {
     });
 
   }
-  addEvent(){
-    let eventModal = this.modalCtrl.create(CreateEventPage)
-    eventModal.present()
-  }
-
-  goToEventDetail(eventId):void{
-    this.navCtrl.push(EventDetailPage, {
-      eventId:eventId
-    })
-  }
-
-  showLoading() {
-    this.loader = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loader.present();
-  }
+  //
+  // goToEventDetail(eventId):void{
+  //   this.navCtrl.push(EventDetailPage, {
+  //     eventId:eventId
+  //   })
+  // }
+  //
+  // showLoading() {
+  //   this.loader = this.loadingCtrl.create({
+  //     content: 'Please wait...'
+  //   });
+  //   this.loader.present();
+  // }
 
   showError(text) {
-    setTimeout(() => {
-      this.loader.dismiss();
-    });
-
     let prompt = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
@@ -66,7 +62,7 @@ export class EventsPage {
     });
     prompt.present();
 
-}
+  }
 
 
 }

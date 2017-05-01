@@ -14,16 +14,17 @@ page-signup {
     background-color: transparent;
   }
 
-
-  #profile-img {
-    border: 3px solid #FFFFFF;
+  #profile-img button{
     border-radius: 100%;
     margin-top: 15px;
-    width: 150px;
-    height: 150px;
-    margin-left: 90px;
-    background: #515151;
-    }
+    width: 130px;
+    height: 130px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 3px solid #FFFFFF;
+
+
+  }
 
 
   #user-img {
@@ -31,6 +32,7 @@ page-signup {
     top: 0px;
     left: 0px;
     height:auto;
+
   }
 
   #signup-card ion-card-title {
