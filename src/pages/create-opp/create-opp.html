@@ -1,95 +1,84 @@
 <ion-header>
   <ion-navbar>
+    <ion-title>New Opportunities</ion-title>
   <ion-buttons>
     <button ion-button icon-only (click)="closeOpp()">
       <ion-icon name="close"></ion-icon>
       </button>
   </ion-buttons>
-
-  <ion-title>Opportunity</ion-title>
-  <ion-buttons end>
-
-  <button id="postBtn" ion-button icon-only (click)="createOpportunity(oppName, oppDeadline, oppLocation, oppDescription)">
-    Post
-    </button>
-</ion-buttons>
-
 </ion-navbar>
 </ion-header>
 
 <ion-content id="content">
+
+
   <ion-list>
 
-          <ion-row id="opp-img">
+    <ion-row id="opp-img">
 
-            <button ion-button clear small icon-left (click)="cameraOptions()">
-              <img [src]="captureDataUrl" id="img" *ngIf="captureDataUrl"/>
-              <ion-icon color="primary" name='camera'></ion-icon>
-              Add Image
-            </button>
-          </ion-row>
+      <button ion-button clear small icon-left (click)="cameraOptions()">
+        <img [src]="captureDataUrl" id="img" *ngIf="captureDataUrl"/>
+        <ion-icon color="dark" name='camera'></ion-icon>
+        Add Image
+      </button>
+    </ion-row>
 
-        <ion-row>
-          <ion-col><div>
-            <h2 id="oppName"><ion-input [(ngModel)]="oppName" type="text" placeholder="Opportunity Name"></ion-input>
-            </h2>
-          </div></ion-col>
-        </ion-row>
-        <ion-row center>
-          <ion-col><div>
-            <ion-item no-lines>
-            <ion-icon item-left color=primary name="calendar"></ion-icon>
-            <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"[(ngModel)]="oppDeadline" placeholder="Deadline"></ion-datetime>
-          </ion-item>
-          </div></ion-col>
-        </ion-row>
-        <ion-row >
-          <ion-col><div>
-            <ion-item no-lines>
-            <ion-icon name="pin" color=primary item-left></ion-icon>
-            <ion-input [(ngModel)]="oppLocation" type="text" placeholder="Location"></ion-input>
-          </ion-item>
-          </div></ion-col>
-        </ion-row>
-        <ion-row >
-          <ion-col><div>
-            <ion-title>Overview:</ion-title>
-            <p>
-              <ion-textarea [(ngModel)]="oppDescription" type="text" placeholder="Opportunity Details"></ion-textarea>
-            </p>
-          </div></ion-col>
-        </ion-row>
+  <ion-row>
+    <ion-col><div>
+      <h2 id="oppName"><ion-input [(ngModel)]="oppName" type="text" placeholder="Opportunity Name"></ion-input>
+      </h2>
+    </div></ion-col>
+  </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon item-left color=primary name="calendar"></ion-icon>
+      <ion-label stacked>Deadline</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"[(ngModel)]="oppDeadline"></ion-datetime>
+    </ion-item>
+    </div></ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon name="pin" color=primary item-left></ion-icon>
+      <ion-label stacked>Location</ion-label>
+      <ion-input [(ngModel)]="oppLocation" type="text" placeholder="Location"></ion-input>
+    </ion-item>
+    </div></ion-col>
+  </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>Overview:</ion-title>
+      <p>
+        <ion-input [(ngModel)]="oppDescription" type="text" placeholder="Opportunity Details"></ion-input>
+      </p>
+    </div></ion-col>
+  </ion-row>
 
-        <ion-row >
-          <ion-col><div>
-            <ion-title>How to Apply: </ion-title>
-            <p>
-              <ion-textarea type="text" placeholder="Enter Instruction on Applying"></ion-textarea>
-            </p>
-          </div></ion-col>
-        </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>How to Apply: </ion-title>
+      <p>
+        <ion-input type="text" placeholder="Opportunity Details"></ion-input>
+      </p>
+    </div></ion-col>
+  </ion-row>
 
-        <ion-row >
-          <ion-col><div>
-            <ion-title>Qualifications: </ion-title>
-            <p>
-              <ion-textarea type="text" placeholder="Enter Qualifications here"></ion-textarea>
-            </p>
-          </div></ion-col>
-        </ion-row>
+  <ion-row center>
+    <ion-col><div>
+      <ion-title>Restrictions: </ion-title>
+      <p>
+        <ion-input type="text" placeholder="Opportunity Details"></ion-input>
+      </p>
+    </div></ion-col>
+  </ion-row>
 
-        <ion-item>
-          <ion-label><ion-icon name="school"></ion-icon> Student</ion-label>
-          <ion-toggle [(ngModel)]="student"></ion-toggle>
-        </ion-item>
-        <ion-item>
-          <ion-label><ion-icon name="briefcase"></ion-icon> Professional</ion-label>
-          <ion-toggle [(ngModel)]="professional"></ion-toggle>
-        </ion-item>
-        <ion-item>
-          <ion-label><ion-icon name="bulb"></ion-icon> Entrepreneur</ion-label>
-          <ion-toggle [(ngModel)]="entrepreneur"></ion-toggle>
-        </ion-item>
 
-  </ion-list>
+</ion-list>
+
+
+  <button ion-button block (click)="createOpportunity(oppName, oppDeadline, oppLocation, oppDescription)">
+    Create Opportunity
+  </button>
 </ion-content>

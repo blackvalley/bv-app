@@ -16,6 +16,15 @@
     </ion-list-header>
 <ion-list>
 
+  <!-- <ion-item id="classify">
+    <ion-label>Classify</ion-label>
+    <ion-select #profileType formControlName="profileType" multiple="true" cancelText="Cancel" okText="Confirm"
+        [class.invalid]="!signup2Form.controls.profileType.valid && signup2Form.controls.profileType.dirty">
+      <ion-option>Student</ion-option>
+      <ion-option>Professional</ion-option>
+      <ion-option>Entrepreneur</ion-option>
+    </ion-select>
+  </ion-item> -->
   <ion-label color="#FFFFFF">Classify</ion-label>
 
   <ion-segment #profileType formControlName="profileType" multiple="true" cancelText="Cancel" okText="Confirm"
@@ -41,8 +50,8 @@
     </ion-select>
   </ion-item>
 
-
   <ion-item>
+    <ion-label stacked>City</ion-label>
     <ion-input #password formControlName="city" type="text" placeholder="City"
       [class.invalid]="!signup2Form.controls.city.valid && signup2Form.controls.city.dirty">
       </ion-input>
@@ -53,10 +62,9 @@
   </ion-item>
 
 
-  <ion-item id="state">
-    <ion-label>
-      State
-    </ion-label>
+
+  <ion-item>
+    <ion-label>State</ion-label>
     <ion-select #state formControlName="state" multiple="false" cancelText="Cancel" okText="Confirm"
         [class.invalid]="!signup2Form.controls.state.valid && signup2Form.controls.state.dirty">
 	<ion-option value="AL">Alabama</ion-option>
@@ -117,15 +125,13 @@
   <ion-icon name='pulse'></ion-icon>
   Interest
 </ion-list-header>
-<ion-scroll scrollX="true" id="interest">
-
+    <ion-list>
       <ion-row center>
-        <button ion-button clear class="interest"><ion-col><div>Augmented Reality</div></ion-col></button>
-        <button ion-button clear class="interest"><ion-col><div>App Development</div></ion-col></button>
-        <button ion-button clear class="interest"><ion-col><div>Web Development</div></ion-col></button>
-
+        <ion-col><div>Augmented Reality</div></ion-col>
+        <ion-col><div> App Development</div></ion-col>
+        <ion-col><div> Web Development</div></ion-col>
       </ion-row>
-    </ion-scroll>
+    </ion-list>
 
       <button ion-button icon-right type="submit" id="connect-btn">
         Connect

@@ -68,28 +68,14 @@ ion-scroll {
   font-size: 15px;
 }
 
-#profile-info ion-col {
+#profile-info ion-item {
   color: #C6E947;
 }
 
-#employment ion-card{
+#employment ion-item  {
   background-color: #000000;
   color: #C6E947;
-  padding: 5px;
-
 }
-
-#employment ion-card{
-  background-color: #000000;
-  color: #C6E947;
-  padding: 5px;
-
-}
-#employment p{
-  color: #515151;
-
-}
-
 
 #interest{
   position: relative;
@@ -105,11 +91,6 @@ ion-scroll {
   color: #C6E947;
   width: 100px;
   height: 80px;
-}
-
-.end {
-  text-align: right;
-  align-items: flex-end
 }
 
 

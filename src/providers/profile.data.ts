@@ -56,17 +56,7 @@ updateProfile(college: string, field: string, location: string, employment: stri
    location: location,
    employment: employment,
    birthDate: birthDate,
- });
-}
 
-
-updateEmployment(jobName: string, jobPosition: string, jobDescription: string, jobDate: string, jobLink: string): firebase.Promise<any> {
- return this.userProfile.child(this.currentUser.uid).update({
-   jobName: jobName,
-   jobPosition: jobPosition,
-   jobDescription: jobDescription,
-   jobDate: jobDate,
-   jobLink: jobLink,
  });
 }
 
