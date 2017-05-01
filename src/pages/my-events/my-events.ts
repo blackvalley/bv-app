@@ -14,12 +14,9 @@ import { EventData } from '../../providers/event.provider'
 export class MyEventsPage {
   private events : any[]
   private loader
-  private myEvents: string
   constructor(private navCtrl: NavController, private eventData : EventData,
     private alertCtrl:AlertController) {
     this.events = [];
-    this.myEvents = "post";
-
   }
   ionViewDidEnter(){
     this.eventData.getMyEvents().on('value', snapshot => {

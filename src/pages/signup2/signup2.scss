@@ -3,12 +3,6 @@ page-signup2 {
   #content {
     background-color: #000000;
   }
-
-  #content ion-item{
-    background: #000000;
-    color: #FFFFFF;
-    padding: 0px;
-  }
   #content ion-list-header {
     font-size: 13px;
     color: #FFFFFF;
@@ -18,35 +12,18 @@ page-signup2 {
     color: #FFFFFF;
   }
 
-  #location {
-    color: #FFFFFF;
-  }
-
-  #state ion-select{
-    width: 100%;
-    position: absolute;
-    right: 5px;
-    padding-right: 5px;
-  }
+  
 
 
-  .interest {
-    padding: inherit;
-    text-align: center;
-    font-size: 14px;
-    white-space: normal;
+  ion-col div {
     background-color: #515151;
+    padding: 5px;
+    padding-top: 20px;
     border-radius: 15px;
+    text-align: center;
     color: #FFFFFF;
     width: 100px;
     height: 80px;
   }
-
-  ion-scroll {
-  	height: 110px;
-  }
-
-
-
 
 }

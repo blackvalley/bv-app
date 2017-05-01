@@ -13,50 +13,8 @@ page-edit-profile {
   #segments {
     position: absolute;
     top: 50px;
-    right: 0px;
-    left:0px;
     z-index: -1;
   }
-
-
-  #interest {
-    background: #515151;
-  }
-
-  #interest{
-    position: relative;
-  }
-
-  #addInterest{
-    padding-top: 10px;
-    padding-right: 20px;
-    width: 100px;
-    height: 80px;
-    text-align: center;
-
-  }
-
-
-
-
-  .interest {
-    background-color: #000000;
-    padding: 5px;
-    padding-top: 20px;
-    border-radius: 15px;
-    text-align: center;
-    color: #C6E947;
-    width: 100px;
-    height: 80px;
-  }
-
-  ion-scroll {
-  	height: 110px;
-    width: 100%;
-  }
-
-
-
 
 
 }

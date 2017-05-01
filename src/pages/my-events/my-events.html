@@ -7,28 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-segment [(ngModel)]="myEvents" no-lines id="segmentToggle">
-      <ion-segment-button value="post">
-        Post
-      </ion-segment-button>
-      <ion-segment-button value="bookmark">
-        Bookmark
-      </ion-segment-button>
-    </ion-segment>
+    <ion-title>My Events</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="has-header" id="feed">
-
-  <div [ngSwitch]="myEvents">
-
-    <!-- Segments for posted Events and Bookmarked Events  -->
-
-    <ion-list *ngSwitchCase="'post'">
-
-      <p> No events yet</p>
+  <p> No events yet</p>
+  <ion-list>
 
 
       <ion-card id="event-card" *ngFor="let event of events">
@@ -74,10 +61,5 @@
         </ion-card>
 
     </ion-list>
-
-
-    <ion-list *ngSwitchCase="'bookmark'">
-    </ion-list>
-  </div>
 
 </ion-content>
