@@ -28,23 +28,19 @@
     </ion-list-header>
     <ion-list id="employment">
       <ion-card text-wrap>
-        <ion-item>
-          <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
-        </ion-item>
-        <ion-item>
-        <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
-        <p> www.blackvalley.com </p>
-      </ion-item>
-    </ion-card>
-      <ion-card>
-      <ion-item>
-        <h1 item-left>Apple Inc.</h1><h2 item-right>Summer 2016</h2>
-      </ion-item>
-      <ion-item>
-        <p item-left>Software Developer</p><p item-right> Intern</p>
-      </ion-item>
-    </ion-card>
-  </ion-list>
+        <ion-row>
+          <ion-col><div><h1 item-left>{{userProfile?.jobName}}</h1></div></ion-col>
+          <ion-col class="end"><div> <h2 item-right>{{userProfile?.jobPosition}}</h2></div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><div><p>{{userProfile?.jobDescription}}</p></div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><div> <a href={{userProfile?.jobLink}}>Link</a></div></ion-col>
+          <ion-col class="end"><p>{{userProfile?.jobDate}}</p></ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
 
   <ion-list-header>
       <ion-icon name='pulse'></ion-icon>

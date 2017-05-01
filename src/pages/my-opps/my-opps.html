@@ -7,13 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>My Opportunities</ion-title>
+    <ion-segment [(ngModel)]="myOpps" no-lines id="segmentToggle">
+      <ion-segment-button value="post">
+        Post
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        Bookmark
+      </ion-segment-button>
+    </ion-segment>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content id="content">
+
+  <div [ngSwitch]="myOpps">
+
+    <!--Personal Edit Page  -->
+
+    <ion-list *ngSwitchCase="'post'">
+
       <ion-card id="opp-card" *ngFor="let opp of opps">
         <img src={{opp?.picture}}/>
         <ion-card-content>
@@ -68,5 +82,12 @@
         </ion-row>
 
       </ion-card>
+    </ion-list>
+
+
+  <ion-list *ngSwitchCase="'bookmark'">
+
+  </ion-list>
+</div>
 
 </ion-content>

@@ -1,10 +1,21 @@
 page-create-opp {
-  background: rgba(81, 81, 81, 1);
+  background: #000000;
 
 
   #content{
     background: rgba(0, 0, 0, 0.4);
-    position: absolute;
+  }
+
+  #navTitle {
+    color: #FFFFFF;
+  }
+
+  #content ion-textarea{
+    color: #FFFFFF;
+  }
+
+  #content ion-input{
+    color: #FFFFFF;
   }
 
   #content ion-item {
@@ -12,9 +23,14 @@ page-create-opp {
     color: #FFFFFF;
   }
 
+  #content ion-title {
+    text-align: left;
+    background: #515151;
+    color: #000000;
+  }
+
   #oppName {
     color: #FFFFFF;
-    text-align: center;
 
   }
 
@@ -30,22 +46,22 @@ page-create-opp {
 
 
   #opp-img button{
-    height: 325px;
-    width: 325px;
+    max-height: 325px;
+    max-width: 325px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 100%;
-    color: #000000;
+    color: #C6E947;
+  }
 
-
+  #postBtn {
+    color: #C6E947;
 
   }
 
-
-
-
   ion-row {
     border-bottom: 2px solid #515151;
+    height: inherit;
   }
 
   ion-col {
