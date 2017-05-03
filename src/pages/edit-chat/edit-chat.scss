@@ -1,3 +1,63 @@
 page-edit-chat {
 
+  #content{
+    background: #000000;
+  }
+
+  #content ion-item{
+    background: #000000;
+    color: #FFFFFF;
+  }
+
+  #content ion-list-header {
+    color: #FFFFFF;
+  }
+
+
+  #chatTopic{
+    border-bottom: 1px solid #515151;
+    color: #C6E947;
+  }
+
+  #chatImg{
+    background: #000000;
+  }
+
+  #chatImg ion-item{
+    background: lightgray;
+    border-radius: 15px;
+    height: 100px;
+    width: 100px;
+
+  }
+
+  #chatImg p {
+    width: 200px;
+    color: #000000;
+  }
+
+
+  #membersInChat {
+    background: #000000;
+  }
+
+  #membersInChat h2{
+    color: #C6E947;
+
+  }
+
+  #membersInChat h3 {
+    color: #FFFFFF;
+
+  }
+
+  #addingMember {
+    text-align: center;
+    color: #C6E947;
+    border: 1px solid #515151;
+
+  }
+
+
+
 }

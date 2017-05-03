@@ -1,28 +1,47 @@
 page-create-event {
 
 
+  #content{
+    background: #000000;
+  }
+
+  #content ion-item {
+    background: transparent;
+    color: #FFFFFF;
+  }
+
+
+
+
   #event-img {
     background-color: transparent;
     color: #000000;
   }
 
+  #postBtn {
+    color: #C6E947;
+
+  }
+
+  #content ion-title {
+    text-align: left;
+    background: #515151;
+    color: #000000;
+  }
+
+
+
 
   #event-img button{
-    height: 325px;
-    width: 325px;
+    max-height: 325px;
+    max-width: 325px;
     margin-right: auto;
     margin-left: auto;
+    color: #C6E947
 
   }
 
 
-  background: rgba(81, 81, 81, 1);
-
-
-  #content{
-    background: rgba(0, 0, 0, 0.4);
-    position: absolute;
-  }
 
   #content ion-item {
     background: transparent;

@@ -7,20 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Edit chat</ion-title>
+    <ion-title>{{topic}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content id="content">
 
-  <ion-item id="message-img">
+  <ion-item id="chatImg" no-lines>
     <ion-item  item-left >
-    <img padding src="{{chat?.pic}}" alt="avatar">
-    <p>Edit Photo</p>
-    </ion-item>
-    <ion-input item-right [(ngModel)]="topic" id="groupTopic">
+      <button ion-button clear small icon-left (click)="cameraOptions()">
+        <img [src]="captureDataUrl" id="img" *ngIf="captureDataUrl"/>
+        <ion-icon color="dark" name='camera'></ion-icon>
+        Add Image
+      </button>
+
+  </ion-item>
+  <ion-input item right [(ngModel)]="topic" placeholder="Group Topic" id="chatTopic">
+
     </ion-input>
   </ion-item>
 
@@ -29,16 +34,20 @@
     <ion-toggle [(ngModel)]="notifications"></ion-toggle>
   </ion-item>
 
-  <ion-list-header>
+  <ion-list-header icon-left>
+    <ion-icon color="secondary" name='person'></ion-icon>
     Members:
   </ion-list-header>
 
   <ion-list>
-      <ion-item  id="user-friends">
+    <button ion-item icon-left no-lines detail-none id="addingMember">
+      <ion-icon color="primary" name="person-add"></ion-icon>Add Member
+    </button>
+      <ion-item  id="membersInChat">
     <ion-avatar item-left>
       <img src="https://firebasestorage.googleapis.com/v0/b/bvweb-5da6d.appspot.com/o/BlackValley-2.jpg?alt=media&token=425be727-9c17-45d2-a824-8a9038a9dcf7">
     </ion-avatar>
-    <h2></h2>
+    <h2>Dakari Franklin</h2>
     <h3> Morehouse College | Apple Inc. </h3>
   </ion-item>
 

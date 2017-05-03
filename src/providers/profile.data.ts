@@ -49,12 +49,11 @@ updateName(firstName: string, lastName: string): firebase.Promise<any> {
  });
 }
 
-updateProfile(college: string, field: string, location: string, employment: string, birthDate: string): firebase.Promise<any> {
+updateProfile(college: string, field: string, location: string, birthDate: string): firebase.Promise<any> {
  return this.userProfile.child(this.currentUser.uid).update({
    college: college,
    field: field,
    location: location,
-   employment: employment,
    birthDate: birthDate,
  });
 }
