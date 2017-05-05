@@ -22,10 +22,9 @@ export class OpportunityData {
       this.opportunityList = this.fire.getDatabase().ref('/opps')
       this.jobPicRef = this.fire.getStorage().ref('/oppPics')
     }
-
-       createOpportunity(oppName: string, oppDeadline: string,
+    createOpportunity(oppName: string, oppDeadline: string,
           oppLocation: string, oppDescription: string,
-        oppPic=null): firebase.Promise<any> {
+          oppPic=null): firebase.Promise<any> {
           let date =  Date.now()
           return this.myOpportunities.push({
             name: oppName,
@@ -72,6 +71,16 @@ export class OpportunityData {
         }
         getMyOppDetail(oppId): firebase.database.Reference{
           return this.myOpportunities.child(oppId);
+        }
+        saveToMine(opp):firebase.Promise<any>{
+          console.log(opp)
+          return this.myOpportunities.child(opp.id).set({
+                  name: opp.name,
+                  location: opp.location,
+                  deadline: opp.deadline,
+                  description: opp.description,
+                  opportunityPicture:opp.picture
+          })
         }
 
 

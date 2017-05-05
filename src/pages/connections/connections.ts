@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams,AlertController,
+    LoadingController } from 'ionic-angular';
 import { FormControl } from '@angular/forms';
-import { DummyData } from '../../providers/dummy.data';
+import { UserProvider } from '../../providers/user.provider';
+import { ViewProfilePage } from '../view-profile/view-profile'
 import 'rxjs/add/operator/debounceTime';
 
 /*
@@ -20,31 +22,58 @@ export class ConnectionsPage {
   searchControl: FormControl;
   items: any;
   searching: any = false;
-
-  constructor(public navCtrl: NavController, public dataService: DummyData) {
+  private users:any[]
+  private loader
+  constructor(public navCtrl: NavController, private userPro:UserProvider,
+  private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
       this.searchControl = new FormControl();
   }
 
   ionViewDidLoad() {
-
-      this.setFilteredItems();
+      this.users=[]
+      this.showLoading()
+      this.userPro.getUsers().on('value', snapshot => {
+        let rawList = [];
+        snapshot.forEach( snap => {
+        rawList.push({
+          id: snap.key,
+          firstname: snap.val().firstName,
+          lastname:snap.val().lastName,
+          college:snap.val().college,
+          employment:snap.val().employment,
+          pic:snap.val().profilePic
+          })
+        return false
+        });
+        this.users = rawList;
+        this.loader.dismiss()
+      });
       this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
 
           this.searching = false;
-          this.setFilteredItems();
+          // this.setFilteredItems();
 
       });
-
-
+  }
+  viewProfile(userid:string){
+    this.navCtrl.push(ViewProfilePage,{
+      userid:userid
+    })
+  }
+  showLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: 'You\'re Great!...'
+    });
+    this.loader.present();
   }
 
   onSearchInput(){
       this.searching = true;
   }
 
-  setFilteredItems() {
-
-      this.items = this.dataService.filterItems(this.searchTerm);
-
-  }
+  // setFilteredItems() {
+  //
+  //     this.items = this.dataService.filterItems(this.searchTerm);
+  //
+  // }
 }

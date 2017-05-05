@@ -49,6 +49,12 @@ export class ArticleProvider {
     })
 
   }
+  addLike(articleid:string, sender):firebase.Promise<any>{
+    return this.articledb.child(articleid).child('likes').
+      child(sender.id).set({
+      sender:sender
+    })
+  }
 
 
 }

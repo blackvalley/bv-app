@@ -1,15 +1,12 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 import { NavController, NavParams, ModalController,
-      AlertController, LoadingController } from 'ionic-angular';
+      AlertController, LoadingController } from 'ionic-angular'
 import { CreateOppPage } from '../create-opp/create-opp'
 import { OppDetailPage } from '../opp-detail/opp-detail'
 import { OpportunityData } from '../../providers/opportunity.provider'
-
+import { GeoLocationPage } from '../geo-location/geo-location'
 /*
   Generated class for the Opportunities page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
 */
 @Component({
   selector: 'page-opportunities',
@@ -19,6 +16,7 @@ export class OpportunitiesPage {
   calendar: any = "event"
   private loader
   private opps : any[]
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modalCtrl: ModalController, private oppData:OpportunityData,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
@@ -36,6 +34,7 @@ export class OpportunitiesPage {
 
 
   ionViewDidEnter(){
+
     this.oppData.getOpportunityList().on('value', snapshot => {
       this.showLoading()
       let rawList = [];
@@ -44,9 +43,9 @@ export class OpportunitiesPage {
         id: snap.key,
         name: snap.val().name,
         deadline: snap.val().deadline,
-        date: snap.val().cost,
         location: snap.val().location,
-        picture:snap.val().opportunityPicture
+        picture:snap.val().opportunityPicture,
+        description:snap.val().description
       });
       return false
       });
@@ -85,7 +84,25 @@ export class OpportunitiesPage {
       });
       prompt.present();
 
-  }
+    }
+    bookmark(opp:any){
+      this.oppData.saveToMine(opp).then(()=>{
+          this.showSuccess("Saved to Your Opportunities!")
+      })
+
+    }
+    showSuccess(text) {
+          let prompt = this.alertCtrl.create({
+            title: 'Success!',
+            subTitle: text,
+            buttons: ['OK']
+          });
+          prompt.present();
+
+      }
+    goToGeoLocation(){
+      this.navCtrl.push(GeoLocationPage)
+    }
 
 
 }

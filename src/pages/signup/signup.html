@@ -7,8 +7,6 @@
 
 <ion-content id="content">
   <ion-card id="signup-card">
-  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate id="signup-form">
-
 
     <ion-list-header>
       <ion-icon name="person"></ion-icon>
@@ -20,11 +18,12 @@
 
       <button ion-button clear small icon-left (click)="cameraOptions()">
         <img id="user-img" [src]="profilePic"  *ngIf="profilePic"/>
-        <ion-icon color="primary" name='camera'></ion-icon>
+        <ion-icon color="primary" name='camera' *ngIf="!profilePic"></ion-icon>
         Add Image
     </button>
   </ion-row>
 
+  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate id="signup-form">
 
       <ion-item>
         <ion-input #fname formControlName="fname" type="fname" placeholder="First Name"
@@ -80,9 +79,9 @@
       <button ion-button icon-right type="submit" id="connect-btn" >
           Next<ion-icon name="arrow-forward"></ion-icon>
       </button>
-
+      </form>
   </ion-list>
-  </form>
+
 
 </ion-card>
 

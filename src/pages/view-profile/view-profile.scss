@@ -1,3 +1,88 @@
 page-view-profile {
+  #content{
 
+  }
+
+  #profile-header {
+    left: 0px;
+    background-color: lightgray;
+    border: 2px solid black;
+    width: 100%;
+    text-align: center;
+    min-height: 220px;
+    color: #FFFFFF;
+    z-index: 1;
+  }
+
+  #profile-header p {
+    color: #FFFFFF;
+  }
+
+  #interest {
+    background: #515151;
+  }
+
+#profile-img {
+  border: 3px solid #FFFFFF;
+  border-radius: 100%;
+  margin-top: 15px;
+  width: 130px;
+  height: 130px;
+  z-index: 1;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+ion-scroll {
+	height: 110px;
+}
+
+
+#user-img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height:auto;
+}
+
+#profile-bg-img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+#profile-info {
+  margin-top: 210px;
+}
+
+#profile-info ion-list-header{
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+#profile-info ion-item {
+  color: #C6E947;
+}
+
+#employment ion-item  {
+  background-color: #000000;
+  color: #C6E947;
+}
+
+#interest{
+  position: relative;
+}
+#interest ion-col div {
+  background-color: #000000;
+  padding: 5px;
+  padding-top: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: #C6E947;
+  width: 100px;
+  height: 80px;
+}
 }

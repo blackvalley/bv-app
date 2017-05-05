@@ -1,6 +1,6 @@
 <ion-header >
   <ion-navbar>
-    <ion-title id="Welcome">Welcome, {{user?.firstName}}</ion-title>
+    <ion-title id="Welcome">Welcome, {{user?.firstname}}</ion-title>
     <ion-buttons end>
       <button ion-button  clear icon-only color="secondary"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>
@@ -13,7 +13,7 @@
 
 <ion-list>
   <ion-card id="card" *ngFor="let article of articles">
-    <div (click) ="goToArticle(article.id)">
+    <div (click) ="goToArticle(article?.id)">
     <ion-item>
       <h2 > {{article?.title}} </h2>
     </ion-item>
@@ -25,9 +25,9 @@
   </div>
     <ion-row no-padding>
       <ion-col text-left>
-        <button ion-button clear small icon-left>
+        <button ion-button clear small icon-left (click)=addLike(article?.id)>
           <ion-icon name='thumbs-up'></ion-icon>
-          Like
+          {{numOfLikes}} Likes
         </button>
       </ion-col>
       <ion-col text-center (click)="openComments(article.id)">

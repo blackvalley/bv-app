@@ -1,18 +1,78 @@
-<!--
-  Generated template for the ViewProfile page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>ViewProfile</ion-title>
+    <ion-title> View Profile</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
 
+  <ion-item id="profile-header">
+    <img id="profile-bg-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/default%20BG.jpg?alt=media&token=890ddab2-35a4-4edd-9e1c-9abd040d20d5">
+    <div id="profile-header-content">
+      <ion-item id=profile-img>
+        <img id="user-img" src={{userProfile?.profilePic}} alt="avatar">
+      </ion-item>
+    <h2 id="profile-name" *ngIf="userProfile?.firstName || userProfile?.lastName">
+      <b>{{userProfile?.firstName}} {{userProfile?.lastName}}</b></h2>
+      <p>{{userProfile?.field}}</p>
+    </div>
+  </ion-item>
+
+    <ion-list-header>
+      <ion-icon name='briefcase'></ion-icon>
+      Employment
+    </ion-list-header>
+    <ion-list id="employment">
+      <ion-card text-wrap>
+        <ion-item>
+          <h1 item-left>Black Valley</h1><h2 item-right> Founder / COO</h2>
+        </ion-item>
+        <ion-item>
+        <p> Black Valley is the only intimate network of over 700 young Millennials all focus on the innovation in tech </p>
+        <p> www.blackvalley.com </p>
+      </ion-item>
+    </ion-card>
+      <ion-card>
+      <ion-item>
+        <h1 item-left>Apple Inc.</h1><h2 item-right>Summer 2016</h2>
+      </ion-item>
+      <ion-item>
+        <p item-left>Software Developer</p><p item-right> Intern</p>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+  <ion-list-header>
+      <ion-icon name='pulse'></ion-icon>
+      Interest
+    </ion-list-header>
+    <ion-scroll scrollX="true" id="interest">
+      <ion-row>
+        <ion-col><div> Augmented Reality</div></ion-col>
+        <ion-col><div> App Development</div></ion-col>
+        <ion-col><div> Web Development</div></ion-col>
+        <ion-col><div> Virtual Reality</div></ion-col>
+        <ion-col><div> Another Interest</div></ion-col>
+    </ion-row>
+    </ion-scroll>
+
+
+  <ion-list-header>
+    <ion-icon name='link'></ion-icon>
+    Connections
+  </ion-list-header>
+  <ion-list>
+    <button ion-item (click)="openConnections()">
+      Connections
+    </button>
+    <button ion-item (click)="openMyEvents()">
+      Events
+    </button>
+    <button ion-item (click)="openMyOpps()">
+      Opportunties
+    </button>
+
+
+  </ion-list>
 </ion-content>
