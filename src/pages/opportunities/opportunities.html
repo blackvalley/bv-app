@@ -13,7 +13,7 @@
 
 <ion-content id="content">
       <ion-card id="opp-card" *ngFor="let opp of opps">
-        <div (click)="goToOppDetail(opp.id)">
+        <div (click)="goToOppDetail(opp)">
         <img src={{opp?.picture}}/>
         <ion-card-content>
           <ion-row>

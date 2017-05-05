@@ -4,7 +4,7 @@ import { NavController, ModalController, AlertController,
 import { CreateEventPage } from '../create-event/create-event';
 import { EventDetailPage } from '../event-detail/event-detail';
 import { EventData } from '../../providers/event.provider'
-
+import { GeoLocationPage } from '../geo-location/geo-location'
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html'
@@ -67,8 +67,10 @@ export class EventsPage {
       buttons: ['OK']
     });
     prompt.present();
-
-}
+ }
+ goToGeoLocation(){
+   this.navCtrl.push(GeoLocationPage)
+ }
 
 
 }

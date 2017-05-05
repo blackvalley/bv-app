@@ -15,7 +15,8 @@
 <ion-list>
 
 
-    <ion-card id="event-card" *ngFor="let event of events"(click)="goToEventDetail(event.id)">
+    <ion-card id="event-card" *ngFor="let event of events">
+      <div (click)="goToEventDetail(event.id)">
       <img src={{event?.eventPic}}/>
       <ion-card-content>
         <ion-item id="card-header">
@@ -27,17 +28,26 @@
           <p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this opportunity with you</p>
         </div>
         </ion-item>
+      </ion-card-content>
+      </div>
+        <ion-row >
+          <ion-col><div>
+            <ion-item no-lines>
+            <ion-icon name="pin" color=primary item-left (click)=goToGeoLocation()></ion-icon>
+            <ion-label stacked>Location</ion-label>
+            <ion-label>
+              {{event?.location}}
+            </ion-label>
+          </ion-item>
+          </div></ion-col>
+        </ion-row>
 
-        <p>
-          {{event?.location}}
-        </p>
-        </ion-card-content>
 
         <ion-row no-padding>
           <ion-col text-left>
             <button ion-button clear small icon-left>
               <ion-icon name='thumbs-up'></ion-icon>
-              Like
+              Attending
             </button>
           </ion-col>
           <ion-col text-center>

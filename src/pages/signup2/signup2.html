@@ -18,7 +18,7 @@
 
   <ion-label color="#FFFFFF">Classify</ion-label>
 
-  <ion-segment #profileType formControlName="profileType" multiple="true" cancelText="Cancel" okText="Confirm"
+  <ion-segment #profileType formControlName="profileType" multiple="false" cancelText="Cancel" okText="Confirm"
           [class.invalid]="!signup2Form.controls.profileType.valid && signup2Form.controls.profileType.dirty">
     <ion-segment-button value="Student">
       Student
@@ -33,7 +33,7 @@
 
   <ion-item id="classify">
     <ion-label>Gender</ion-label>
-    <ion-select #gender formControlName="gender" multiple="true" cancelText="Cancel" okText="Confirm"
+    <ion-select #gender formControlName="gender" multiple="false" cancelText="Cancel" okText="Confirm"
         [class.invalid]="!signup2Form.controls.gender.valid && signup2Form.controls.gender.dirty">
       <ion-option value="Male">Male</ion-option>
       <ion-option value="Female">Female</ion-option>

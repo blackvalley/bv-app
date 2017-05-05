@@ -7,6 +7,7 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-title>Oppourtunity Detail</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +17,7 @@
   <ion-list id="content">
 
   <div class="event-header">
-    <img id="opp-img" src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png" alt="ionic logo">
+    <img id="opp-img" src={{opp?.picture}} alt="ionic logo">
   </div>
 
 
@@ -47,12 +48,12 @@
   </ion-row>
   <ion-row center>
     <ion-col><div>
-      <ion-title>Overview:</ion-title>
+      <ion-title>Description:</ion-title>
       <p>
         {{opp?.description}}
       </p>
 
-      <h6>Restrictions:</h6>
+      <h6>Qualification:</h6>
       <p>
         {{opp?.description}}
       </p>

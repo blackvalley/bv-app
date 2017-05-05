@@ -19,6 +19,7 @@ export class HomePage {
     private articledb: ArticleProvider,private loadingCtrl:LoadingController,
     private alertCtrl:AlertController, private profile: ProfileData) {
      this.articles = []
+     this.showLoading()
      this.getArticles()
      this.profile;
 
@@ -30,6 +31,7 @@ export class HomePage {
          pic:data.val().profilePic
        }
            });
+      this.loader.dismiss()
   }
 
   goToArticle(articleId):void{
@@ -45,7 +47,7 @@ export class HomePage {
   }
 
   getArticles(){
-    this.showLoading()
+
     this.articledb.getArticles().on('value',snapshot =>{
         let rawData = [];
       snapshot.forEach(snap =>{
@@ -66,7 +68,7 @@ export class HomePage {
       })
       this.articles=rawData
     })
-    this.loader.dismiss()
+    
   }
 
 
