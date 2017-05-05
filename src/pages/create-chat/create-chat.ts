@@ -26,7 +26,7 @@ export class CreateChatPage {
     private userPro:UserProvider , private viewCtrl: ViewController,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController,
     private profile:ProfileData) {
-    this.users=[]
+
     this.members=[];
     this.profile.getUserProfile().on('value', (data) => {
       this.me ={

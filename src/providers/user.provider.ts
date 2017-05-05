@@ -32,6 +32,9 @@ export class UserProvider{
     getUsers() {
       return this.userdb
     }
+    getUserProfile(userid:string):firebase.database.Reference{
+      return  this.userdb.child(userid)
+    }
 
 
 }

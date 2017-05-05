@@ -14,6 +14,7 @@ export class HomePage {
   private articles:any[]
   private loader
   private user: any;
+  private numOfLikes:number = 0
   constructor(public actionSheetCtrl: ActionSheetController, public platform: Platform, public navCtrl: NavController, public modalCtrl: ModalController,
     private articledb: ArticleProvider,private loadingCtrl:LoadingController,
     private alertCtrl:AlertController, private profile: ProfileData) {
@@ -22,7 +23,12 @@ export class HomePage {
      this.profile;
 
      this.profile.getUserProfile().on('value', (data) => {
-       this.user = data.val();
+       this.user = {
+         id:data.key,
+         firstname:data.val().firstName,
+         lastname:data.val().lastName,
+         pic:data.val().profilePic
+       }
            });
   }
 
@@ -39,6 +45,7 @@ export class HomePage {
   }
 
   getArticles(){
+    this.showLoading()
     this.articledb.getArticles().on('value',snapshot =>{
         let rawData = [];
       snapshot.forEach(snap =>{
@@ -52,13 +59,14 @@ export class HomePage {
           pg3:snap.val().parg3,
           qoute:snap.val().qoute,
           madeqoute:snap.val().madeqoute,
-          title:snap.val().title
+          title:snap.val().title,
+          likes:snap.val().likes
         })
         return false
       })
       this.articles=rawData
-
     })
+    this.loader.dismiss()
   }
 
 
@@ -69,7 +77,7 @@ export class HomePage {
     this.loader.present();
   }
 
-  shareOptions() {
+  shareOptions(articleid:string) {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Share via...',
       cssClass: 'share-action-sheet',
@@ -102,6 +110,7 @@ export class HomePage {
           icon: !this.platform.is('ios') ? 'twitter' : null,
           handler: () => {
             console.log('Twitter clicked');
+
           }
         },
         {
@@ -117,6 +126,9 @@ export class HomePage {
     actionSheet.present();
   }
 
+  addLike(articleid:string){
+    this.articledb.addLike(articleid,this.user)
+  }
 
 
 }

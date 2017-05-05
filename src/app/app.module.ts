@@ -36,7 +36,8 @@ import { ChatProvider } from '../providers/chat.provider'
 import { MyOppsPage } from '../pages/my-opps/my-opps'
 import { MyEventsPage } from '../pages/my-events/my-events'
 import { ViewProfilePage } from '../pages/view-profile/view-profile'
-
+import { GeoLocationPage } from '../pages/geo-location/geo-location'
+import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
@@ -64,7 +65,8 @@ import { ViewProfilePage } from '../pages/view-profile/view-profile'
     EditChatPage,
     ViewProfilePage,
     MyEventsPage,
-    MyOppsPage
+    MyOppsPage,
+    GeoLocationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -96,7 +98,8 @@ import { ViewProfilePage } from '../pages/view-profile/view-profile'
     EditChatPage,
     ViewProfilePage,
     MyEventsPage,
-    MyOppsPage
+    MyOppsPage,
+    GeoLocationPage
 
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -105,7 +108,7 @@ import { ViewProfilePage } from '../pages/view-profile/view-profile'
       AuthProvider, EventData,
       DummyData, ArticleProvider,
       OpportunityData, Camera,
-      ChatProvider]
+      ChatProvider, Geolocation]
 
 })
 export class AppModule {}
