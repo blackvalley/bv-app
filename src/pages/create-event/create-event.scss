@@ -12,11 +12,20 @@ page-create-event {
 
 
 
-
   #event-img {
     background-color: transparent;
     color: #000000;
   }
+
+  #content ion-textarea{
+    color: #FFFFFF;
+  }
+
+  #content ion-input{
+    color: #FFFFFF;
+  }
+
+
 
   #postBtn {
     color: #C6E947;
@@ -26,7 +35,7 @@ page-create-event {
   #content ion-title {
     text-align: left;
     background: #515151;
-    color: #000000;
+    color: #FFFFFF;
   }
 
 

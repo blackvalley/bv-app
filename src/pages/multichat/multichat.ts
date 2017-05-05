@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+// ssimport { Component } from '@angular/core';
 import { NavController, ModalController, AlertController,
       LoadingController} from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat.provider'
 import { CreateChatPage } from '../create-chat/create-chat';
-import { GroupchatPage } from '../groupchat/groupchat'
+import { GroupchatPage } from '../groupchat/groupchat';
+import { OneSignal } from '@ionic-native/onesignal';
+import { Platform } from 'ionic-angular';
 
 
 @Component({
@@ -17,13 +19,29 @@ export class MultiChatPage {
   private chatdb:firebase.database.Reference
   constructor(public navCtrl:NavController, private chatData:ChatProvider,
     private modalCtrl: ModalController, private loadingCtrl: LoadingController,
-    private alertCtrl:AlertController) {
+    private alertCtrl:AlertController, private onesignal: OneSignal,
+    private platform: Platform) {
     this.chats=[]
     this.allChats=[]
     this.chatdb=this.chatData.chats
 
 
   }
+
+  // initializeApp() {
+  //   this.platform.ready().then(() => {
+  //     this.onesignal.startInit('0d94ae81-bd1d-49d9-b235-5ce2e4743f90, googleProjectId);
+  //     this.onesignal.inFocusDisplaying(this.onesignal.OSInFocusDisplayOption.Notification);
+  //     this.onesignal.setSubscription(true);
+  //     this.onesignal.handleNotificationReceived().subscribe(() => {
+  //       // handle received here how you wish.
+  //     });
+  //     this.onesignal.handleNotificationOpened().subscribe(() => {
+  //       // handle opened here how you wish.
+  //     });
+  //     this.onesignal.endInit();
+  //   })
+  // }
 
   ionViewDidEnter() {
     console.log('ionViewDidLoad MultiChatPage');
@@ -83,6 +101,8 @@ export class MultiChatPage {
     });
     prompt.present();
   }
+
+
 
 
 
