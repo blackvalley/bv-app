@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { OpportunityData } from '../../providers/opportunity.provider'
 /*
   Generated class for the OppDetail page.
 
@@ -13,15 +12,10 @@ import { OpportunityData } from '../../providers/opportunity.provider'
 })
 export class OppDetailPage {
   private opp
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-  private oppData:OpportunityData) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
     ionViewDidLoad() {
-      this.oppData.getOppDetail(this.navParams.get('oppId'))
-      .on('value', snapshot => {
-      this.opp = snapshot.val();
-      });
-      console.log(this.opp)
+      this.opp = this.navParams.get('opp')
     }
 
 

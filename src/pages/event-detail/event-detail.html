@@ -18,7 +18,7 @@
   <ion-list id="content">
 
   <div class="event-header">
-    <img id="event-img" src={{event?.picture}} alt="ionic logo">
+    <img id="event-img" src={{event?.eventPicture}} alt="ionic logo">
   </div>
 
 
@@ -51,12 +51,12 @@
     <ion-col><div>
       <ion-title>Overview:</ion-title>
       <p>
-        {{opp?.description}}
+        {{event?.description}}
       </p>
 
       <h6>Restrictions:</h6>
       <p>
-        {{opp?.description}}
+        {{event?.description}}
       </p>
     </div></ion-col>
   </ion-row>
@@ -69,14 +69,14 @@
   <ion-row id="icons" no-padding>
     <ion-col ><div>
         <button ion-button clear large icon-left>
-          <ion-icon name="clipboard"></ion-icon>
-          Apply
+        <ion-icon name="clipboard"></ion-icon>
+          Attend
         </button>
       </div></ion-col>
         <ion-col ><div>
       <button ion-button clear large icon-left>
         <ion-icon name="bookmark"></ion-icon>
-        Bookmark
+        Comment
       </button>
     </div></ion-col>
       <ion-col ><div>

@@ -25,10 +25,11 @@ export class MultiChatPage {
 
   }
 
-  ionViewDidEnter() {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad MultiChatPage');
+    this.showLoading()
     this.showChats()
-
+    this.loader.dismiss()
   }
   createChat(){
     this.navCtrl.push(CreateChatPage)

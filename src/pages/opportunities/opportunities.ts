@@ -33,7 +33,7 @@ export class OpportunitiesPage {
   }
 
 
-  ionViewDidEnter(){
+  ionViewDidLoad(){
 
     this.oppData.getOpportunityList().on('value', snapshot => {
       this.showLoading()
@@ -59,9 +59,9 @@ export class OpportunitiesPage {
       eventModal.present()
     }
 
-    goToOppDetail(oppId):void{
+    goToOppDetail(opp):void{
       this.navCtrl.push(OppDetailPage, {
-        oppId:oppId
+        opp:opp
       })
     }
 
