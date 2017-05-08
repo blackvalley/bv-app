@@ -1,5 +1,10 @@
 page-events {
 
+  #content ion-item {
+    background: transparent;
+    color: #FFFFFF;
+  }
+
 
   #event-card{
     box-shadow: 0 0 3px 2px #000;
@@ -16,13 +21,11 @@ page-events {
   #event-date{
     border: 1px solid white;
     border-radius: 15px;
-    padding: 5px 5px;
     color: #C6E947;
     margin: -10px 0px -10px -5px;
     text-align: center;
     background-color: none;
-    width: 100px;
-
+    font-weight: bold;
   }
 
   #card-header {
@@ -31,17 +34,10 @@ page-events {
 
   #card-title {
     color: #C6E947;
-    margin: -10px 10px -5px 10px;
-    text-decoration: underline;
   }
 
   #event-referral {
     margin: -5px 10px 0px 10px;
-  }
-  ion-row {
-    padding-top: -10px;
-    padding-bottom: -10px;
-    height: 50px;
   }
 
 

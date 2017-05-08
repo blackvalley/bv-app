@@ -1,8 +1,13 @@
 page-profile {
 
-  #content{
-
+  #content ion-list-header {
+    color: #FFFFFF;
   }
+
+  #content ion-icon {
+    color: #FFFFFF;
+  }
+
 
 
   #profile-header {
@@ -105,6 +110,11 @@ ion-scroll {
   color: #C6E947;
   width: 100px;
   height: 80px;
+}
+
+#connections button{
+  background: #000000;
+  color: #C6E947;
 }
 
 .end {

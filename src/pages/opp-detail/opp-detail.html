@@ -16,14 +16,14 @@
 <ion-content>
   <ion-list id="content">
 
-  <div class="event-header">
-    <img id="opp-img" src={{opp?.picture}} alt="ionic logo">
+  <div >
+    <img id="opp-img" src={{opp?.picture}} alt="Oppourtunity Image">
   </div>
 
 
   <ion-row>
     <ion-col><div>
-      <ion-title id="oppName">{{opp?.name}}</ion-title>
+      <h2 id="oppName">{{opp?.name}}</h2>
     </div></ion-col>
   </ion-row>
   <ion-row center>
@@ -31,7 +31,7 @@
       <ion-item no-lines>
       <ion-icon item-left color=primary name="calendar"></ion-icon>
       <ion-label stacked>Deadline</ion-label>
-      <ion-label>{{opp?.deadline}}</ion-label>
+      <ion-label>{{opp?.deadline | date:'MMM dd, yyyy h:mm a'}}</ion-label>
     </ion-item>
     </div></ion-col>
   </ion-row>
@@ -46,46 +46,39 @@
     </ion-item>
     </div></ion-col>
   </ion-row>
-  <ion-row center padding>
-    <ion-col><div>
-      <h6>Description:</h6>
-      <p>
-        {{opp?.description}}
-      </p>
 
-      <h6>Qualifications:</h6>
-      <p>
-        {{opp?.description}}
+  <ion-row>
+    <ion-col><div>
+      <ion-title>Overview:</ion-title>
+      <p>{{opp?.description}}
       </p>
     </div></ion-col>
   </ion-row>
-  <ion-row center>
-    <ion-col><div>
 
+
+  <ion-row>
+    <ion-col><div>
+      <ion-title>Qualifications: </ion-title>
+      <p>
+      </p>
     </div></ion-col>
   </ion-row>
 
   <ion-row id="icons" no-padding>
-    <ion-col ><div>
-        <button ion-button clear large icon-left>
-          <ion-icon name="clipboard"></ion-icon>
-          Apply
-        </button>
-      </div></ion-col>
-        <ion-col ><div>
-      <button ion-button clear large icon-left>
+    <ion-col ion-button clear icon-left><div>
+        <ion-icon name="clipboard"></ion-icon>
+        Apply
+    </div></ion-col>
+    <ion-col ion-button clear icon-left><div>
         <ion-icon name="bookmark"></ion-icon>
         Bookmark
-      </button>
     </div></ion-col>
-      <ion-col ><div>
-      <button ion-button clear large icon-left>
+    <ion-col ion-button clear icon-left><div>
         <ion-icon name="share-alt"></ion-icon>
         Share
-      </button>
-
     </div></ion-col>
   </ion-row>
+
 </ion-list>
 
 </ion-content>

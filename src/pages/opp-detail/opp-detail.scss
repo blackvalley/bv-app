@@ -1,11 +1,16 @@
 page-opp-detail {
 
 #content{
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 1);
   position: absolute;
   color: #FFFFFF;
 }
 
+#content ion-title {
+  text-align: left;
+  background: #515151;
+  color: #000000;
+}
 
 #content ion-item {
   background: transparent;
@@ -19,17 +24,6 @@ page-opp-detail {
 
 #opp-img {
   background-color: lightgray;
-  height: 250px;
-  width: 100%;
-
-}
-
-
-
-#icons button{
-padding: 10px;
-text-align: center;
-
 }
 
 #icons {
@@ -37,20 +31,11 @@ text-align: center;
   position: sticky;
   bottom: 0px;
   border-top: 2px solid #515151;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.9);
   height: 60px;
-
 }
-
-#icons div{
-  margin-top: -10px;
-}
-
-
-
 
 ion-row {
-
   border-bottom: 2px solid #515151;
 }
 

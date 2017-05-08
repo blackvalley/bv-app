@@ -15,20 +15,17 @@
       <ion-card id="opp-card" *ngFor="let opp of opps">
         <div (click)="goToOppDetail(opp)">
         <img src={{opp?.picture}}/>
-        <ion-card-content>
           <ion-row>
-            <ion-col><div>
+            <ion-col padding><div>
               <h2 id="oppName">{{opp?.name}}</h2>
             </div></ion-col>
           </ion-row>
-          </ion-card-content>
           </div>
           <ion-row center>
             <ion-col><div>
               <ion-item no-lines>
               <ion-icon item-left color=primary name="calendar"></ion-icon>
-              <ion-label stacked>Deadline</ion-label>
-              <ion-label>{{opp?.deadline}}</ion-label>
+              <ion-label>{{opp?.deadline | date:'MMM dd, yyyy'}}</ion-label>
             </ion-item>
             </div></ion-col>
           </ion-row>
@@ -36,7 +33,6 @@
             <ion-col><div>
               <ion-item no-lines>
               <ion-icon name="pin" color=primary item-left (click)=goToGeoLocation()></ion-icon>
-              <ion-label stacked>Location</ion-label>
               <ion-label>
                 {{opp?.location}}
               </ion-label>
@@ -45,7 +41,7 @@
           </ion-row>
 
         <ion-row no-padding>
-          <ion-col text-left >
+          <ion-col text-left>
           <button ion-button clear small icon-left>
             <ion-icon name="clipboard"></ion-icon>
               Apply
