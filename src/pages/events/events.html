@@ -10,50 +10,51 @@
 
 
 
-<ion-content class="has-header" id="feed">
+<ion-content class="has-header" id="content">
 
-<ion-list>
 
 
     <ion-card id="event-card" *ngFor="let event of events">
       <div (click)="goToEventDetail(event.id)">
       <img src={{event?.eventPic}}/>
-      <ion-card-content>
-        <ion-item id="card-header">
-          <div id="event-date" item-left>
-              <h4>{{event?.date}}</h4>
-          </div>
-          <div item-right>
-          <ion-card-title id="card-title">{{event?.name}}</ion-card-title>
-          <p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this opportunity with you</p>
-        </div>
-        </ion-item>
-      </ion-card-content>
+
+      <ion-row>
+        <ion-col padding><div>
+          <h2 id="card-title">{{event?.name}}</h2>
+        </div></ion-col>
+      </ion-row>
       </div>
-        <ion-row >
-          <ion-col><div>
-            <ion-item no-lines>
-            <ion-icon name="pin" color=primary item-left (click)=goToGeoLocation()></ion-icon>
-            <ion-label stacked>Location</ion-label>
-            <ion-label>
-              {{event?.location}}
-            </ion-label>
-          </ion-item>
-          </div></ion-col>
-        </ion-row>
+
+
+      <ion-row padding>
+        <ion-col width-20 text-wrap id="event-date">{{event?.date | date:'dd'}} <br> {{event?.date | date:'MMM'}}
+        </ion-col>
+        <ion-col width-80 ><div><p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this event with you</p>
+        </div></ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col><div>
+          <ion-item no-lines>
+          <ion-icon name="pin" color=primary item-left (click)=goToGeoLocation()></ion-icon>
+          <ion-label>
+            {{event?.location}}
+          </ion-label>
+        </ion-item>
+        </div></ion-col>
+      </ion-row>
 
 
         <ion-row no-padding>
           <ion-col text-left>
             <button ion-button clear small icon-left>
               <ion-icon name='thumbs-up'></ion-icon>
-              Attending
+              Attend
             </button>
           </ion-col>
           <ion-col text-center>
             <button ion-button clear small icon-left>
-              <ion-icon name='text'></ion-icon>
-              Comments
+              <ion-icon name='bookmark'></ion-icon>
+              Bookmark
             </button>
           </ion-col>
           <ion-col text-right>
@@ -67,6 +68,5 @@
 
       </ion-card>
 
-  </ion-list>
 
 </ion-content>

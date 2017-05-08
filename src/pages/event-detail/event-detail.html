@@ -18,7 +18,7 @@
   <ion-list id="content">
 
   <div class="event-header">
-    <img id="event-img" src={{event?.eventPicture}} alt="ionic logo">
+    <img id="event-img" src={{event?.eventPicture}} alt="Event Image">
   </div>
 
 
@@ -32,7 +32,7 @@
       <ion-item no-lines>
       <ion-icon item-left color=primary name="calendar"></ion-icon>
       <ion-label stacked>When</ion-label>
-      <ion-label>{{event?.date}}</ion-label>
+      <ion-label>{{event?.date | date:'MMM dd, yyyy h:mm a'}}</ion-label>
     </ion-item>
     </div></ion-col>
   </ion-row>
@@ -47,19 +47,19 @@
     </ion-item>
     </div></ion-col>
   </ion-row>
-  <ion-row center padding>
+  <ion-row>
     <ion-col><div>
-      <h6>Overview:</h6>
-      <p>
-        {{event?.description}}
-      </p>
-
-      <h6>Restrictions:</h6>
-      <p>
-        {{event?.description}}
+      <ion-title>Event Overview:</ion-title>
+      <p>{{opp?.description}}
       </p>
     </div></ion-col>
   </ion-row>
+  <ion-row >
+    <ion-col><div>
+<p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this event with you</p>
+</div></ion-col>
+  </ion-row>
+
   <ion-row center>
     <ion-col><div>
 
@@ -67,24 +67,17 @@
   </ion-row>
 
   <ion-row id="icons" no-padding>
-    <ion-col ><div>
-        <button ion-button clear large icon-left>
+    <ion-col ion-button clear icon-left><div>
         <ion-icon name="clipboard"></ion-icon>
           Attend
-        </button>
       </div></ion-col>
-        <ion-col ><div>
-      <button ion-button clear large icon-left>
+      <ion-col ion-button clear icon-left><div>
         <ion-icon name="bookmark"></ion-icon>
         Comment
-      </button>
     </div></ion-col>
-      <ion-col ><div>
-      <button ion-button clear large icon-left>
+    <ion-col ion-button clear icon-left><div>
         <ion-icon name="share-alt"></ion-icon>
         Share
-      </button>
-
     </div></ion-col>
   </ion-row>
 </ion-list>
