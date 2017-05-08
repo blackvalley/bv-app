@@ -7,11 +7,33 @@
     </ion-buttons>
 
     </ion-navbar>
+
+    <ion-toolbar >
+      <ion-segment [(ngModel)]="allOpps" mode="md" no-lines id="segmentToggle">
+        <ion-segment-button value="student">
+          Student
+        </ion-segment-button>
+        <ion-segment-button value="professional">
+          Professional
+        </ion-segment-button>
+        <ion-segment-button value="entrepreneur">
+          Entrepreneur
+        </ion-segment-button>
+      </ion-segment>
+
+    </ion-toolbar>
+
 </ion-header>
 
 
 
 <ion-content id="content">
+
+  <div [ngSwitch]="allOpps" id="segments">
+
+    <!--Personal Edit Page  -->
+    <ion-list *ngSwitchCase="'student'" id="student">
+
       <ion-card id="opp-card" *ngFor="let opp of opps">
         <div (click)="goToOppDetail(opp)">
         <img src={{opp?.picture}}/>
@@ -62,5 +84,18 @@
         </ion-row>
 
       </ion-card>
+
+
+    </ion-list>
+
+
+      <ion-list *ngSwitchCase="'professional'" id="professional">
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'entrepreneur'" id="entreprenuer">
+      </ion-list>
+
+    </div>
+
 
 </ion-content>

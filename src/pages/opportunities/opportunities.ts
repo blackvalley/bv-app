@@ -16,11 +16,13 @@ export class OpportunitiesPage {
   calendar: any = "event"
   private loader
   private opps : any[]
+  private allOpps
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modalCtrl: ModalController, private oppData:OpportunityData,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
-      this.opps=[]
+      this.opps=[];
+      this.allOpps = 'student'
     }
 
   addOpp(){

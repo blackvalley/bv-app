@@ -12,10 +12,13 @@ import { GeoLocationPage } from '../geo-location/geo-location'
 export class EventsPage {
   private events : any[]
   private loader
+  private allEvents
+
   constructor(private navCtrl: NavController, private eventData : EventData,
     private modalCtrl: ModalController,  private loadingCtrl:LoadingController,
     private alertCtrl:AlertController) {
     this.events = [];
+    this.allEvents = 'tech';
   }
   ionViewDidLoad(){
     this.showLoading()

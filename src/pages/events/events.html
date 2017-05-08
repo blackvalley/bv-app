@@ -6,11 +6,32 @@
     </ion-buttons>
 
   </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="allEvents" mode="md" no-lines id="segmentToggle">
+      <ion-segment-button value="tech">
+        Technical
+      </ion-segment-button>
+      <ion-segment-button value="notTech">
+        Non-Technical
+      </ion-segment-button>
+      <ion-segment-button value="social">
+        Social
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-toolbar>
 </ion-header>
 
 
 
+
 <ion-content class="has-header" id="content">
+
+
+  <div [ngSwitch]="allEvents" id="segments">
+
+    <!--Personal Edit Page  -->
+    <ion-list *ngSwitchCase="'tech'" id="tech">
 
 
 
@@ -71,6 +92,19 @@
 
 
       </ion-card>
+
+    </ion-list>
+
+
+      <ion-list *ngSwitchCase="'notTech'" id="notTech">
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'social'" id="social">
+      </ion-list>
+
+    </div>
+
+
 
 
 </ion-content>
