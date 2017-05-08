@@ -49,12 +49,13 @@
 
 </ion-content>
 
-<ion-footer text-wrap>
-  <ion-toolbar>
+<ion-footer>
+    <form [formGroup]="messageForm" (submit)="postMessage()" novalidate>
     <ion-item id="input-comments" no-lines>
       <ion-icon item-left name="camera"></ion-icon>
-     <ion-textarea type="text" [(ngModel)]="message" placeholder="Enter your comment here..."></ion-textarea>
-     <button item-right ion-button (click)=sendMessage(message)> Post</button>
+     <ion-textarea type="text" formControlName="message" placeholder="Enter your comment here..."
+     maxlength="150"></ion-textarea>
+     <button item-right ion-button type="submit"> Post</button>
    </ion-item>
-  </ion-toolbar>
+ </form>
 </ion-footer>

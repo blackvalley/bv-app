@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams} from 'ionic-angular';
 import { ArticlePage } from '../article/article';
-import { ArticleProvider } from '../../providers/article-provider'
-import { ProfileData } from '../../providers/profile.data'
+import { ArticleProvider } from '../../providers/article-provider';
+import { ProfileData } from '../../providers/profile.data';
+import { FormsModule, FormBuilder, Validators } from '@angular/forms';
+
 
 
 
@@ -21,8 +23,10 @@ export class CommentsPage {
   private me: any;
   private comments: any[]
   private articleid
+  private commentForm
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController,
+    public navParams: NavParams, private formBuilder: FormBuilder,
     private articledb: ArticleProvider, private profile: ProfileData) {
       this.articleid = this.navParams.get('articleId');
       this.comments=[]
@@ -36,12 +40,29 @@ export class CommentsPage {
             });
       this.getArticle()
       this.getAddedComments()
+      this.commentForm = formBuilder.group({
+        comment: ['', Validators.required]
+      })
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CommentsPage')
   }
+
+  postComment(){
+  if (!this.commentForm.valid){
+    console.log(this.commentForm.value.comment);
+  }
+  else {
+    this.articledb.addComment(this.articleid,this.commentForm.value.comment,this.me).then( () =>
+    {
+    this.commentForm.reset();
+    });
+
+    }
+  }
+
   getArticle(){
     this.articledb.getArticleDetail(this.articleid)
     .on('value', snapshot => {
@@ -56,12 +77,6 @@ export class CommentsPage {
     },
     err =>{
        console.error("Unable to add user - ", err)
-    })
-  }
-  addComment(comment:string){
-    this.articledb.addComment(this.articleid,comment,this.me).
-    then(()=>{
-      
     })
   }
   closeComments(){

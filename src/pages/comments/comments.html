@@ -50,9 +50,11 @@
 </ion-content>
 
 <ion-footer id="footer">
+  <form [formGroup]="commentForm" (submit)="postComment()" novalidate>
     <ion-item  id="input-comments" >
-     <ion-textarea type="text" [(ngModel)]="comment" placeholder="Enter your comment here..."
+     <ion-textarea type="text" formControlName="comment" type="text" placeholder="Enter your comment here..."
       maxlength="150"></ion-textarea>
-     <button item-right ion-button (click)=addComment(comment)> Post</button>
+     <button item-right ion-button type="submit"> Post</button>
  </ion-item>
+</form>
 </ion-footer>
