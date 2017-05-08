@@ -25,13 +25,17 @@
       </ion-row>
       </div>
 
-
-      <ion-row padding>
-        <ion-col width-20><div id="event-date">{{event?.date | date:'dd'}} <br> {{event?.date | date:'MMM'}}
-        </div></ion-col>
-        <ion-col width-80 ><div><p id="event-referral"><a href="" >Keisha Ebbesen</a> Shared this event with you</p>
+      <ion-row center>
+        <ion-col><div>
+          <ion-item no-lines>
+          <ion-icon item-left color=primary name="calendar"></ion-icon>
+          <ion-label>{{event?.date | date:'MMM dd, yyyy'}}</ion-label>
+        </ion-item>
         </div></ion-col>
       </ion-row>
+
+
+
       <ion-row >
         <ion-col><div>
           <ion-item no-lines>

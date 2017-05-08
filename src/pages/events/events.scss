@@ -19,11 +19,12 @@ page-events {
 
 
   #event-date{
-    background: url('https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/calendar-icon.png?alt=media&token=9d7b5b01-26a2-4bdd-9eb9-6dbb558b95d4');
-    color: #C6E947;
-    margin: -10px 0px -10px -5px;
+    background: #C6E947;
+    color: #000000;
+    border-radius: 10px;
     text-align: center;
     font-weight: bold;
+    padding: 1px;
   }
 
   #card-header {
