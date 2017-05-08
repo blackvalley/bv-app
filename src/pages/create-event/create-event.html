@@ -34,7 +34,6 @@
     <ion-col><div>
       <ion-item no-lines>
       <ion-icon item-left color=primary name="calendar"></ion-icon>
-      <ion-label stacked>Date</ion-label>
       <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"[(ngModel)]="eventDate"></ion-datetime>
     </ion-item>
     </div></ion-col>
@@ -43,7 +42,6 @@
     <ion-col><div>
       <ion-item no-lines>
       <ion-icon name="pin" color=primary item-left></ion-icon>
-      <ion-label stacked>Location</ion-label>
       <ion-input [(ngModel)]="eventLocation" type="text" placeholder="Location"></ion-input>
     </ion-item>
     </div></ion-col>
@@ -53,7 +51,6 @@
     <ion-col><div>
       <ion-item no-lines>
       <ion-icon name="pricetag" color=primary item-left></ion-icon>
-      <ion-label stacked>Price</ion-label>
       <ion-input [(ngModel)]="eventPrice" type="text" placeholder="Cost"></ion-input>
     </ion-item>
     </div></ion-col>
