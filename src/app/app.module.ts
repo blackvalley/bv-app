@@ -38,6 +38,9 @@ import { MyEventsPage } from '../pages/my-events/my-events'
 import { ViewProfilePage } from '../pages/view-profile/view-profile'
 import { GeoLocationPage } from '../pages/geo-location/geo-location'
 import { Geolocation } from '@ionic-native/geolocation';
+import { AboutPage } from '../pages/about/about';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -66,7 +69,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     ViewProfilePage,
     MyEventsPage,
     MyOppsPage,
-    GeoLocationPage
+    GeoLocationPage,
+    AboutPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -99,7 +103,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     ViewProfilePage,
     MyEventsPage,
     MyOppsPage,
-    GeoLocationPage
+    GeoLocationPage,
+    AboutPage,
 
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},

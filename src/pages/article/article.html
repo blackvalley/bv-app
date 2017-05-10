@@ -17,7 +17,7 @@
 <ion-content id="article-page">
   <ion-list>
     <div id="article-img-container">
-      <img id="article-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/BVwKeisha.jpeg?alt=media&token=cc8f5825-232f-4d2b-8278-9b92f0d5b462">
+      <img id="article-img" src="{{article?.img}}">
     </div>
       <ion-item id="article-title" no-lines>
         <h2> {{article?.title}} </h2>
@@ -27,7 +27,7 @@
       <ion-list padding id="article">
       {{article?.intro}}
       <div id="quote" style="float: left" >{{article?.quote}}<br>
-        {{article?.auth}}
+        {{article?.quote-auth}}
       </div>
       <p>
       {{article?.parg1}}<br>
