@@ -17,10 +17,10 @@
     <div (click) ="goToArticle(lastArticle?.key)">
 
     <ion-row id="cardImg">
-      <ion-card-content >
+      <ion-item >
       <img src="{{lastArticle?.img}}"/>
-      <h2> {{lastArticle?.title}} </h2>
-    </ion-card-content>
+      <h2> {{lastArticle?.title}}</h2>
+    </ion-item>
     </ion-row>
     <ion-row>
       <ion-col>
@@ -39,13 +39,13 @@
           {{numOfLikes[0]}} Likes
         </button>
       </ion-col>
-      <ion-col text-center (click)="openComments(lastArticle.key)">
+      <ion-col text-center (click)="openComments(lastArticle?.key)">
         <button ion-button clear small icon-left>
           <ion-icon name='text'></ion-icon>
           Comments
         </button>
       </ion-col>
-      <ion-col text-right (click)="shareOptions(lastArticle.key)">
+      <ion-col text-right (click)="shareOptions(lastArticle?.key)">
         <button ion-button clear small icon-left>
           <ion-icon name='share-alt'></ion-icon>
           Share

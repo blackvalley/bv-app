@@ -9,13 +9,26 @@
   <ion-navbar>
     <ion-title>
   </ion-title>
+
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content id="article-page">
+  <ion-fab top right >
+    <button ion-fab mini><ion-icon name="arrow-down"></ion-icon></button>
+    <ion-fab-list>
+      <button ion-fab><ion-icon name="thumbs-up"></ion-icon></button>
+      <button ion-fab><ion-icon name="text"></ion-icon></button>
+      <button ion-fab><ion-icon name="share-alt"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
   <ion-list>
+
     <div id="article-img-container">
       <img id="article-img" src="{{article?.img}}">
     </div>
@@ -30,7 +43,11 @@
         {{article?.quote-auth}}
       </div>
       <p>
-      {{article?.parg1}}<br>
+      {{article?.header1}}
+      {{article?.parg1}}
+      <img src="{{article?.img2}}">
+      <br>
+
       {{article?.parg2}}<br>
       {{article?.parg3}}
       </p>

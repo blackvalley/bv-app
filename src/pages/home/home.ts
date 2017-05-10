@@ -43,12 +43,16 @@ export class HomePage {
 
   goToArticle(articleId):void{
     this.navCtrl.push(ArticlePage, {
-      articleId:articleId
+      articleId:articleId,
+
     })
+    console.log(articleId);
+    console.log('articleid ^')
+
   }
-  openComments(articleId){
+  openComments(articleKey){
     let commentsModal = this.modalCtrl.create(CommentsPage, {
-      articleId:articleId
+      articleKey:articleKey
     });
     commentsModal.present();
   }
@@ -66,9 +70,6 @@ export class HomePage {
       this.lastArticle = this.articles[this.articles.length-1];
 
     })
-      console.log('Text clicked');
-
-
 
   }
 

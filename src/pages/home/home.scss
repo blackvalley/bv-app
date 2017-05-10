@@ -17,18 +17,19 @@ page-home {
     max-height: 300px;
     width: 100%;
     padding: 0px;
+    text-align: justify;
+
   }
 
   #cardImg img{
     width: 100%;
-
-
   }
 
   #cardImg h2 {
     position: absolute;
     bottom: 0px;
     background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+    text-align: justify;
 
   }
 
@@ -82,6 +83,7 @@ page-home {
   color: #515151;
   text-align: left;
   font-size: 11px;
+  text-align: right;
 
 }
 
@@ -106,6 +108,13 @@ page-home {
 }
 
 
+.label {
+ margin: 0;
+}
+
+.item-inner {
+ padding-right: 0px!important;
+}
 
 
 }
