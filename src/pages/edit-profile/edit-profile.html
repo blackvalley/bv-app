@@ -148,12 +148,9 @@
                 Submit
             </button>
 
-
-
-
-                    <button ion-button full id="logout-btn" (click)="logOut()">
-                      Logout page
-                    </button>
+            <button ion-button full id="logout-btn" (click)="logOut()">
+                Logout page
+                </button>
 
 
                   </form>
@@ -165,7 +162,6 @@
             <ion-icon name='briefcase'></ion-icon>
             New Employment
           </ion-list-header>
-
 
           <form [formGroup]="editEmploymentForm" (submit)="updateEmploymentInfo()" novalidate>
             <ion-item>
@@ -181,7 +177,7 @@
 
             <ion-item>
               <ion-label stacked>Position</ion-label>
-              <ion-input #jobPosition formControlName="jobPosition" type="text" placeholder="Position"
+              <ion-input #jobPosition formControlName="jobPosition" type="text" placeholder="Software Developer"
                 [class.invalid]="!editEmploymentForm.controls.jobPosition.valid && editEmploymentForm.controls.jobPosition.dirty">
                 </ion-input>
             </ion-item>
@@ -222,13 +218,11 @@
               *ngIf="!editEmploymentForm.controls.jobLink.valid  && editEmploymentForm.controls.jobLink.dirty">
               <p>Job name must be at least two characters.</p>
             </ion-item>
-
-
             <button ion-button full type="submit" id="connect-btn" >
                 Submit
             </button>
-
           </form>
+
           <ion-list id="userEmployment">
         <ion-list-header>
           <ion-icon name='briefcase'></ion-icon>
@@ -237,17 +231,17 @@
 
 
           <ion-list id="employment">
-            <ion-card text-wrap>
+            <ion-card *ngFor="let job of jobs"text-wrap>
               <ion-row>
-                <ion-col><div><h1 item-left>{{userProfile?.jobName}}</h1></div></ion-col>
-                <ion-col class="end"><div> <h2 item-right>{{userProfile?.jobPosition}}</h2></div></ion-col>
+                <ion-col><div><h1 item-left>{{job?.jobName}}</h1></div></ion-col>
+                <ion-col class="end"><div> <h2 item-right>{{job?.jobPosition}}</h2></div></ion-col>
               </ion-row>
               <ion-row>
-                <ion-col><div><p>{{userProfile?.jobDescription}}</p></div></ion-col>
+                <ion-col><div><p>{{job?.jobDescription}}</p></div></ion-col>
               </ion-row>
               <ion-row>
-                <ion-col><div> <a href={{userProfile?.jobLink}}>Link</a></div></ion-col>
-                <ion-col class="end"><p>{{userProfile?.jobDate}}</p></ion-col>
+                <ion-col><div> <a href={{job?.jobLink}}>Link</a></div></ion-col>
+                <ion-col class="end"><p>{{job?.jobDate}}</p></ion-col>
               </ion-row>
             </ion-card>
           </ion-list>

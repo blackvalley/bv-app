@@ -37,6 +37,9 @@ getUserProfile(): firebase.database.Reference {
 getCurrentUser(){
   return this.currentUser;
 }
+getMyJobs():firebase.database.Reference {
+  return this.getUserProfile().child('jobs');
+}
 
 /**
 * This one takes 2 string parameters, firstName & lastName, it just saves those 2 to the userProfile/uid node
@@ -60,13 +63,14 @@ updateProfile(college: string, field: string, location: string, birthDate: strin
 
 
 updateEmployment(jobName: string, jobPosition: string, jobDescription: string, jobDate: string, jobLink: string): firebase.Promise<any> {
- return this.userProfile.child(this.currentUser.uid).update({
-   jobName: jobName,
-   jobPosition: jobPosition,
-   jobDescription: jobDescription,
-   jobDate: jobDate,
-   jobLink: jobLink,
- });
+ return this.userProfile.child(this.currentUser.uid).
+        child('jobs').push({
+           jobName: jobName,
+           jobPosition: jobPosition,
+           jobDescription: jobDescription,
+           jobDate: jobDate,
+           jobLink: jobLink,
+         });
 }
 
 

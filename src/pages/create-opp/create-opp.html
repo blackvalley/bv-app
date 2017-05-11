@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
   <ion-buttons>
@@ -9,7 +10,7 @@
   <ion-title>Opportunity</ion-title>
   <ion-buttons end>
 
-  <button id="postBtn" ion-button icon-only (click)="createOpportunity(oppName, oppDeadline, oppLocation, oppDescription)">
+  <button id="postBtn" ion-button icon-only (click)=createOpportunity()>
     Post
     </button>
 </ion-buttons>
@@ -18,53 +19,47 @@
 </ion-header>
 
 <ion-content id="content">
+  <form [formGroup]="createForm"  novalidate id="create-form">
   <ion-list>
-
-          <ion-row id="opp-img">
-
+        <ion-row id="opp-img">
             <button ion-button clear small icon-left (click)="cameraOptions()">
-              <img [src]="captureDataUrl" id="img" *ngIf="captureDataUrl"/>
               <ion-icon color="primary" name='camera'></ion-icon>
               Add Image
             </button>
-          </ion-row>
-
+        </ion-row>
         <ion-row>
           <ion-col><div>
-            <h2 id="oppName"><ion-input [(ngModel)]="oppName" type="text" placeholder="Opportunity Name"></ion-input>
-            </h2>
+            <ion-input #name formControlName="name" type="text" placeholder="Opportunity Name"
+            [class.invalid]="!createForm.controls.name.valid && createForm.controls.name.dirty">
+          </ion-input>
           </div></ion-col>
         </ion-row>
         <ion-row center>
           <ion-col><div>
             <ion-item no-lines>
             <ion-icon item-left color=primary name="calendar"></ion-icon>
-            <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"[(ngModel)]="oppDeadline" placeholder="Deadline"></ion-datetime>
+            <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"
+            #deadline formControlName="deadline" placeholder="Deadline"></ion-datetime>
           </ion-item>
           </div></ion-col>
         </ion-row>
         <ion-row >
           <ion-col><div>
             <ion-item no-lines>
-            <ion-icon name="pin" color=primary item-left></ion-icon>
-            <ion-input [(ngModel)]="oppLocation" type="text" placeholder="Location"></ion-input>
-          </ion-item>
-          </div></ion-col>
+              <ion-icon name="pin" color=primary item-left></ion-icon>
+                <ion-input #location formControlName="location" type="text" placeholder="Location"
+                [class.invalid]="!createForm.controls.location.valid && createForm.controls.location.dirty">
+                </ion-input>
+              </ion-item>
+            </div></ion-col>
         </ion-row>
         <ion-row >
           <ion-col><div>
             <ion-title>Overview:</ion-title>
             <p>
-              <ion-textarea [(ngModel)]="oppDescription" type="text" placeholder="Opportunity Details"></ion-textarea>
-            </p>
-          </div></ion-col>
-        </ion-row>
-
-        <ion-row >
-          <ion-col><div>
-            <ion-title>How to Apply: </ion-title>
-            <p>
-              <ion-textarea type="text" placeholder="Enter Instruction on Applying"></ion-textarea>
+              <ion-input #description formControlName="description" type="text" placeholder="Enter text"
+                [class.invalid]="!createForm.controls.description.valid && createForm.controls.description.dirty">
+              </ion-input>
             </p>
           </div></ion-col>
         </ion-row>
@@ -73,12 +68,26 @@
           <ion-col><div>
             <ion-title>Qualifications: </ion-title>
             <p>
-              <ion-textarea type="text" placeholder="Enter Qualifications here"></ion-textarea>
+              <ion-input #qualifications formControlName="qualifications" type="text" placeholder="Enter Qualifications"
+                [class.invalid]="!createForm.controls.qualifications.valid && createForm.controls.qualifications.dirty">
+              </ion-input>
+            </p>
+          </div></ion-col>
+        </ion-row>
+        
+        <ion-row >
+          <ion-col><div>
+            <ion-title>How to Apply: </ion-title>
+            <p>
+              <ion-input #contact formControlName="contact" type="text" placeholder="Enter Contact or How To Apply"
+                [class.invalid]="!createForm.controls.contact.valid && createForm.controls.contact.dirty">
+              </ion-input>
             </p>
           </div></ion-col>
         </ion-row>
 
-        <ion-item>
+
+        <!-- <ion-item>
           <ion-label icon-left ><ion-icon name="school"></ion-icon> Student</ion-label>
           <ion-toggle [(ngModel)]="student"></ion-toggle>
         </ion-item>
@@ -89,7 +98,7 @@
         <ion-item>
           <ion-label icon-left ><ion-icon name="bulb"></ion-icon> Entrepreneur</ion-label>
           <ion-toggle [(ngModel)]="entrepreneur"></ion-toggle>
-        </ion-item>
-
+        </ion-item> -->
   </ion-list>
+  </form>
 </ion-content>

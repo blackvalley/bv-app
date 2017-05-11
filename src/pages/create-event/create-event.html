@@ -6,22 +6,18 @@
       </button>
   </ion-buttons>
   <ion-title>Event</ion-title>
-
-
   <ion-buttons end>
-
-  <button id="postBtn" ion-button icon-only (click)="createEvent(eventName, eventDate, eventLocation,
-  eventPrice)">
+  <button id="postBtn" ion-button icon-only (click)="createEvent()">
     Post
     </button>
-</ion-buttons>
+  </ion-buttons>
 
 </ion-navbar>
 </ion-header>
 
 <ion-content id="content">
 
-
+<form [formGroup]="createForm"  novalidate id="create-form">
   <ion-list>
 
   <ion-row id="event-img">
@@ -31,12 +27,12 @@
       <ion-icon color="primary" name='camera'></ion-icon>
       Add Image
     </button>
-
   </ion-row>
-
   <ion-row>
     <ion-col><div>
-      <h2 id="eventName"><ion-input [(ngModel)]="eventName" type="text" placeholder="Event Name"></ion-input>
+      <h2 id="eventName"><ion-input #name formControlName="name" type="text" placeholder="Enter Event Name"
+        [class.invalid]="!createForm.controls.name.valid && createForm.controls.name.dirty">
+      </ion-input>
       </h2>
     </div></ion-col>
   </ion-row>
@@ -44,7 +40,8 @@
     <ion-col><div>
       <ion-item no-lines>
       <ion-icon item-left color=primary name="calendar"></ion-icon>
-      <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"[(ngModel)]="eventDate"></ion-datetime>
+      <ion-datetime displayFormat="MMM DD, YYYY h:mm A" min="2017" max="2020"
+      #date formControlName="date" placeholder="When is the event?"></ion-datetime>
     </ion-item>
     </div></ion-col>
   </ion-row>
@@ -52,7 +49,9 @@
     <ion-col><div>
       <ion-item no-lines>
       <ion-icon name="pin" color=primary item-left></ion-icon>
-      <ion-input [(ngModel)]="eventLocation" type="text" placeholder="Location"></ion-input>
+      <ion-input #location formControlName="location" type="text" placeholder="Where is the event?"
+        [class.invalid]="!createForm.controls.location.valid && createForm.controls.location.dirty">
+      </ion-input>
     </ion-item>
     </div></ion-col>
   </ion-row>
@@ -61,52 +60,33 @@
     <ion-col><div>
       <ion-item no-lines>
       <ion-icon name="pricetag" color=primary item-left></ion-icon>
-      <ion-input [(ngModel)]="eventPrice" type="text" placeholder="Cost"></ion-input>
+      <ion-input #price formControlName="price" type="text" placeholder="How much will the event be?"
+        [class.invalid]="!createForm.controls.price.valid && createForm.controls.price.dirty">
+      </ion-input>
     </ion-item>
     </div></ion-col>
   </ion-row>
 
   <ion-row center>
     <ion-col><div>
-      <ion-title>Overview:</ion-title>
+      <ion-title>Description:</ion-title>
       <p>
-        <ion-input [(ngModel)]="eventDetails" type="text" placeholder="Event Details"></ion-input>
+        <ion-input #description formControlName="description" type="text" placeholder="Describe the event"
+          [class.invalid]="!createForm.controls.description.valid && createForm.controls.description.dirty">
+        </ion-input>
       </p>
     </div></ion-col>
   </ion-row>
-
-  <ion-row center>
-    <ion-col><div>
-      <ion-title>How to Apply: </ion-title>
-      <p>
-        <ion-input type="text" placeholder="Opportunity Details"></ion-input>
-      </p>
-    </div></ion-col>
-  </ion-row>
-
-  <ion-row center>
-    <ion-col><div>
-      <ion-title>Restrictions: </ion-title>
-      <p>
-        <ion-input type="text" placeholder="Opportunity Details"></ion-input>
-      </p>
-    </div></ion-col>
-  </ion-row>
-
 
 </ion-list>
-
-
-
-
-  <ion-list>
+  <!-- <ion-list>
     <button ion-item>
       <ion-label>Alert</ion-label>
       <ion-note item-right>None</ion-note>
     </button>
-  </ion-list>
+  </ion-list> -->
 
-  <ion-item>
+  <!-- <ion-item>
     <ion-label icon-left ><ion-icon name="code-working"></ion-icon> Technical</ion-label>
     <ion-toggle [(ngModel)]="tech"></ion-toggle>
   </ion-item>
@@ -117,8 +97,8 @@
   <ion-item>
     <ion-label icon-left ><ion-icon name="musical-note"></ion-icon> Social</ion-label>
     <ion-toggle [(ngModel)]="social"></ion-toggle>
-  </ion-item>
+  </ion-item> -->
 
-
+</form>
 
 </ion-content>

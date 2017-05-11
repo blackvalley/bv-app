@@ -54,6 +54,7 @@ export class SignupPage {
        this.signupForm.value.email, this.signupForm.value.field, this.signupForm.value.password,
         this.profilePic)
     .then(() => {
+        this.showSuccess("Now tell us more about you!")
         this.nav.push(Signup2Page)
     }, (error) => {
         let alert = this.alertCtrl.create({
@@ -113,7 +114,9 @@ export class SignupPage {
              }
              this.camera.getPicture(options).then(imageData => {
                this.profilePic = imageData;
+               this.showSuccess("Image added")
                console.log(this.profilePic)
+
              }, error => {
                console.log("ERROR -> " + JSON.stringify(error));
              });
@@ -134,6 +137,7 @@ export class SignupPage {
                }
                this.camera.getPicture(options).then(imageData => {
                  this.profilePic = imageData;
+                 this.showSuccess("Image added")
                  console.log(this.profilePic)
                }, error => {
                console.log("ERROR -> " + JSON.stringify(error));
@@ -152,6 +156,15 @@ export class SignupPage {
      });
      actionSheet.present();
    }
+   showSuccess(text) {
+         let prompt = this.alertCtrl.create({
+           title: 'You made it in!',
+           subTitle: text,
+           buttons: ['OK']
+         });
+         prompt.present();
+
+     }
 
 
 

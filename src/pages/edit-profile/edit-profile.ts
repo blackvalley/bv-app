@@ -20,6 +20,7 @@ export class EditProfilePage {
     private editProfileForm;
     private editEmploymentForm;
     private loader;
+    private jobs : any[]
 
 
 
@@ -29,9 +30,21 @@ export class EditProfilePage {
       this.nav = nav;
       this.profileData = profile;
       this.editProfile = "persInfo";
-
+      this.jobs=[]
       this.profileData.getUserProfile().on('value', (data) => {
         this.userProfile = data.val();
+        });
+      this.profileData.getMyJobs().on('value', snapshot => {
+        snapshot.forEach( data => {
+          this.jobs.push({
+            id:data.key,
+            jobDate:data.val().jobDate,
+            jobDescription:data.val().jobDesription,
+            jobLink:data.val().jobLink,
+            jobName:data.val().jobName,
+            jobPosition:data.val().jobPosition
+          })
+        })
         });
 
       this.editProfileForm = formBuilder.group({
@@ -45,11 +58,11 @@ export class EditProfilePage {
       });
 
       this.editEmploymentForm = formBuilder.group({
-        jobName: [this.userProfile.jobName, Validators.minLength(2)],
-        jobPosition: [this.userProfile.jobPosition, Validators.minLength(2)],
-        jobDescription: [this.userProfile.jobDescription, Validators.minLength(2)],
-        jobDate: [this.userProfile.jobDate, Validators.minLength(2)],
-        jobLink: [this.userProfile.jobLink, Validators.minLength(2)],
+        jobName: [this.userProfile.jobName, Validators.compose([Validators.minLength(2),Validators.required])],
+        jobPosition: [this.userProfile.jobPosition, Validators.compose([Validators.minLength(2),Validators.required])],
+        jobDescription: [this.userProfile.jobDescription, Validators.compose([Validators.minLength(2),Validators.required])],
+        jobDate: [this.userProfile.jobDate, Validators.compose([Validators.minLength(2),Validators.required])],
+        jobLink: [this.userProfile.jobLink, Validators.compose([Validators.minLength(2),Validators.required])],
       });
 
         }
@@ -64,6 +77,7 @@ export class EditProfilePage {
 
       updateEmploymentInfo(){
         if (!this.editEmploymentForm.valid){
+          this.showError("We need all the details.")
           console.log('Form Invalid');
         } else {
           console.log('Form Valid');
@@ -71,6 +85,7 @@ export class EditProfilePage {
             this.editEmploymentForm.value.jobPosition, this.editEmploymentForm.value.jobDescription,
             this.editEmploymentForm.value.jobDate, this.editEmploymentForm.value.jobLink)
           .then(() => {
+                this.showSuccess("Job added!")
                 this.nav.push(ProfilePage);
               });
         } (error) => {
@@ -172,6 +187,25 @@ export class EditProfilePage {
     ]
   });
   alert.present();
-}
+  }
+
+showError(text) {
+  let prompt = this.alertCtrl.create({
+    title: 'Wait!',
+    subTitle: text,
+    buttons: ['OK']
+  });
+  prompt.present();
+
+  }
+showSuccess(text) {
+      let prompt = this.alertCtrl.create({
+        title: 'Success!',
+        subTitle: text,
+        buttons: ['OK']
+      });
+      prompt.present();
+
+  }
 
 }

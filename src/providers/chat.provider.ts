@@ -73,7 +73,11 @@ export class ChatProvider {
         timestamp:timestamp
       })
     })
-
   }
+  removeChat(chatid:string,userid:string):firebase.Promise<any>{
+    return this.chatdb.child(chatid).child('members')
+              .child(userid).remove()
+  }
+
 
 }

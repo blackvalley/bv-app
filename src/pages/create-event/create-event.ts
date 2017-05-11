@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController,
   AlertController, LoadingController, ActionSheetController, Platform } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
-
+import { FormBuilder, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
@@ -12,27 +12,42 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'create-event.html'
 })
 export class CreateEventPage {
+  private createForm
   private loader
   private captureDataUrl
   constructor(public navCtrl: NavController, public navParams: NavParams, private eventData: EventData,
     private viewCtrl: ViewController, private camera:Camera,
     private loadingCtrl:LoadingController, private alertCtrl:AlertController,
-    private actionSheetCtrl: ActionSheetController, private platform: Platform) {}
+    private actionSheetCtrl: ActionSheetController, private platform: Platform,
+    private formBuilder: FormBuilder) {
+      this.createForm = formBuilder.group({
+        name: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+        date: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+        location: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+        price: ['', Validators.compose([Validators.required])],
+        description: ['', Validators.compose([Validators.minLength(2),Validators.required])]
+      })
+    }
 
 
   //uses Event provider to create an event
-  createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
-    eventCost: number): void {
-      this.eventData.createEvent(eventName, eventDate, eventLocation, eventPrice,
-         this.captureDataUrl)
+  createEvent(): void {
+    if(!this.createForm.valid){
+      this.showError("We need all the details..")
+    }
+    else{
+        this.eventData.createEvent(this.createForm.value.name, this.createForm.value.date,
+        this.createForm.value.location, this.createForm.value.description,
+        this.createForm.value.price, this.captureDataUrl)
       .then( () => {
-          this.showSuccess()
+          this.showSuccess("Event created!")
           this.navCtrl.pop();
         }).catch((error)=>{
           this.showError(error)
           this.loader.dismiss()
         });
       }
+    }
 
   closeEvent(){
     this.viewCtrl.dismiss();
@@ -67,6 +82,7 @@ export class CreateEventPage {
             }
             this.camera.getPicture(options).then(imageData => {
               this.captureDataUrl = imageData;
+              this.showSuccess("Picture added!")
               console.log(this.captureDataUrl)
             }, error => {
               console.log("ERROR -> " + JSON.stringify(error));
@@ -88,6 +104,7 @@ export class CreateEventPage {
               }
               this.camera.getPicture(options).then(imageData => {
                 this.captureDataUrl = imageData;
+                this.showSuccess("Picture added!")
                 console.log(this.captureDataUrl)
               }, error => {
               console.log("ERROR -> " + JSON.stringify(error));
@@ -116,25 +133,21 @@ export class CreateEventPage {
     }
 
     showError(text) {
-      setTimeout(() => {
-        this.loader.dismiss();
-      });
-
       let prompt = this.alertCtrl.create({
-        title: 'Fail',
+        title: 'Wait!',
         subTitle: text,
         buttons: ['OK']
       });
       prompt.present();
       }
-  showSuccess() {
-        let prompt = this.alertCtrl.create({
-          title: 'Success!',
-          subTitle: "You have created an event",
-          buttons: ['OK']
-        });
-        prompt.present();
+      showSuccess(text) {
+            let prompt = this.alertCtrl.create({
+              title: 'Success!',
+              subTitle: text,
+              buttons: ['OK']
+            });
+            prompt.present();
 
-    }
+        }
 
 }
