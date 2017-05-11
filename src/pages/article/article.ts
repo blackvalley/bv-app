@@ -14,17 +14,22 @@ import { ArticleProvider } from '../../providers/article-provider'
 })
 export class ArticlePage {
   private article
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private articledb: ArticleProvider) {
+
   }
 
 
   ionViewDidLoad() {
     this.articledb.getArticleDetail(this.navParams.get('articleId'))
     .on('value', snapshot => {
-    this.article = snapshot.val();
+      this.article = snapshot.val();
     });
-    console.log(this.article)
+    console.log(this.article);
+    console.log('Program Ran')
+
+
   }
 
 

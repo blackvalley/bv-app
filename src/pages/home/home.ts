@@ -5,6 +5,8 @@ import { ArticleProvider } from '../../providers/article-provider'
 import { ArticlePage } from '../article/article';
 import { CommentsPage } from '../comments/comments';
 import { ProfileData } from '../../providers/profile.data'
+import { AboutPage } from '../about/about'
+
 //import { LoginPage } from '../login/login'
 @Component({
   selector: 'page-home',
@@ -15,6 +17,9 @@ export class HomePage {
   private loader
   private user: any;
   private numOfLikes:number = 0
+  private lastArticle: any[]
+
+
   constructor(public actionSheetCtrl: ActionSheetController, public platform: Platform, public navCtrl: NavController, public modalCtrl: ModalController,
     private articledb: ArticleProvider,private loadingCtrl:LoadingController,
     private alertCtrl:AlertController, private profile: ProfileData) {
@@ -22,6 +27,7 @@ export class HomePage {
      this.showLoading()
      this.getArticles()
      this.profile;
+
 
      this.profile.getUserProfile().on('value', (data) => {
        this.user = {
@@ -32,43 +38,39 @@ export class HomePage {
        }
            });
       this.loader.dismiss()
+
   }
 
   goToArticle(articleId):void{
     this.navCtrl.push(ArticlePage, {
-      articleId:articleId
+      articleId:articleId,
+
     })
+    console.log(articleId);
+    console.log('articleid ^')
+
   }
-  openComments(articleId){
+  openComments(articleKey){
     let commentsModal = this.modalCtrl.create(CommentsPage, {
-      articleId:articleId
+      articleKey:articleKey
     });
     commentsModal.present();
   }
 
-  getArticles(){
+  openAbout(){
+    let commentsModal = this.modalCtrl.create(AboutPage);
+    commentsModal.present();
+  }
 
+
+  getArticles(){
     this.articledb.getArticles().on('value',snapshot =>{
-        let rawData = [];
-      snapshot.forEach(snap =>{
-        rawData.push({
-          id:snap.key,
-          author:snap.val().author,
-          date:snap.val().dateposted,
-          intro:snap.val().intro,
-          pg1:snap.val().parg1,
-          pg2:snap.val().parg2,
-          pg3:snap.val().parg3,
-          qoute:snap.val().qoute,
-          madeqoute:snap.val().madeqoute,
-          title:snap.val().title,
-          likes:snap.val().likes
-        })
-        return false
-      })
-      this.articles=rawData
+      this.articles = snapshot.val();
+      console.log(this.articles);
+      this.lastArticle = this.articles[this.articles.length-1];
+
     })
-    
+
   }
 
 

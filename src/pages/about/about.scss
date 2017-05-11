@@ -1,0 +1,48 @@
+page-about {
+
+  #content{
+    background: #000000;
+  }
+
+  #content ion-list-header {
+    color: #FFFFFF;
+  }
+
+  #content ion-icon {
+    color: #FFFFFF;
+  }
+
+  #profile-header-content{
+    color: #FFFFFF;
+  }
+  #feedbackBtn {
+    color: #C6E947;
+    background: rgba(81, 81, 81, 0.6);
+
+
+  }
+
+
+
+  #profile-img {
+    border: 2px solid #FFFFFF;
+    border-radius: 100%;
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+    margin-bottom: 10px;
+
+  }
+
+
+
+  #user-img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height:auto;
+  }
+
+
+}
