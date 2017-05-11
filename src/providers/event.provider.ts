@@ -23,26 +23,26 @@ export class EventData {
     this.eventPicRef = this.fire.getStorage().ref('/eventPics')
             }
 
-   createEvent(eventName: string, eventDate: string, eventLocation: string, eventPrice: number,
-      eventCost: number, eventPic=null): firebase.Promise<any> {
-      let date =  Date.now()
+   createEvent(name: string, date:string, location: string,
+      description:string, price:string, eventPic=null): firebase.Promise<any> {
+      let timestamp =  Date.now()
       return this.myEvents.push({
-        name: eventName,
-        location: eventLocation,
-        date: eventDate,
-        price: eventPrice * 1,
-        timestamp:date,
-        cost: eventCost * 1,
-        creator:"Test"
+        name: name,
+        date: date,
+        location: location,
+        price: price,
+        description:description,
+        timestamp:timestamp
       })
 
       .then((newEvent) => {
           this.eventList.child(newEvent.key).
-              set({name: eventName,
-              date: eventDate,
-              location: eventLocation,
-              price: eventPrice * 1,
-              cost: eventCost * 1,
+              set({
+              name: name,
+              date: date,
+              location: location,
+              price: price,
+              description:description,
               timestamp:date
             });
             if (eventPic != null) {

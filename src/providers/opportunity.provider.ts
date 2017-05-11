@@ -22,23 +22,27 @@ export class OpportunityData {
       this.opportunityList = this.fire.getDatabase().ref('/opps')
       this.jobPicRef = this.fire.getStorage().ref('/oppPics')
     }
-    createOpportunity(oppName: string, oppDeadline: string,
-          oppLocation: string, oppDescription: string,
-          oppPic=null): firebase.Promise<any> {
+    createOpportunity(name: string, deadline: string,
+          location: string, description: string, qualifications:string,
+          contact:string,oppPic=null): firebase.Promise<any> {
           let date =  Date.now()
           return this.myOpportunities.push({
-            name: oppName,
-            location: oppLocation,
-            deadline: oppDeadline,
-            description: oppDescription,
+            name: name,
+            location: location,
+            deadline: deadline,
+            description: description,
+            qualifications:qualifications,
+            contact:contact,
             timestamp:date
           })
           .then((newOpp) => {
               this.opportunityList.child(newOpp.key).
-              set({ name: oppName,
-                    location: oppLocation,
-                    deadline: oppDeadline,
-                    description: oppDescription,
+              set({ name: name,
+                    location: location,
+                    deadline: deadline,
+                    description: description,
+                    qualifications:qualifications,
+                    contact:contact,
                     timestamp:date
                   })
                   if (oppPic != null) {

@@ -27,17 +27,17 @@
       Employment
     </ion-list-header>
     <ion-list id="employment">
-      <ion-card text-wrap>
+      <ion-card *ngFor="let job of jobs" text-wrap>
         <ion-row>
-          <ion-col><div><h1 item-left>{{userProfile?.jobName}}</h1></div></ion-col>
-          <ion-col class="end"><div> <h2 item-right>{{userProfile?.jobPosition}}</h2></div></ion-col>
+          <ion-col><div><h1 item-left>{{job?.jobName}}</h1></div></ion-col>
+          <ion-col class="end"><div> <h2 item-right>{{job?.jobPosition}}</h2></div></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><div><p>{{userProfile?.jobDescription}}</p></div></ion-col>
+          <ion-col><div><p>{{job?.jobDescription}}</p></div></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><div> <a href={{userProfile?.jobLink}}>Link</a></div></ion-col>
-          <ion-col class="end"><p>{{userProfile?.jobDate}}</p></ion-col>
+          <ion-col><div> <a href={{job?.jobLink}}>Link</a></div></ion-col>
+          <ion-col class="end"><p>{{job?.jobDate}}</p></ion-col>
         </ion-row>
       </ion-card>
     </ion-list>

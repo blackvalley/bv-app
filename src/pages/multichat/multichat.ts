@@ -44,31 +44,34 @@ export class MultiChatPage {
   }
 
   showChats(){
-    let rawList = []
+
     this.chatData.getAllChats().on('value', snapshot=> {
+      let rawList = []
                 snapshot.forEach(snap =>{
                   let members = snap.val().members
                   for(let member of members){
+                    console.log(member)
                     if(member.id==this.chatData.currentUser.uid){
                       rawList.push({
                         id:snap.key,
                         topic:snap.val().topic,
                         timestamp:snap.val().timestamp,
                         members:snap.val().members,
-                        latestMessage:snap.val().latestMessage
+                        latestMessage:snap.val().latestMessage,
+                        myKey:member.key
                       });
                       break
                     }
                   }
                   return false
                 })
-                console.log(rawList)
-
+                this.chats=rawList
+                console.log(this.chats)
               },
               err =>{
                  console.error("Unable to get chat - ", err)
               })
-    this.chats=rawList
+
   }
   showLoading() {
     this.loader = this.loadingCtrl.create({
@@ -84,7 +87,21 @@ export class MultiChatPage {
     });
     prompt.present();
   }
+  removeChat(chatid:string, myKey){
+    this.chatData.removeChat(chatid,myKey).
+    then(()=>{
+      this.showSuccess("Chat deleted.")
+    })
+  }
+  showSuccess(text) {
+        let prompt = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: text,
+          buttons: ['OK']
+        });
+        prompt.present();
 
+    }
 
 
 

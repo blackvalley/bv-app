@@ -22,8 +22,8 @@
                 <ion-note>{{chat?.timestamp|date : 'h:mma'}} <br> {{chat?.timestamp|date : 'MMM/dd'}} </ion-note>
               </span>
             </button>
-            <ion-item-options side="left">
-                <button ion-button color="danger" >Delete Chat</button>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)=removeChat(chat?.id,chat?.myKey) >Delete Chat</button>
             </ion-item-options>
     </ion-item-sliding>
   </ion-list>

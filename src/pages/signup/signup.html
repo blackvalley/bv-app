@@ -10,7 +10,7 @@
 
     <ion-list-header>
       <ion-icon name="person"></ion-icon>
-      Basic Info
+      Sign Up Form
     </ion-list-header>
     <ion-list>
 
@@ -36,8 +36,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-input #n
-        lame formControlName="lname" type="lname" placeholder="Last Name"
+        <ion-input #lname formControlName="lname" type="lname" placeholder="Last Name"
           [class.invalid]="!signupForm.controls.lname.valid && signupForm.controls.lname.dirty">
           </ion-input>
       </ion-item>
