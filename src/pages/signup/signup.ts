@@ -113,7 +113,7 @@ export class SignupPage {
                saveToPhotoAlbum: true
              }
              this.camera.getPicture(options).then(imageData => {
-               this.profilePic = imageData;
+               this.profilePic = "data:image/jpeg;base64,"+imageData;
                this.showSuccess("Image added")
                console.log(this.profilePic)
 
