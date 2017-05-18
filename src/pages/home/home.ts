@@ -5,7 +5,8 @@ import { ArticleProvider } from '../../providers/article-provider'
 import { ArticlePage } from '../article/article';
 import { CommentsPage } from '../comments/comments';
 import { ProfileData } from '../../providers/profile.data'
-import { AboutPage } from '../about/about'
+import { AboutPage } from '../about/about';
+import { Signup3Page } from '../signup3/signup3'
 
 //import { LoginPage } from '../login/login'
 @Component({

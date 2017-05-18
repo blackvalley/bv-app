@@ -3,11 +3,10 @@ page-profile {
   #content ion-list-header {
     color: #FFFFFF;
   }
- 
+
   #content ion-icon {
     color: #FFFFFF;
   }
-
 
 
   #profile-header {
@@ -24,13 +23,6 @@ page-profile {
   #profile-header p {
     color: #FFFFFF;
   }
-
-  #interest {
-    background: #515151;
-  }
-
-
-
 
 #profile-img {
   border: 3px solid #FFFFFF;
@@ -84,12 +76,6 @@ ion-scroll {
 
 }
 
-#employment ion-card{
-  background-color: #000000;
-  color: #C6E947;
-  padding: 5px;
-
-}
 #employment p{
   color: #515151;
 
@@ -98,6 +84,7 @@ ion-scroll {
 
 #interest{
   position: relative;
+  background: #515151;
 }
 
 

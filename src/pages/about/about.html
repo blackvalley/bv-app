@@ -7,19 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-buttons>
       <button ion-button icon-only (click)="closePage()">
         <ion-icon name="close"></ion-icon>
         </button>
-    </ion-buttons>
 
     <ion-title>About</ion-title>
 
-    <ion-buttons end>
-    <button id="feedbackBtn" ion-button>
+    <button ion-button clear end id="feedbackBtn" (click)="feedback()">
       Feedback
       </button>
-  </ion-buttons>
 
   </ion-navbar>
 
@@ -45,20 +41,6 @@
   <ion-list>
     <div id="profile-header-content">
 
-      <ion-row>
-        <ion-col width-33>
-          <ion-item id=profile-img>
-          <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/profilePics%2F3fyFs7QMWxXszfdKSAcPJhc0Y1g2%2FprofilePicture.png?alt=media&token=8d63ec27-2c93-4e0f-91e5-08beee038071" alt="avatar">
-        </ion-item>
-        </ion-col>
-
-        <ion-col width-67>
-          <h2 id="profile-name">
-            <b>Dakari Franklin</b></h2>
-            <p>COO / UI Developer</p>
-            <p>Physics</p>
-          </ion-col>
-        </ion-row>
 
         <ion-row>
           <ion-col width-33>
@@ -74,6 +56,22 @@
 
           </ion-col>
         </ion-row>
+
+        <ion-row>
+          <ion-col width-33>
+            <ion-item id=profile-img>
+            <img id="user-img" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/profilePics%2F3fyFs7QMWxXszfdKSAcPJhc0Y1g2%2FprofilePicture.png?alt=media&token=8d63ec27-2c93-4e0f-91e5-08beee038071" alt="avatar">
+          </ion-item>
+          </ion-col>
+
+          <ion-col width-67>
+            <h2 id="profile-name">
+              <b>Dakari Franklin</b></h2>
+              <p>COO / UI Developer</p>
+              <p>Physics</p>
+            </ion-col>
+          </ion-row>
+
 
 
         <ion-row>
@@ -98,6 +96,30 @@
     Merchandise
   </ion-list-header>
   <ion-list>
+
+    <ion-row >
+      <ion-col width-75>
+        <h2>T - Shirt</h2>
+        <h4> $15</h4>
+      </ion-col>
+      <ion-col width-25 id="imgholder">
+        <img src="" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row >
+      <ion-col width-75>
+        <h2>T - Shirt</h2>
+        <h4> $15</h4>
+      </ion-col>
+      <ion-col width-25 id="imgholder">
+        <img src="" />
+      </ion-col>
+    </ion-row>
+
+
+
+
   </ion-list>
 
 

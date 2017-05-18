@@ -16,6 +16,7 @@ import { OpportunitiesPage } from '../pages/opportunities/opportunities';
 import { LoginPage } from '../pages/login/login'
 import { SignupPage } from '../pages/signup/signup'
 import { Signup2Page } from '../pages/signup2/signup2'
+import { Signup3Page } from '../pages/signup3/signup3'
 import { PwresetPage } from '../pages/pwreset/pwreset'
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -57,6 +58,7 @@ import { AboutPage } from '../pages/about/about';
     PwresetPage,
     SignupPage,
     Signup2Page,
+    Signup3Page,
     TabsPage,
     CreateEventPage,
     CreateOppPage,
@@ -91,6 +93,7 @@ import { AboutPage } from '../pages/about/about';
     PwresetPage,
     SignupPage,
     Signup2Page,
+    Signup3Page,
     TabsPage,
     CreateEventPage,
     CreateOppPage,
