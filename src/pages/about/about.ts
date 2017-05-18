@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController,
+          AlertController} from 'ionic-angular';
 
 /*
   Generated class for the About page.
@@ -14,7 +15,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 export class AboutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private viewCtrl:ViewController) {}
+    private viewCtrl:ViewController, private alertCtrl:AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
@@ -22,6 +23,34 @@ export class AboutPage {
 
   closePage(){
     this.viewCtrl.dismiss();
+  }
+
+  feedback() {
+  let alert = this.alertCtrl.create({
+    title: 'Feedback',
+    message: 'Let us know what you think!',
+    inputs: [
+      {
+        name: 'feedback',
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Submit',
+        handler: () => {
+          console.log('Buy clicked');
+        }
+      }
+    ]
+  });
+  alert.present();
   }
 
 
