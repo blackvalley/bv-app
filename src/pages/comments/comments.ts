@@ -55,7 +55,8 @@ export class CommentsPage {
     console.log(this.commentForm.value.comment);
   }
   else {
-    this.articledb.addComment(this.articleid,this.commentForm.value.comment,this.me).then( () =>
+    this.articledb.addComment(this.articleid,this.commentForm.value.comment,this.me)
+    .then( () =>
     {
     this.commentForm.reset();
     });
