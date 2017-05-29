@@ -4,7 +4,9 @@ AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginPage } from '../login/login';
-import { TabsPage } from '../tabs/tabs'
+import { TabsPage } from '../tabs/tabs';
+import { Signup3Page } from '../signup3/signup3'
+
 
 
 
@@ -78,6 +80,12 @@ export class Signup2Page {
   goToLoginPage(){
     this.navCtrl.push(LoginPage);
   }
+
+  goToInterestPage(){
+    this.navCtrl.push(Signup3Page);
+  }
+
+
   showSuccess() {
         let prompt = this.alertCtrl.create({
           title: 'Success!',
