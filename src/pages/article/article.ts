@@ -22,10 +22,7 @@ export class ArticlePage {
 
 
   ionViewDidLoad() {
-    this.articledb.getArticleDetail(this.navParams.get('articleId'))
-    .on('value', snapshot => {
-      this.article = snapshot.val();
-    });
+    this.article = this.navParams.get('article')
     console.log(this.article);
     console.log('Program Ran')
 

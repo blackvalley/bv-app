@@ -4,9 +4,8 @@
     <ion-buttons end>
       <button ion-button  clear icon-only color="secondary" (click)="addEvent()"><ion-icon name="create"></ion-icon></button>
     </ion-buttons>
-
   </ion-navbar>
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-segment [(ngModel)]="allEvents" mode="md" no-lines id="segmentToggle">
       <ion-segment-button value="tech">
         Technical
@@ -19,12 +18,8 @@
       </ion-segment-button>
     </ion-segment>
 
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
-
-
-
-
 <ion-content class="has-header" id="content">
 
 
@@ -54,9 +49,6 @@
         </ion-item>
         </div></ion-col>
       </ion-row>
-
-
-
       <ion-row >
         <ion-col><div>
           <ion-item no-lines>
@@ -67,8 +59,6 @@
         </ion-item>
         </div></ion-col>
       </ion-row>
-
-
         <ion-row no-padding>
           <ion-col text-left>
             <button ion-button clear small icon-left>
@@ -89,13 +79,8 @@
             </button>
           </ion-col>
         </ion-row>
-
-
       </ion-card>
-
     </ion-list>
-
-
       <ion-list *ngSwitchCase="'notTech'" id="notTech">
       </ion-list>
 

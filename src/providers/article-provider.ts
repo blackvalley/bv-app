@@ -35,6 +35,9 @@ export class ArticleProvider {
   getArticleDetail(articleId): firebase.database.Reference {
   return this.articledb.child(articleId);
   }
+  getLikes(articleid):firebase.database.Reference{
+    return this.articledb.child(articleid).child('likes')
+  }
   addComment(articleid:string,comment:string,sender):firebase.Promise<any>{
     let timestamp=Date.now()
     return this.articledb.child(articleid).update({
@@ -47,7 +50,6 @@ export class ArticleProvider {
           comment:comment
       })
     })
-
   }
   addLike(articleid:string, sender):firebase.Promise<any>{
     return this.articledb.child(articleid).child('likes').
@@ -55,6 +57,4 @@ export class ArticleProvider {
       sender:sender
     })
   }
-
-
 }

@@ -17,7 +17,6 @@ export class HomePage {
   private articles:any[]
   private loader
   private user: any;
-  private numOfLikes:number = 0
   private lastArticle: any[]
 
 
@@ -27,6 +26,7 @@ export class HomePage {
      this.articles = []
      this.showLoading()
      this.getArticles()
+     this.likes()
      this.profile;
 
 
@@ -42,18 +42,16 @@ export class HomePage {
 
   }
 
-  goToArticle(articleId):void{
+  goToArticle(article):void{
     this.navCtrl.push(ArticlePage, {
-      articleId:articleId,
-
+      article:article
     })
-    console.log(articleId);
-    console.log('articleid ^')
+    console.log(article);
 
   }
-  openComments(articleKey){
+  openComments(articleid){
     let commentsModal = this.modalCtrl.create(CommentsPage, {
-      articleKey:articleKey
+      articleid:articleid
     });
     commentsModal.present();
   }
@@ -63,7 +61,9 @@ export class HomePage {
     commentsModal.present();
   }
 
+  likes(){
 
+  }
   getArticles(){
     this.articledb.getArticles().on('value',snapshot =>{
       this.articles = snapshot.val();
