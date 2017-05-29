@@ -69,11 +69,12 @@ export class CreateOppPage {
           icon: !this.platform.is('ios') ? 'camera' : null,
           handler: () => {
             const options: CameraOptions = {
-              quality : 95,
+              quality : 100,
               destinationType : this.camera.DestinationType.DATA_URL,
               sourceType : this.camera.PictureSourceType.CAMERA,
+              mediaType: this.camera.MediaType.PICTURE,
               allowEdit : true,
-              encodingType: this.camera.EncodingType.PNG,
+              encodingType: this.camera.EncodingType.JPEG,
               targetWidth: 500,
               targetHeight: 500,
               saveToPhotoAlbum: true
@@ -92,13 +93,15 @@ export class CreateOppPage {
           icon: !this.platform.is('ios') ? 'images' : null,
           handler: () => {
             const options: CameraOptions = {
-              quality : 95,
+              quality : 100,
               destinationType : this.camera.DestinationType.DATA_URL,
               sourceType : this.camera.PictureSourceType.PHOTOLIBRARY,
+              mediaType: this.camera.MediaType.PICTURE,
               allowEdit : true,
-              encodingType: this.camera.EncodingType.PNG,
+              encodingType: this.camera.EncodingType.JPEG,
               targetWidth: 500,
               targetHeight: 500,
+              saveToPhotoAlbum: true
               }
               this.camera.getPicture(options).then(imageData => {
                 this.captureDataUrl = imageData;

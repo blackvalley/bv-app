@@ -7,15 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button icon-only (click)="closePage()">
+      <button ion-button icon-only clear (click)="closePage()">
         <ion-icon name="close"></ion-icon>
         </button>
 
     <ion-title>About</ion-title>
 
-    <button ion-button clear end id="feedbackBtn" (click)="feedback()">
+    <ion-buttons end><button ion-button clear end id="feedbackBtn" (click)="feedback()">
       Feedback
       </button>
+    </ion-buttons>
 
   </ion-navbar>
 
@@ -23,14 +24,18 @@
 
 <ion-content padding id="content">
 
-  <img src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/image1.PNG?alt=media&token=d7a577f9-d965-4aa8-9983-3466a08b2eb4">
+  <img (click)="openWebsite()" src="https://firebasestorage.googleapis.com/v0/b/bv-ionic.appspot.com/o/image1.PNG?alt=media&token=d7a577f9-d965-4aa8-9983-3466a08b2eb4">
+  <ion-title (click)="openWebsite()"> Click Logo for Website </ion-title>
+
   <ion-list-header>
     <ion-icon name='ribbon'></ion-icon>
     Info
   </ion-list-header>
   <ion-list>
     <ion-title>Mission:</ion-title>
-    <p> </p>
+
+
+    <p href="www.theblackvalley.com">Website</p>
 
   </ion-list>
 
