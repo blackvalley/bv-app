@@ -1,10 +1,11 @@
 import { Component } from '@angular/core'
 import { NavController, NavParams, ModalController,
-      AlertController, LoadingController } from 'ionic-angular'
+      AlertController, LoadingController, PopoverController } from 'ionic-angular'
 import { CreateOppPage } from '../create-opp/create-opp'
 import { OppDetailPage } from '../opp-detail/opp-detail'
 import { OpportunityData } from '../../providers/opportunity.provider'
 import { GeoLocationPage } from '../geo-location/geo-location'
+import { ApplyPopoverPage } from '../apply-popover/apply-popover'
 /*
   Generated class for the Opportunities page.
 */
@@ -20,7 +21,8 @@ export class OpportunitiesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modalCtrl: ModalController, private oppData:OpportunityData,
-    private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
+    private loadingCtrl:LoadingController, private alertCtrl:AlertController,
+    private popoverCtrl:PopoverController) {
       this.opps=[];
       this.allOpps = 'student'
     }
@@ -32,6 +34,13 @@ export class OpportunitiesPage {
 
   oppdetails(){
     this.navCtrl.push(OppDetailPage)
+  }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(ApplyPopoverPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
 

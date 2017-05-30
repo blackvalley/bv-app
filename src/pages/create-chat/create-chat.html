@@ -44,7 +44,7 @@
         <h2 >{{user?.firstname}} {{user?.lastname}} </h2>
         <h3>{{user?.employment}} | {{user?.college}}</h3>
       </ion-label>
-      <ion-checkbox item-right>
+      <ion-checkbox (click)="addToChat(user)" item-right>
     </ion-checkbox>
 
       </ion-item>

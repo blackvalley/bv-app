@@ -41,6 +41,7 @@ import { GeoLocationPage } from '../pages/geo-location/geo-location'
 import { Geolocation } from '@ionic-native/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AboutPage } from '../pages/about/about';
+import { ApplyPopoverPage } from '../pages/apply-popover/apply-popover'
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { AboutPage } from '../pages/about/about';
     MyOppsPage,
     GeoLocationPage,
     AboutPage,
+    ApplyPopoverPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -109,6 +111,7 @@ import { AboutPage } from '../pages/about/about';
     MyOppsPage,
     GeoLocationPage,
     AboutPage,
+    ApplyPopoverPage,
 
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},

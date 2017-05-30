@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
+import { ApplyPopoverPage } from '../apply-popover/apply-popover'
+
 /*
   Generated class for the OppDetail page.
 
@@ -12,11 +14,20 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class OppDetailPage {
   private opp
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+        public popoverCtrl:PopoverController) {}
 
     ionViewDidLoad() {
       this.opp = this.navParams.get('opp')
     }
+
+    presentPopover(myEvent) {
+      let popover = this.popoverCtrl.create(ApplyPopoverPage);
+      popover.present({
+        ev: myEvent
+      });
+    }
+
 
 
 }
