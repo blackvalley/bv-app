@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { ArticleProvider } from '../../providers/article-provider'
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { ArticleProvider } from '../../providers/article-provider';
+import { CommentsPage } from '../comments/comments';
+import { AboutPage } from '../about/about';
+
+
 
 /*
   Generated class for the Article page.
@@ -16,9 +20,19 @@ export class ArticlePage {
   private article
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private articledb: ArticleProvider) {
+    private articledb: ArticleProvider, private modalCtrl:ModalController) {
 
   }
+
+  openComments(articleId){
+    let commentsModal = this.modalCtrl.create(CommentsPage, {
+      articleId:articleId
+    });
+    commentsModal.present();
+    console.log(articleId);
+
+  }
+
 
 
   ionViewDidLoad() {
