@@ -113,24 +113,13 @@
 </ion-select>
   </ion-item>
 </ion-list>
-<ion-list-header>
-  <ion-icon name='pulse'></ion-icon>
-  Interest
-</ion-list-header>
-<!-- <ion-scroll scrollX="true" id="interest">
 
-      <ion-row center>
-        <button ion-button clear class="interest"><ion-col><div>Augmented Reality</div></ion-col></button>
-        <button ion-button clear class="interest"><ion-col><div>App Development</div></ion-col></button>
-        <button ion-button clear class="interest"><ion-col><div>Web Development</div></ion-col></button>
-
-      </ion-row>
-    </ion-scroll> -->
-      <button ion-button icon-right type="submit" id="connect-btn">
-        Connect
+      <button ion-button icon-right type="submit" id="connect-btn" (click)="goToInterestPage">
+        Next
       </button>
 
-      <button ion-button icon-right id="connect-btn" (click)="goToArticlePage()">
+      <button ion-button icon-right id="connect-btn" type="submit" (click)="goToLoginPage()">
+
       Skip and Finish Later
       </button>
 

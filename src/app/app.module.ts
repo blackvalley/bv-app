@@ -39,6 +39,7 @@ import { MyEventsPage } from '../pages/my-events/my-events'
 import { ViewProfilePage } from '../pages/view-profile/view-profile'
 import { GeoLocationPage } from '../pages/geo-location/geo-location'
 import { Geolocation } from '@ionic-native/geolocation';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AboutPage } from '../pages/about/about';
 
 
@@ -116,7 +117,8 @@ import { AboutPage } from '../pages/about/about';
       AuthProvider, EventData,
       DummyData, ArticleProvider,
       OpportunityData, Camera,
-      ChatProvider, Geolocation]
+      ChatProvider, Geolocation,
+      InAppBrowser]
 
 })
 export class AppModule {}

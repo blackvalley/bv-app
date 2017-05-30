@@ -8,6 +8,7 @@ import { AuthProvider } from '../../providers/auth.provider';
 //import { TabsPage } from '../tabs/tabs'
 import { Signup2Page } from '../signup2/signup2'
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
 /*
   Generated class for the Signup page.
 
@@ -22,7 +23,7 @@ export class SignupPage {
 
   private signupForm;
   private loader;
-  private profilePic=null;
+  public profilePic : string;
 
  constructor(private nav: NavController, private authProvider: AuthProvider,
    private formBuilder: FormBuilder, private loadingCtrl: LoadingController,
@@ -100,47 +101,47 @@ export class SignupPage {
          {
            text: 'Camera',
            role: 'destructive',
-           icon: !this.platform.is('ios') ? 'camera' : null,
            handler: () => {
              const options: CameraOptions = {
-               quality : 95,
+               quality : 100,
                destinationType : this.camera.DestinationType.DATA_URL,
                sourceType : this.camera.PictureSourceType.CAMERA,
+               mediaType: this.camera.MediaType.PICTURE,
                allowEdit : true,
-               encodingType: this.camera.EncodingType.PNG,
+               encodingType: this.camera.EncodingType.JPEG,
                targetWidth: 500,
                targetHeight: 500,
                saveToPhotoAlbum: true
              }
-             this.camera.getPicture(options).then(imageData => {
-               this.profilePic = imageData;
+             this.camera.getPicture(options).then((imageData) => {
+               this.profilePic = "data:image/jpeg;base64," + imageData;
                this.showSuccess("Image added")
-               console.log(this.profilePic)
+               console.log("Image Added")
 
-             }, error => {
-               console.log("ERROR -> " + JSON.stringify(error));
+             }, (err) => {
+               console.log("ERROR -> " + JSON.stringify(err));
              });
            }
          },
          {
            text: 'Photo Library',
-           icon: !this.platform.is('ios') ? 'images' : null,
            handler: () => {
              const options: CameraOptions = {
-               quality : 95,
+               quality : 100,
                destinationType : this.camera.DestinationType.DATA_URL,
                sourceType : this.camera.PictureSourceType.PHOTOLIBRARY,
+               mediaType: this.camera.MediaType.PICTURE,
                allowEdit : true,
-               encodingType: this.camera.EncodingType.PNG,
+               encodingType: this.camera.EncodingType.JPEG,
                targetWidth: 500,
                targetHeight: 500,
                }
-               this.camera.getPicture(options).then(imageData => {
-                 this.profilePic = imageData;
-                 this.showSuccess("Image added")
-                 console.log(this.profilePic)
-               }, error => {
-               console.log("ERROR -> " + JSON.stringify(error));
+               this.camera.getPicture(options).then((imageData) => {
+                 this.profilePic = "data:image/jpeg;base64," + imageData;
+                 this.showSuccess(this.profilePic)
+                 console.log("Image Added")
+               }, (err) => {
+               console.log("ERROR -> " + JSON.stringify(err));
                });
            }
          },
@@ -159,7 +160,7 @@ export class SignupPage {
    showSuccess(text) {
          let prompt = this.alertCtrl.create({
            title: 'You made it in!',
-           subTitle: text,
+           subTitle: "Profile Picture Added",
            buttons: ['OK']
          });
          prompt.present();

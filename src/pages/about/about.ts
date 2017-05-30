@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController,
-          AlertController} from 'ionic-angular';
+          AlertController, Platform} from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+
 
 /*
   Generated class for the About page.
@@ -15,7 +18,8 @@ import { NavController, NavParams, ViewController,
 export class AboutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private viewCtrl:ViewController, private alertCtrl:AlertController) {}
+    private viewCtrl:ViewController, private alertCtrl:AlertController,
+    private platform:Platform, private iab: InAppBrowser) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
@@ -23,6 +27,13 @@ export class AboutPage {
 
   closePage(){
     this.viewCtrl.dismiss();
+  }
+
+  openWebsite(){
+      this.platform.ready().then(() => {
+        this.iab.create("http://www.theblackvalley.com", '_blank')
+        // this.iab.create("www.google.com",'_blank');
+      });
   }
 
   feedback() {

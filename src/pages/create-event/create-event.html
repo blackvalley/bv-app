@@ -2,6 +2,7 @@
   <ion-navbar>
   <ion-buttons>
     <button ion-button icon-only (click)="closeEvent()">
+      <img id="img" [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
       <ion-icon name="close"></ion-icon>
       </button>
   </ion-buttons>
