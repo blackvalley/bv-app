@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat.provider';
 import { EditChatPage } from '../edit-chat/edit-chat';
-import { FormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /*
   Generated class for the Groupchat page.

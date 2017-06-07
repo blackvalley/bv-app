@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { EventData } from '../../providers/event.provider'
 /*
   Generated class for the MyEvents page.
@@ -13,7 +13,7 @@ import { EventData } from '../../providers/event.provider'
 })
 export class MyEventsPage {
   private events : any[]
-  private loader
+  // private loader
   private myEvents: string
   constructor(private navCtrl: NavController, private eventData : EventData,
     private alertCtrl:AlertController) {

@@ -31,7 +31,8 @@ export class EventsPage {
         price: snap.val().price,
         date: snap.val().date,
         location: snap.val().location,
-        eventPic:snap.val().eventPicture
+        eventPic:snap.val().eventPicture,
+        description:snap.val().description
       })
       return false
       });
@@ -46,9 +47,9 @@ export class EventsPage {
     eventModal.present()
   }
 
-  goToEventDetail(eventId):void{
+  goToEventDetail(event):void{
     this.navCtrl.push(EventDetailPage, {
-      eventId:eventId
+      event:event
     })
   }
 
@@ -60,10 +61,6 @@ export class EventsPage {
   }
 
   showError(text) {
-    setTimeout(() => {
-      this.loader.dismiss();
-    });
-
     let prompt = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,

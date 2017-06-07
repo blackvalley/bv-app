@@ -35,7 +35,8 @@ export class MyOppsPage {
         deadline: snap.val().deadline,
         date: snap.val().cost,
         location: snap.val().location,
-        picture:snap.val().opportunityPicture
+        picture:snap.val().opportunityPicture,
+        qualifications:snap.val().qualifications
       });
       return false
       });
@@ -59,10 +60,6 @@ export class MyOppsPage {
     }
 
     showError(text) {
-      setTimeout(() => {
-        this.loader.dismiss();
-      });
-
       let prompt = this.alertCtrl.create({
         title: 'Fail',
         subTitle: text,

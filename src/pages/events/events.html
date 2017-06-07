@@ -31,7 +31,7 @@
 
 
     <ion-card id="event-card" *ngFor="let event of events">
-      <div (click)="goToEventDetail(event.id)">
+      <div (click)="goToEventDetail(event)">
       <img src={{event?.eventPic}}/>
 
       <ion-row>

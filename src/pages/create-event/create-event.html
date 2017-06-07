@@ -57,17 +57,6 @@
     </div></ion-col>
   </ion-row>
 
-  <ion-row >
-    <ion-col><div>
-      <ion-item no-lines>
-      <ion-icon name="pricetag" color=primary item-left></ion-icon>
-      <ion-input #price formControlName="price" type="text" placeholder="How much will the event be?"
-        [class.invalid]="!createForm.controls.price.valid && createForm.controls.price.dirty">
-      </ion-input>
-    </ion-item>
-    </div></ion-col>
-  </ion-row>
-
   <ion-row center>
     <ion-col><div>
       <ion-title>Description:</ion-title>
@@ -76,6 +65,17 @@
           [class.invalid]="!createForm.controls.description.valid && createForm.controls.description.dirty">
         </ion-input>
       </p>
+    </div></ion-col>
+  </ion-row>
+  
+  <ion-row >
+    <ion-col><div>
+      <ion-item no-lines>
+      <ion-icon name="pricetag" color=primary item-left></ion-icon>
+      <ion-input #price formControlName="price" type="text" placeholder="How much will the event be?"
+        [class.invalid]="!createForm.controls.price.valid && createForm.controls.price.dirty">
+      </ion-input>
+    </ion-item>
     </div></ion-col>
   </ion-row>
 

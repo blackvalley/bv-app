@@ -35,6 +35,9 @@ export class CreateEventPage {
     if(!this.createForm.valid){
       this.showError("We need all the details..")
     }
+    else if(this.captureDataUrl==null){
+      this.showError("Picture Needed.")
+    }
     else{
         this.eventData.createEvent(this.createForm.value.name, this.createForm.value.date,
         this.createForm.value.location, this.createForm.value.description,

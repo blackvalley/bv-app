@@ -34,6 +34,9 @@ export class ViewProfilePage {
   openMyEvents() {
     this.nav.push(MyEventsPage);
   }
+  openMyOpportunities() {
+    this.nav.push(MyOppsPage);
+  }
 
 
 
