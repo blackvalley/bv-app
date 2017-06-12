@@ -3,8 +3,8 @@ import { NavController, NavParams, LoadingController, AlertController, ViewContr
           ActionSheetController, Platform} from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat.provider';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { CreateChatPage } from '../create-chat/create-chat';
-import { GroupchatPage } from '../groupchat/groupchat'
+// import { CreateChatPage } from '../create-chat/create-chat';
+// import { GroupchatPage } from '../groupchat/groupchat'
 
 /*
   Generated class for the CreateMessage page.

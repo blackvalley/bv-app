@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController, LoadingController,
-          ActionSheetController, Platform} from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController,
+  LoadingController, ActionSheetController, Platform} from 'ionic-angular';
 import { OpportunityData } from '../../providers/opportunity.provider';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -22,9 +22,9 @@ export class CreateOppPage {
           name: ['', Validators.compose([Validators.minLength(2),Validators.required])],
           deadline: ['', Validators.compose([Validators.minLength(2),Validators.required])],
           location: ['', Validators.compose([Validators.minLength(2),Validators.required])],
+          description: ['', Validators.compose([Validators.minLength(2),Validators.required])],
           qualifications: ['', Validators.compose([Validators.minLength(6),Validators.required])],
-          contact: ['', Validators.compose([Validators.minLength(6),Validators.required])],
-          description: ['', Validators.compose([Validators.minLength(2),Validators.required])]
+          contact: ['', Validators.compose([Validators.minLength(6),Validators.required])]
         })
       }
 
@@ -34,9 +34,9 @@ export class CreateOppPage {
     if(!this.createForm.valid){
       this.showError("We need all the details..")
     }
-    // else if(this.captureDataUrl==null){
-    //   this.showError("Picture Needed.")
-    // }
+    else if(this.captureDataUrl==null){
+      this.showError("Picture Needed.")
+    }
     else {
         this.oppData.createOpportunity(this.createForm.value.name, this.createForm.value.deadline,
         this.createForm.value.location, this.createForm.value.description,

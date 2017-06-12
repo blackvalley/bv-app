@@ -3,7 +3,7 @@ import { NavController, ViewController, NavParams} from 'ionic-angular';
 import { ArticlePage } from '../article/article';
 import { ArticleProvider } from '../../providers/article-provider';
 import { ProfileData } from '../../providers/profile.data';
-import { FormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 
@@ -19,7 +19,6 @@ import { FormsModule, FormBuilder, Validators } from '@angular/forms';
   templateUrl: 'comments.html'
 })
 export class CommentsPage {
-  private profileData
   private me: any;
   private comments: any[]
   private articleid

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ArticleProvider } from '../../providers/article-provider';
 import { CommentsPage } from '../comments/comments';
-import { AboutPage } from '../about/about';
+// import { AboutPage } from '../about/about';
 
 
 

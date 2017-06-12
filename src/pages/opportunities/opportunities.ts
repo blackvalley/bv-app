@@ -56,7 +56,8 @@ export class OpportunitiesPage {
         deadline: snap.val().deadline,
         location: snap.val().location,
         picture:snap.val().opportunityPicture,
-        description:snap.val().description
+        description:snap.val().description,
+        contact:snap.val().contact
       });
       return false
       });
